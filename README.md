@@ -4,7 +4,7 @@
 </p>
 
 <hr>
-###Desenvolvedores
+<h3>Desenvolvedores</h3>
 <p align = "center">
  - Fernando Piacezzi
  - Jamisson Jader
@@ -12,7 +12,7 @@
 </p>
 
 <hr>
-###Objetivo do Projeto
+<h3>Objetivo do Projeto</h3>
 <p align = "justify">
 Este projeto visa continuar o desenvolvimento de um simulador com o uso do Kinect para melhor compreensão dos assuntos abordados na disciplina da Física Mecânica. Uma vez que a complexidade dos conceitos explanados é responsável pela grande dificuldade dos discentes em obter sucesso na disciplina.  
 
