@@ -26,3 +26,14 @@ O simulador permitirá a visualização de eventos, bem como o aprendizado de no
 - [ ] Força centrípeta
 - [ ] Torque
 - [ ] Sistema massa mola
+
+<hr>
+<h3>Referencias</h3>
+<p>
+<a href = "https://www.youtube.com/watch?v=3kklYrm6FEw"> Video com extensões para o VSCODE </a>
+
+<a href = "https://www.youtube.com/watch?v=-7YkXoPzYww"> Video com biblioteca CIDADES </a>
+
+<a href = "https://menezesgam.wordpress.com/2015/01/15/unity3d-e-github-armazenando-e-versionando-seu-jogo/
+"> Site com as configurações do UNITY </a>
+</p>
