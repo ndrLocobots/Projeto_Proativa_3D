@@ -62,6 +62,7 @@
   <ItemGroup>
     <Compile Include="Assets\Script\Cam.cs" />
     <Compile Include="Assets\Script\Cubo.cs" />
+    <Compile Include="Assets\Script\Seta.cs" />
     <None Include="Assets\Cidade\Changelog.txt" />
     <Reference Include="Unity.TextMeshPro.Editor">
       <HintPath>C:/Users/jjade/Desktop/Projeto_Proativa_3D/LancamentoVertica/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
