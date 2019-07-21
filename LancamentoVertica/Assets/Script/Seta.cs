@@ -28,10 +28,4 @@ public class Seta : MonoBehaviour
     {
         angulo = a;
     }
-
-    private void OnGUI()
-    {
-        GUI.contentColor = Color.black;
-        GUI.Label(new Rect(300, 10, 200, 200), angulo.ToString("0"));
-    }
 }
