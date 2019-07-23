@@ -7,9 +7,10 @@ public class Cubo : MonoBehaviour
     Rigidbody body;
     float velocidade;
     float angulo, anguloRad;
-    public float time, MaxHeight, DeltaX;
+    float timer, auxTimer, MaxHeight, DeltaX;
     bool jumper, clook;
-    Vector3 velo, StPosition;
+    public Vector3 velo, StPosition;
+
 
     void Start()
     {
@@ -30,7 +31,7 @@ public class Cubo : MonoBehaviour
         {
             if (velocidade != 0)
             {
-                if (angulo > 0 && angulo < 90)
+                if (angulo > 0 && angulo <= 90)
                 {
                     Pular(jumper);
                     jumper = false;
@@ -44,7 +45,7 @@ public class Cubo : MonoBehaviour
             body.velocity = new Vector3(0, 0, 0);
             body.position = StPosition;
             jumper = true;
-            time = 0;
+            timer = 0;
             MaxHeight = 0;
         }
     }
@@ -53,7 +54,7 @@ public class Cubo : MonoBehaviour
     {
         if (clook)
         {
-            time++;
+            timer++;
             if (MaxHeight == 0)
             {
                 MaxHeight = AlturaMaxima();
@@ -78,7 +79,7 @@ public class Cubo : MonoBehaviour
     {
         if ((body.velocity.y < 0.1) && (body.velocity.y > -0.1))
         { // se a velocidade do corpo for quase zero
-            return (body.transform.position.y - StPosition.y) * 1.04f; // adiciona 4% para compensar erro
+            return (body.transform.position.y - StPosition.y) ; // adiciona 5% para compensar erro
         }
         else
         {
@@ -90,10 +91,9 @@ public class Cubo : MonoBehaviour
     {
         body.velocity = new Vector3(0, 0, 0);
         clook = false;
-        time = time / 60;
+        auxTimer = timer / 60f;
         DeltaX = body.position.x - StPosition.x;
     }
-
     public void SetVelocidade(float v)
     {
         velocidade = v;
@@ -110,10 +110,10 @@ public class Cubo : MonoBehaviour
 
         GUI.contentColor = Color.black;
         GUI.Label(new Rect(10, 80, 200, 60), "TEMPO:");
-        GUI.Label(new Rect(100, 80, 200, 30), time.ToString("0.00"));
+        GUI.Label(new Rect(100, 80, 200, 30), auxTimer.ToString("0.00"));
         GUI.Label(new Rect(10, 110, 200, 60), "ALTURA-MAX");
-        GUI.Label(new Rect(100, 110, 200, 30), MaxHeight.ToString("0.000"));
+        GUI.Label(new Rect(100, 110, 200, 30), MaxHeight.ToString("0.00"));
         GUI.Label(new Rect(10, 140, 200, 60), "DELTA-X");
-        GUI.Label(new Rect(100, 140, 200, 30), DeltaX.ToString("0.000"));
+        GUI.Label(new Rect(100, 140, 200, 30), DeltaX.ToString("0.00"));
     }
 }
