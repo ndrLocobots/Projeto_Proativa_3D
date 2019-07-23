@@ -7,27 +7,36 @@ public class Cubo : MonoBehaviour
     Rigidbody body;
     float velocidade;
     float angulo, anguloRad;
-    float timer, auxTimer, MaxHeight, DeltaX;
-    bool jumper, clook;
-    public Vector3 velo, StPosition;
+    float timer, MaxHeight, DeltaX;
+  public  bool jumper, buttom;
+    Vector3 velo, StPosition;
 
+    /*
+     * Formulas Usadas
+     * Tempo Total (TT) = vy/5
+     * Tempo Altura Máxima (TH) = vy/10
+     * DeltaX = Vx*TT
+     * Altura Maxima = y0 + (Vy*TH) - (5*TH^2)
+     */
 
     void Start()
     {
         body = GetComponent<Rigidbody>();
-
         body.freezeRotation = true;
+
         jumper = true;
-        clook = false;
+        timer = 0;
+        MaxHeight = 0;
+        DeltaX = 0;
+        buttom = false;
 
         StPosition = new Vector3(-262.4f, -9.492697f, -6f);
     }
 
-    // Update is called once per frame
     void Update()
     {
 
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.Space) || buttom)
         {
             if (velocidade != 0)
             {
@@ -35,6 +44,7 @@ public class Cubo : MonoBehaviour
                 {
                     Pular(jumper);
                     jumper = false;
+                    buttom = false;
                 }
             }
 
@@ -47,26 +57,19 @@ public class Cubo : MonoBehaviour
             jumper = true;
             timer = 0;
             MaxHeight = 0;
+            DeltaX = 0;
         }
     }
 
-    void FixedUpdate()
+   public  void ClickButtom(bool b)
     {
-        if (clook)
-        {
-            timer++;
-            if (MaxHeight == 0)
-            {
-                MaxHeight = AlturaMaxima();
-            }
-        }
+        buttom = true;
     }
 
-    public void Pular(bool j)
+    void Pular(bool j)
     {
         if (j)
         {
-            clook = true;
             anguloRad = Mathf.PI * angulo / 180; // transformando o angulo em radiano
             velo.x = Mathf.Cos(anguloRad) * velocidade;
             velo.y = Mathf.Sin(anguloRad) * velocidade;
@@ -75,24 +78,35 @@ public class Cubo : MonoBehaviour
         }
     }
 
-    public float AlturaMaxima()
+
+    float TempoTotal()
     {
-        if ((body.velocity.y < 0.1) && (body.velocity.y > -0.1))
-        { // se a velocidade do corpo for quase zero
-            return (body.transform.position.y - StPosition.y) ; // adiciona 5% para compensar erro
-        }
-        else
-        {
-            return 0;
-        }
+        return velo.y / 5;
+    }
+
+    float TempoAlturaMaxima()
+    {
+        return velo.y / 10;
+    }
+
+    float DistanciaX(float t)
+    {
+        return velo.x * t;
+    }
+
+    float AlturaMaxima(float t)
+    {
+        return (velo.y * t) - (5 * t * t);
     }
 
     private void OnCollisionEnter(Collision collision)
     {
+        if (!jumper) { 
         body.velocity = new Vector3(0, 0, 0);
-        clook = false;
-        auxTimer = timer / 60f;
-        DeltaX = body.position.x - StPosition.x;
+        MaxHeight = AlturaMaxima(TempoAlturaMaxima());
+        timer = TempoTotal();
+        DeltaX = DistanciaX(timer);
+        }
     }
     public void SetVelocidade(float v)
     {
@@ -106,11 +120,12 @@ public class Cubo : MonoBehaviour
     private void OnGUI()
     {
         GUI.contentColor = Color.black;
-        GUI.Label(new Rect(300, 10, 200, 200), angulo.ToString("0"));
+        GUI.Label(new Rect(300, 11, 200, 200), angulo.ToString("0"));
+        GUI.Label(new Rect(520, 11, 200, 200), velocidade.ToString("0"));
 
         GUI.contentColor = Color.black;
         GUI.Label(new Rect(10, 80, 200, 60), "TEMPO:");
-        GUI.Label(new Rect(100, 80, 200, 30), auxTimer.ToString("0.00"));
+        GUI.Label(new Rect(100, 80, 200, 30), timer.ToString("0.00"));
         GUI.Label(new Rect(10, 110, 200, 60), "ALTURA-MAX");
         GUI.Label(new Rect(100, 110, 200, 30), MaxHeight.ToString("0.00"));
         GUI.Label(new Rect(10, 140, 200, 60), "DELTA-X");
