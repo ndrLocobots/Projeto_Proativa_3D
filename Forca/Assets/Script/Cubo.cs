@@ -1,0 +1,125 @@
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class Cubo : MonoBehaviour
+{
+
+    struct FisicaMaterial
+    {
+        public float staticFriction;
+        public float dynamicFriction;
+    } 
+
+
+    Rigidbody body;
+    float forca, forcaAtritoDin, forcaAtritoEst, faux, aceleracao;
+    Vector3 velo, StPosition;
+    FisicaMaterial atrito;
+    bool buttom;
+
+    /*
+     * Formulas Usadas
+     * Tempo Total (TT) = vy/5
+     * Tempo Altura Máxima (TH) = vy/10
+     * DeltaX = Vx*TT
+     * Altura Maxima = y0 + (Vy*TH) - (5*TH^2)
+     */
+
+    void Start()
+    {
+        body = GetComponent<Rigidbody>();
+        body.freezeRotation = true;
+        StPosition = new Vector3(-241.8f, -9f, -2.5f);
+        buttom = false;
+
+        atrito.staticFriction = 0;
+        atrito.dynamicFriction = 0;
+    }
+
+    void Update()
+    {
+        forcaAtritoDin = body.mass * 9.8f * atrito.dynamicFriction;
+        forcaAtritoEst = body.mass * 9.8f * atrito.staticFriction;
+        if (Input.GetKeyDown(KeyCode.O))
+        {
+            body.velocity = new Vector3(0, 0, 0);
+            body.position = StPosition;
+            buttom = false;
+            
+        }
+    }
+
+    private void FixedUpdate()
+    {
+        if (buttom)
+        {
+            faux = forca - forcaAtritoEst;
+            if ((body.velocity.x == 0 && faux <= 0) || body.velocity.x < 0) {
+                faux = 0;
+                body.velocity = Vector3.zero;
+                aceleracao = 0;
+            }
+            else
+            {
+                faux = forca - forcaAtritoDin;
+                body.AddForce((faux) * Vector3.right);
+                aceleracao = faux / body.mass;
+
+            }
+            
+            
+        }
+    }
+    public  void ClickButtom(bool b)
+    {
+        buttom = true;
+        
+    }
+
+    public void SetForça(float f)
+    {
+        forca = f;
+    }
+
+    public void SetMassa(float m)
+    {
+        body.mass = m;
+    }
+
+    public void SetAtritoDinamico(float a)
+    {
+        atrito.dynamicFriction = a;
+    }
+
+    public void SetAtritoEstatico(float a)
+    {
+        atrito.staticFriction = a;
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+       
+    }
+    
+
+    private void OnGUI()
+    {
+        GUI.contentColor = Color.white;
+
+        GUI.Label(new Rect(300, 10, 200, 200), body.mass.ToString("0"));
+        GUI.Label(new Rect(480, 10, 200, 200), forca.ToString("0"));
+        GUI.Label(new Rect(320, 60, 200, 200), atrito.staticFriction.ToString("0.00"));
+        GUI.Label(new Rect(130, 60, 200, 200), atrito.dynamicFriction.ToString("0.00"));
+
+        GUI.Label(new Rect(10, 110, 200, 60), "Forca Atrito Dinamico");
+        GUI.Label(new Rect(150, 110, 200, 30), forcaAtritoDin.ToString("0.00"));
+
+        GUI.Label(new Rect(10, 140, 200, 60), "Forca Atrito Estatico");
+        GUI.Label(new Rect(150, 140, 200, 30), forcaAtritoEst.ToString("0.00"));
+
+        GUI.Label(new Rect(10, 170, 200, 60), "Aceleração");
+        GUI.Label(new Rect(100, 170, 200, 30), aceleracao.ToString("0.00"));
+        
+    }
+}
