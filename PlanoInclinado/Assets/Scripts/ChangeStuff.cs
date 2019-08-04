@@ -5,8 +5,9 @@ using UnityEngine.UI;
 
 public class ChangeStuff : MonoBehaviour
 {
-    float angulo;
-    float massa;
+    private float angulo;
+    private float massa;
+    private float atrito;
 
     public Text textoAngulo;
     public Text textoMassa;
@@ -29,6 +30,9 @@ public class ChangeStuff : MonoBehaviour
     private void Start()
     {
         this.angulo = 20f;
+        this.atrito = 0.10f;
+        this.massa = 1f;
+
         SetAngleText(20f);
         UpdateProperties(20f);
 
@@ -397,6 +401,7 @@ public class ChangeStuff : MonoBehaviour
             rampa.gameObject.GetComponent<BoxCollider>().material.staticFriction = 0.12f;
 
             ChangeFrictionText(0.10f);
+            this.atrito = 0.10f;
         }
         if (a == 2)
         {
@@ -404,6 +409,7 @@ public class ChangeStuff : MonoBehaviour
             rampa.gameObject.GetComponent<BoxCollider>().material.staticFriction = 0.18f;
 
             ChangeFrictionText(0.15f);
+            this.atrito = 0.15f;
         }
         if (a == 3)
         {
@@ -411,6 +417,7 @@ public class ChangeStuff : MonoBehaviour
             rampa.gameObject.GetComponent<BoxCollider>().material.staticFriction = 0.20f;
 
             ChangeFrictionText(0.20f);
+            this.atrito = 0.20f;
         }
         if(a == 4)
         {
@@ -418,6 +425,7 @@ public class ChangeStuff : MonoBehaviour
             rampa.gameObject.GetComponent<BoxCollider>().material.staticFriction = 0.30f;
 
             ChangeFrictionText(0.30f);
+            this.atrito = 0.30f;
         }
         if(a == 5)
         {
@@ -425,11 +433,25 @@ public class ChangeStuff : MonoBehaviour
             rampa.gameObject.GetComponent<BoxCollider>().material.staticFriction = 0.40f;
 
             ChangeFrictionText(0.40f);
+            this.atrito = 0.40f;
         }
             
     }
     public void ChangeFrictionText(float v)
     {
         textoAtrito.text = "Atrito: " + v;
+    }
+
+    public float GetAngulo()
+    {
+        return this.angulo;
+    }
+    public float GetMassa()
+    {
+        return this.massa;
+    }
+    public float GetAtrito()
+    {
+        return this.atrito;
     }
 }
