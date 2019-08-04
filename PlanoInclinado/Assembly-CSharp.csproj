@@ -61,7 +61,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Scripts\ChangeCamera.cs" />
+    <Compile Include="Assets\Scripts\ChangeStuff.cs" />
+    <Compile Include="Assets\Scripts\Restart.cs" />
     <Compile Include="Assets\Scripts\StartSimulation.cs" />
+    <Compile Include="Assets\Scripts\Timer.cs" />
     <None Include="Assets\Cidade\Changelog.txt" />
     <Reference Include="Unity.TextMeshPro.Editor">
       <HintPath>C:/Users/HP/Desktop/Lucas/Aulas/LocoBots/Proativa/Versionamento/Projeto_Proativa_3D/PlanoInclinado/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
