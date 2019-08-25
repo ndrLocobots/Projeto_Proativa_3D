@@ -10,8 +10,10 @@ public class Cubo : MonoBehaviour
     float pastHigh;
     Vector3 StPosition0, StPosition1, StPosition2;
     public Slider altura, ambi;
+    public GameObject result;
+    public Text t;
 
-    bool buttom;
+    bool buttom, restart;
 
     /*
      * Formulas Usadas
@@ -36,6 +38,8 @@ public class Cubo : MonoBehaviour
         StPosition2 = new Vector3(-262.4f, -6.69f, -106.7f);
 
         ambi.value = 1;
+
+        result.SetActive(false);
     }
 
     void Update()
@@ -47,14 +51,19 @@ public class Cubo : MonoBehaviour
             body.position = new Vector3(body.position.x, hight + StPosition0.y, body.position.z);
             pastHigh = hight;
         }
-
-        if (Input.GetKey("o"))
+        if (body.transform.position.y > StPosition0.y)
+        {
+            result.SetActive(false);
+        }
+        if (Input.GetKey("o") || restart)
         {
             altura.value = 0;
             ambi.value = 1;
             body.position = StPosition1;
             body.rotation = Quaternion.Euler(0, 90, 0);
             ambiente = 1;
+            result.SetActive(false);
+            restart = false;
         }
     }
 
@@ -88,6 +97,11 @@ public class Cubo : MonoBehaviour
     public void ClickButtom(bool b)
     {
         buttom = true;
+    }
+
+    public void ClickButtom2(bool b)
+    {
+        restart = true;
     }
 
     public void SetHight(float h)
@@ -127,15 +141,17 @@ public class Cubo : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-       
+        result.SetActive(true);
     }
 
     private void OnGUI()
     {
         GUI.contentColor = Color.white;
+        /*
         GUI.Label(new Rect(10, 80, 200, 60), "TEMPO:");
         GUI.Label(new Rect(100, 80, 200, 30), timer.ToString("0.00"));
-        GUI.Label(new Rect(10, 110, 200, 60), "ALTURA");
-        GUI.Label(new Rect(100, 110, 200, 30), hight.ToString("0.00"));
+        */
+        t.text = "Tempo: " + timer.ToString("0.00");
+        GUI.Label(new Rect(280, 10, 200, 30), hight.ToString("0.00"));
     }
 }
