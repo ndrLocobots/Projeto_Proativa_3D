@@ -1,5 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System;
+
 [RequireComponent(typeof(MeshCollider))]
 
 public class ArrastaCubo : MonoBehaviour
@@ -9,9 +11,12 @@ public class ArrastaCubo : MonoBehaviour
     public Vector3 scanPos;
 
     public GameObject mola;
+    public SpringJoint sj;
     public Rigidbody massa;
 
-    private float oldX, currX;
+    private bool canDrag, isDragging;
+
+    private float oldX, currX, dragSpeed;
 
     void Update()
     {
@@ -19,11 +24,20 @@ public class ArrastaCubo : MonoBehaviour
 
         oldX = currX;
         currX = transform.position.x;
-        
+
+
+        if (sj.damper == 0)
+            dragSpeed = 1;
+        else
+            dragSpeed = (-0.43f * sj.damper) + 1;
+
+        if (transform.position.x > -33.2f && transform.position.x < -28.7f)
+            canDrag = true;
+        else
+            canDrag = false;
+
         if(currX != 0 && oldX != 0)
-        {
             AnimaMola(oldX, currX);
-        }
     }
 
     void AnimaMola(float oldX, float currX)
@@ -33,17 +47,36 @@ public class ArrastaCubo : MonoBehaviour
 
     void OnMouseDown()
     {
+        isDragging = true;
+
         screenPoint = Camera.main.WorldToScreenPoint(scanPos);
-        offset = scanPos - Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, screenPoint.y, screenPoint.z));
+        offset = scanPos - Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x * dragSpeed, screenPoint.y, screenPoint.z));
     }
 
     void OnMouseDrag()
     {
-        Vector3 curScreenPoint = new Vector3(Input.mousePosition.x, screenPoint.y, screenPoint.z);
-        Vector3 curPosition = Camera.main.ScreenToWorldPoint(curScreenPoint) + offset;
+        if (canDrag)
+        {
+            isDragging = true;
 
-        //AnimaMola(oldX, currX);
+            Vector3 curScreenPoint = new Vector3(Input.mousePosition.x * dragSpeed, screenPoint.y, screenPoint.z);
+            Vector3 curPosition = Camera.main.ScreenToWorldPoint(curScreenPoint) + offset;
 
-        transform.position = curPosition;
+            transform.position = curPosition;
+        }
+        else
+            OnMouseUp();
+
+    }
+
+    private void OnMouseUp()
+    {
+        isDragging = false;
+        Input.ResetInputAxes();
+    }
+
+    public bool GetDrag()
+    {
+        return this.isDragging;
     }
 }

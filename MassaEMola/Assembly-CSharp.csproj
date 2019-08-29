@@ -63,6 +63,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Scripts\ArrastaCubo.cs" />
+    <Compile Include="Assets\Scripts\ControleVelCubo.cs" />
     <Compile Include="Assets\Scripts\MudaCamera.cs" />
     <Compile Include="Assets\Scripts\MudaRigidez.cs" />
     <Compile Include="Assets\Scripts\ReiniciarCena.cs" />
