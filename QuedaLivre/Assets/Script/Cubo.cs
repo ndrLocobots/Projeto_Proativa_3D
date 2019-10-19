@@ -80,17 +80,17 @@ public class Cubo : MonoBehaviour
         if (ambiente == 0)
         {
             body.AddForce(Vector3.down * 20);
-            timer = hight / 20;
+            timer = Mathf.Sqrt( Mathf.Abs(hight / 20));
         }
         else if (ambiente == 1)
         {
             body.AddForce(Vector3.down * 10);
-            timer = hight / 10;
+            timer = Mathf.Sqrt(Mathf.Abs(hight / 10));
         }
         else
         {
             body.AddForce(Vector3.down * 3);
-            timer = hight / 3;
+            timer = Mathf.Sqrt(Mathf.Abs(hight / 3));
         }
 
     }

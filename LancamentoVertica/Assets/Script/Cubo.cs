@@ -134,8 +134,8 @@ public class Cubo : MonoBehaviour
     private void OnGUI()
     {
         GUI.contentColor = Color.black;
-        GUI.Label(new Rect(300, 11, 200, 200), angulo.ToString("0"));
-        GUI.Label(new Rect(520, 11, 200, 200), velocidade.ToString("0"));
+        GUI.Label(new Rect(300, 8, 150, 200), angulo.ToString("0"));
+        GUI.Label(new Rect(520, 8, 150, 200), velocidade.ToString("0"));
 
         /*
         GUI.contentColor = Color.black;
