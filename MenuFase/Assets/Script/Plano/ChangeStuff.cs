@@ -379,6 +379,7 @@ public class ChangeStuff : MonoBehaviour
         this.massa = m;
         ChangeMassText();
         rb.mass = m;
+        rb.AddForce(new Vector3(0, -(m * 10), 0), ForceMode.Acceleration);
 
         color = cuboMat.material.color;
 
