@@ -71,6 +71,7 @@
     <Compile Include="Assets\Script\Massa\MudaCamera.cs" />
     <Compile Include="Assets\Script\Massa\MudaRigidez.cs" />
     <Compile Include="Assets\Script\Massa\ReiniciarCena.cs" />
+    <Compile Include="Assets\Script\Menu\TransitaMenu.cs" />
     <Compile Include="Assets\Script\Plano\ChangeCamera.cs" />
     <Compile Include="Assets\Script\Plano\ChangeStuff.cs" />
     <Compile Include="Assets\Script\Plano\Restart.cs" />
@@ -79,6 +80,7 @@
     <Compile Include="Assets\Script\Queda\CuboQue.cs" />
     <Compile Include="Assets\Script\Queda\SetaQue.cs" />
     <None Include="Assets\Cidade\Changelog.txt" />
+    <None Include="Assets\Font\space_ranger\spaceranger.txt" />
     <Reference Include="Unity.Timeline.Editor">
       <HintPath>C:/Users/HP/Desktop/Lucas/Aulas/LocoBots/Proativa/ProjetoProativa3D/Projeto_Proativa_3D/MenuFase/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
     </Reference>
