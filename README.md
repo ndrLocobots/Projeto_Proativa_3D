@@ -6,6 +6,21 @@ Este projeto visa continuar o desenvolvimento de um simulador com o uso do Kinec
 O simulador permitirá a visualização de eventos, bem como o aprendizado de novos conteúdos previstos na formação dos alunos de forma didática e participativa.  Além disso, o uso de ferramentas tecnológicas em sala de aula pode representar um avanço significativo na interação de ensino e tecnologia.
 </p>
 
+<div style = "display : flex">
+    <img style = "width: 50%" src = "./imagens/forca01.png">
+    <img style = "width: 50%" src = "./imagens/lancamento01.png">
+</div>
+<br>
+
+<div style = "display : flex">
+    <img style = "width: 50%" src = "./imagens/massa01.png">
+    <img style = "width: 50%" src = "./imagens/plano01.png">
+</div>
+<br>
+
+<div style = "display : flex">
+    <img style = "width: 100%" src = "./imagens/queda01.png">
+</div>
 <hr>
 
 ## Instalar
@@ -14,7 +29,7 @@ Para modificar o projeto utilize o Unity 3D versão  2019.2.18f1, por meio do [U
 
 ## Configurando o ambiente
 
-Clone o repositorio e execute os comandos
+Clone o repositório e execute os comandos
 
 ```bash
 git checkout --track /origin/develop
@@ -49,7 +64,7 @@ git checkout develop
 
 ## Modificando o projeto
 
-<h4>Criando conteudo</h4>
+<h4>Criando conteúdo</h4>
 
 😍 Adicione novas cenas, scripts e objetos nas nossas simulações. Depois compartilhe o que você fez !
 
