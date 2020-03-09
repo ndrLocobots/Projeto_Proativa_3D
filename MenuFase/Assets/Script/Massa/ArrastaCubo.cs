@@ -30,7 +30,6 @@ public class ArrastaCubo : MonoBehaviour
             dragSpeed = 1;
         else
             dragSpeed = (-0.43f * sj.damper) + 1;
-
         if (transform.position.x > -33.2f && transform.position.x < -28.7f)
             canDrag = true;
         else
