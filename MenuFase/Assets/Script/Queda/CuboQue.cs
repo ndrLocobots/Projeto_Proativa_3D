@@ -11,7 +11,7 @@ public class CuboQue : MonoBehaviour
     Vector3 StPosition0, StPosition1, StPosition2;
     public Slider altura, ambi;
     public GameObject result;
-    public Text t;
+    public Text t, valuehigh;
 
     bool buttom, restart;
 
@@ -152,6 +152,6 @@ public class CuboQue : MonoBehaviour
         GUI.Label(new Rect(100, 80, 200, 30), timer.ToString("0.00"));
         */
         t.text = "Tempo: " + timer.ToString("0.00");
-        GUI.Label(new Rect(280, 10, 200, 30), hight.ToString("0.00"));
+        valuehigh.text = hight.ToString("0.00");
     }
 }
