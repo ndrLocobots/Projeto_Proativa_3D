@@ -7,41 +7,63 @@ public class TransitaMenu : MonoBehaviour
 {
     public void Carrega02()
     {
+        
         SceneManager.LoadScene("Menu02");
     }
 
     public void Carrega01()
     {
+        
         SceneManager.LoadScene("Menu01");
     }
 
     public void CarregaPlano()
     {
-        SceneManager.LoadScene("Plano");
+        string sceneName = "Plano";
+        UnloadAllScenesExcept(sceneName);
+        SceneManager.LoadSceneAsync("Plano");
     }
 
     public void CarregaMassa()
     {
-        SceneManager.LoadScene("Massa");
+        string sceneName = "Massa";
+        UnloadAllScenesExcept(sceneName);
+        SceneManager.LoadSceneAsync("Massa");
     }
 
     public void CarregaQueda()
     {
-        SceneManager.LoadScene("Queda");
+        string sceneName = "Queda";
+        UnloadAllScenesExcept(sceneName);
     }
 
     public void CarregaForca()
     {
-        SceneManager.LoadScene("Forca");
+        string sceneName = "Forca";
+        UnloadAllScenesExcept(sceneName);
     }
 
     public void CarregaLanc()
     {
-        SceneManager.LoadScene("Lancamento");
+        string sceneName = "Lancamento";
+        UnloadAllScenesExcept(sceneName);
     }
 
     public void Sair()
     {
         Application.Quit();
+    }
+
+    void UnloadAllScenesExcept(string sceneName)
+    {
+        int c = SceneManager.sceneCount;
+        for (int i = 0; i < c; i++)
+        {
+            Scene scene = SceneManager.GetSceneAt(i);
+            print(scene.name);
+            SceneManager.UnloadSceneAsync(scene);
+            
+        }
+        SceneManager.LoadSceneAsync(sceneName);
     }
 }
