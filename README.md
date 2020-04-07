@@ -25,7 +25,7 @@ O simulador permitirá a visualização de eventos, bem como o aprendizado de no
 
 ## Instalar
 
-Para modificar o projeto utilize o Unity 3D versão  2019.2.18f1, por meio do [Unity hub](https://store.unity.com/pt/download)
+Para modificar o projeto utilize o Unity 3D versão  2019.2.18f1, que pode ser encontrado no [Unity hub](https://store.unity.com/pt/download)
 
 Para configurar o Kinect, primeiro baixe e instale o Kinect For Windows SDK v1.8 através do site da [Microsoft](https://www.microsoft.com/en-us/download/details.aspx?id=40278)
 
@@ -36,7 +36,7 @@ Logo em seguida, faça o download e a instalação do Kinect For Windows Develop
 Clone o repositório e execute os comandos
 
 ```bash
-git checkout --track /origin/develop
+git fetch origin develop:develop 
 ```
 
 ```bash
@@ -59,8 +59,9 @@ git checkout develop
 │   ├── MassaEMola
 │   ├── PlanoInclinado
 │   ├── QuedaLivre
-├── Simulações
-│   └── simulações3D.exe
+├── Simulacoes3D
+│   ├── linux/Linux_v1.x86_64
+│   └── windows/windows_v1.exe
 ├── .gitignore
 ```
 
@@ -83,3 +84,4 @@ Pull requests são bem vindos. Por favor, tenha certeza que o update esteja apro
  - [Lucas Novais](https://www.instagram.com/l.novais_s/)
 
 ## Referências legais
+
