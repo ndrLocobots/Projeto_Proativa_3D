@@ -19,7 +19,7 @@ public class CuboFor : MonoBehaviour
     FisicaMaterial atrito;
     bool buttom, restart;
     public GameObject result;
-    public Text a, fad, fae, mas, forc;
+    public Text a, coefFad, coefFae, mas, forc, forcad, forcae;
 
     /*
      * Formulas Usadas
@@ -136,9 +136,12 @@ public class CuboFor : MonoBehaviour
         */
         mas.text = body.mass.ToString("0");
         forc.text = forca.ToString("0");
-        a.text = "Aceleração do cubo: " + aceleracao.ToString("0.00");
-        fad.text = atrito.dynamicFriction.ToString("0.00");
-        fae.text = atrito.staticFriction.ToString("0.00");
+        a.text = aceleracao.ToString("0.00");
+        coefFad.text = atrito.dynamicFriction.ToString("0.00");
+        coefFae.text = atrito.staticFriction.ToString("0.00");
+
+        forcad.text = forcaAtritoDin.ToString("0.00");
+        forcae.text = forcaAtritoEst.ToString("0.00");
 
 
 
