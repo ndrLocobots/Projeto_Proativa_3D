@@ -141,7 +141,9 @@ public class CuboQue : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        result.SetActive(true);
+        if(timer != 0){
+            result.SetActive(true);
+        }
     }
 
     private void OnGUI()
