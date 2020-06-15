@@ -5,7 +5,7 @@ using UnityEngine;
 public class robotClick : MonoBehaviour
 {
     Animator robotAnimator;
-    public bool mouseOnCollider = false;
+    bool mouseOnCollider = false;
     int danceHash = Animator.StringToHash("isDance");
     void Start()
     {
@@ -18,6 +18,7 @@ public class robotClick : MonoBehaviour
         if (mouseOnCollider){
           if(Input.GetMouseButtonDown(0)){
             robotAnimator.SetTrigger(danceHash);
+            robotAnimator.SetBool("isTalk", true);
           }
         }
     }

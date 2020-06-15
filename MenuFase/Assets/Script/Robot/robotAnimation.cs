@@ -4,12 +4,12 @@ using UnityEngine;
 
 public class robotAnimation : MonoBehaviour
 {
-  Animator robotAnimator;
+  public Animator robotAnimator;
   int jumpHash = Animator.StringToHash("isJumping");
   int searchHash = Animator.StringToHash("isSearch");
-  float time = 0, fatorBreach = 1, breach;
-  bool isTalk = false;
-  int keyAnimation;
+  public bool isTalk = false;
+  float time = 0, changeSenseBreach = 1, breach;
+  int randomKeyAnimation;
   const int waitTime = 5;
   void Start()
   {
@@ -19,7 +19,7 @@ public class robotAnimation : MonoBehaviour
   void Update()
   {
     time += Time.deltaTime;
-    breach += (Time.deltaTime)/waitTime * fatorBreach;
+    breach += (Time.deltaTime)/waitTime * changeSenseBreach;
 
     robotAnimator.SetFloat("breach", breach);
     isTalk = robotAnimator.GetBool("isTalk");
@@ -27,12 +27,12 @@ public class robotAnimation : MonoBehaviour
     if (time > waitTime)
     {
       time = 0;
-      fatorBreach = -fatorBreach;
+      changeSenseBreach = -changeSenseBreach;
 
       if (!isTalk)
       {
-        keyAnimation = Random.Range(1, 11);
-        this.choseAnimation(keyAnimation);
+        randomKeyAnimation = Random.Range(1, 11);
+        this.choseAnimation(randomKeyAnimation);
       }
     }
   }
