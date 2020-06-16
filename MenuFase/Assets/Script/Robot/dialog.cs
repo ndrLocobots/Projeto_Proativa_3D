@@ -6,16 +6,16 @@ public class dialog : MonoBehaviour
 {
   public TextMeshProUGUI textDisplay;
 
-  private Animator robotAnimator;
+  public Animator robotAnimator;
   public GameObject panel, robot;
   public string[] setences;
   private int index;
   private float typingSpeed = 0.03f;
-  private bool isTalk = false;
+  public bool isTalk = false;
   private bool firstWord = true;
   void Start()
   {
-    robotAnimator = robot.GetComponent<robotAnimation>().robotAnimator;
+    robotAnimator = robot.GetComponent<Animator>();
 
     panel.SetActive(false);
     textDisplay.text = "";

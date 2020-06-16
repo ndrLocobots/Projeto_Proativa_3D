@@ -6,10 +6,10 @@ public class robotClick : MonoBehaviour
 {
     Animator robotAnimator;
     public GameObject robot;
-    bool mouseOnCollider = false;
+    public bool mouseOnCollider = false;
     void Start()
     {
-        robotAnimator = robot.GetComponent<robotAnimation>().robotAnimator;
+        robotAnimator = robot.GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -18,6 +18,7 @@ public class robotClick : MonoBehaviour
         if (mouseOnCollider){
           if(Input.GetMouseButtonDown(0)){
             robotAnimator.SetBool("isTalk", true);
+            Debug.Log("Estou dentrooooo");
           }
         }
     }
