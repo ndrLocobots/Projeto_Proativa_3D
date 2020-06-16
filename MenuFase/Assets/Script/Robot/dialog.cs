@@ -12,6 +12,7 @@ public class dialog : MonoBehaviour
   private int index;
   private float typingSpeed = 0.03f;
   private bool isTalk = false;
+  private bool firstWord = true;
   void Start()
   {
     robotAnimator = robot.GetComponent<robotAnimation>().robotAnimator;
@@ -24,18 +25,19 @@ public class dialog : MonoBehaviour
   void Update()
   {
     isTalk = robotAnimator.GetBool("isTalk");
+    panel.SetActive(isTalk);
 
-    if (isTalk)
+    if (firstWord && isTalk)
     {
-      panel.SetActive(true);
+      firstWord = false;
+      StopAllCoroutines();
       textDisplay.text = "";
       StartCoroutine(Type());
     }
-    else
+    else if (!isTalk)
     {
-      panel.SetActive(false);
+      firstWord = true;
     }
-
   }
   IEnumerator Type()
   {
@@ -59,7 +61,6 @@ public class dialog : MonoBehaviour
     {
       StopAllCoroutines();
       textDisplay.text = "";
-      isTalk = false;
       robotAnimator.SetBool("isTalk", false);
     }
   }

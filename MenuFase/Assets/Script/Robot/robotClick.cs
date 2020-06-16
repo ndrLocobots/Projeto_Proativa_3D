@@ -5,11 +5,11 @@ using UnityEngine;
 public class robotClick : MonoBehaviour
 {
     Animator robotAnimator;
+    public GameObject robot;
     bool mouseOnCollider = false;
-    int danceHash = Animator.StringToHash("isDance");
     void Start()
     {
-        robotAnimator = GetComponent<Animator>();
+        robotAnimator = robot.GetComponent<robotAnimation>().robotAnimator;
     }
 
     // Update is called once per frame
@@ -17,7 +17,6 @@ public class robotClick : MonoBehaviour
     {
         if (mouseOnCollider){
           if(Input.GetMouseButtonDown(0)){
-            robotAnimator.SetTrigger(danceHash);
             robotAnimator.SetBool("isTalk", true);
           }
         }

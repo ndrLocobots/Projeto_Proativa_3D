@@ -5,12 +5,14 @@ using UnityEngine;
 public class robotAnimation : MonoBehaviour
 {
   public Animator robotAnimator;
-  int jumpHash = Animator.StringToHash("isJumping");
-  int searchHash = Animator.StringToHash("isSearch");
+  int jumpHash = Animator.StringToHash("jumping");
+  int searchHash = Animator.StringToHash("search");
+  int lookHash = Animator.StringToHash("look");
+  int fingerHash = Animator.StringToHash("finger");
   public bool isTalk = false;
   float time = 0, changeSenseBreach = 1, breach;
   int randomKeyAnimation;
-  const int waitTime = 5;
+  const int waitTime = 20;
   void Start()
   {
     robotAnimator = GetComponent<Animator>();
@@ -48,11 +50,11 @@ public class robotAnimation : MonoBehaviour
     }
     else if (key <= 5)
     {
-      robotAnimator.SetBool("isLook", true);
+      robotAnimator.SetTrigger(lookHash);
     }
-    else if (key <= 10)
+    else if (key <= 7)
     {
-      robotAnimator.SetBool("isLook", false);
+      robotAnimator.SetTrigger(fingerHash);
     }
   }
 
