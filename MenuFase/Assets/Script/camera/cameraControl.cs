@@ -5,13 +5,14 @@ using UnityEngine;
 public class cameraControl : MonoBehaviour
 {
   public GameObject robot;
+  private float robotXPosition;
   private bool isMenu = false;
   private bool isTalk = false;
 
   private bool isClick = false;
   void Start()
   {
-
+    robotXPosition = robot.GetComponent<Transform>().position.x;
   }
 
   // Update is called once per frame
@@ -34,6 +35,11 @@ public class cameraControl : MonoBehaviour
 
     if (Input.GetMouseButtonDown(0)){
       isClick = isMenu ? false : !isClick;
+    }
+
+    if(isTalk){
+       GetComponent<position>().SliderAux(robotXPosition);
+       GetComponent<rotation>().LookForRobot();
     }
   }
 }

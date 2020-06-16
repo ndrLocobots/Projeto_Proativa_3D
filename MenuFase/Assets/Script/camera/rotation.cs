@@ -27,5 +27,9 @@ public class rotation : MonoBehaviour
     Cursor.lockState = CursorLockMode.None;
   }
 
+  public void LookForRobot(){
+    ObjectCamera.eulerAngles = new Vector3(0,180, 0);
+  }
+
 
 }

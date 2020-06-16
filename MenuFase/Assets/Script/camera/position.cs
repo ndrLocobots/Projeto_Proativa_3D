@@ -60,8 +60,8 @@ public class position : MonoBehaviour
       default:
         ObjectCamera.position = new Vector3(
           parametro,
-          personagem.position.y + 10,
-          personagem.position.z - 20
+          personagem.position.y,
+          personagem.position.z
         );
         break;
     }

@@ -1485,7 +1485,7 @@ Light:
   m_BounceIntensity: 1
   m_ColorTemperature: 6570
   m_UseColorTemperature: 0
-  m_BoundingSphereOverride: {x: 4.5814e-41, y: 0, z: 0, w: 0}
+  m_BoundingSphereOverride: {x: 4.5681e-41, y: 0, z: 0, w: 0}
   m_UseBoundingSphereOverride: 0
   m_ShadowRadius: 0
   m_ShadowAngle: 0
@@ -3625,6 +3625,7 @@ GameObject:
   - component: {fileID: 534669903}
   - component: {fileID: 534669907}
   - component: {fileID: 534669906}
+  - component: {fileID: 534669908}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -3722,9 +3723,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4a7cae9883f9ab0bdb39ca0b6efe7786, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  robot: {fileID: 967874926}
   sensibilidade: 2
-  onClick: 0
+--- !u!114 &534669908
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 534669902}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4fb713c691a14a4f99e029dd6c588753, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  robot: {fileID: 967874926}
 --- !u!1001 &543687243
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -10831,8 +10843,12 @@ MonoBehaviour:
   panel: {fileID: 1821031595}
   robot: {fileID: 967874926}
   setences:
-  - 'Frase '
-  - Fraseeeeeee
+  - "Ola, seja bem vindo ao lan\xE7amento vertical. Com essa simula\xE7ao voce aprendera:"
+  - Como a gravidade afeta o corpo?
+  - Qual e o angulo de maior deslocamento?
+  - Qual e a altura maxima?
+  - Quanto tempo o corpo ficou no ar?
+  - "Vamos come\xE7ar? :)"
   isTalk: 0
 --- !u!4 &1531070644
 Transform:
