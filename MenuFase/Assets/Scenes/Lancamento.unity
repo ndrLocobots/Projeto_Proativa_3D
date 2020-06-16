@@ -1485,7 +1485,7 @@ Light:
   m_BounceIntensity: 1
   m_ColorTemperature: 6570
   m_UseColorTemperature: 0
-  m_BoundingSphereOverride: {x: 4.5825e-41, y: 0, z: 0, w: 0}
+  m_BoundingSphereOverride: {x: 4.5814e-41, y: 0, z: 0, w: 0}
   m_UseBoundingSphereOverride: 0
   m_ShadowRadius: 0
   m_ShadowAngle: 0
@@ -3722,7 +3722,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4a7cae9883f9ab0bdb39ca0b6efe7786, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  robot: {fileID: 967874926}
   sensibilidade: 2
+  onClick: 0
 --- !u!1001 &543687243
 PrefabInstance:
   m_ObjectHideFlags: 0
