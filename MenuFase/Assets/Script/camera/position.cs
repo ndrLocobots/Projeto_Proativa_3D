@@ -5,40 +5,65 @@ using UnityEngine;
 public class position : MonoBehaviour
 {
   public Transform personagem;
-  private Transform positionCamera;
-  float aux;
-  // Start is called before the first frame update
+  private Transform ObjectCamera;
+
+  private float oldPositionX;
+  private float sliderOption;
   void Start()
   {
-    aux = 0;
-    positionCamera = GetComponent<Transform>();
+    ObjectCamera = GetComponent<Transform>();
+    
+    SliderAux(0);
+    sliderOption = 0;
+    oldPositionX = personagem.position.x;
   }
 
-  // Update is called once personagem frame
   void Update()
   {
-
-    switch (aux)
+    if (oldPositionX != personagem.position.x)
     {
-      case 0:
-        positionCamera.position = new Vector3(personagem.position.x, personagem.position.y + 1, personagem.position.z);
-        break;
-      case 1:
-        positionCamera.position = new Vector3(personagem.position.x - 10, personagem.position.y + 10, personagem.position.z);
-        break;
-      case 2:
-        positionCamera.position = new Vector3(personagem.position.x, personagem.position.y + 10, personagem.position.z - 20);
-        break;
-      default:
-        aux = 0;
-        break;
-
+      SliderAux(sliderOption);
+      oldPositionX = personagem.position.x;
     }
-
   }
 
   public void SliderAux(float parametro)
   {
-    aux = parametro;
+    sliderOption = parametro;
+
+    switch (parametro)
+    {
+      case 0:
+        ObjectCamera.position = new Vector3(
+          personagem.position.x,
+          personagem.position.y + 1,
+          personagem.position.z
+        );
+        break;
+
+      case 1:
+        ObjectCamera.position = new Vector3(
+          personagem.position.x - 10,
+          personagem.position.y + 10,
+          personagem.position.z
+        );
+        break;
+
+      case 2:
+        ObjectCamera.position = new Vector3(
+          personagem.position.x,
+          personagem.position.y + 10,
+          personagem.position.z - 20
+        );
+        break;
+
+      default:
+        ObjectCamera.position = new Vector3(
+          parametro,
+          personagem.position.y + 10,
+          personagem.position.z - 20
+        );
+        break;
+    }
   }
 }
