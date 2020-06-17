@@ -9,10 +9,11 @@ public class robotAnimation : MonoBehaviour
   int searchHash = Animator.StringToHash("search");
   int lookHash = Animator.StringToHash("look");
   int fingerHash = Animator.StringToHash("finger");
+  int waveHash = Animator.StringToHash("wave");
   public bool isTalk = false;
   float time = 0, changeSenseBreach = 1, breach;
   int randomKeyAnimation;
-  const int waitTime = 20;
+  const int waitTime = 05;
   void Start()
   {
     robotAnimator = GetComponent<Animator>();
@@ -33,7 +34,7 @@ public class robotAnimation : MonoBehaviour
 
       if (!isTalk)
       {
-        randomKeyAnimation = Random.Range(1, 11);
+        randomKeyAnimation = Random.Range(1, 13);
         this.choseAnimation(randomKeyAnimation);
       }
     }
@@ -42,19 +43,23 @@ public class robotAnimation : MonoBehaviour
   {
     if (key == 1)
     {
-      robotAnimator.SetTrigger(jumpHash);
+      robotAnimator.SetTrigger(lookHash);
     }
     else if (key <= 3)
     {
       robotAnimator.SetTrigger(searchHash);
     }
-    else if (key <= 5)
+    else if (key <= 6)
     {
-      robotAnimator.SetTrigger(lookHash);
+      robotAnimator.SetTrigger(jumpHash);
     }
-    else if (key <= 7)
+    else if (key <= 8)
     {
       robotAnimator.SetTrigger(fingerHash);
+    }
+    else if (key <= 12)
+    {
+      robotAnimator.SetTrigger(waveHash);
     }
   }
 
