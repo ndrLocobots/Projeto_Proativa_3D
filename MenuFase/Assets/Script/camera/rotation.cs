@@ -28,7 +28,7 @@ public class rotation : MonoBehaviour
   }
 
   public void LookForRobot(){
-    ObjectCamera.eulerAngles = new Vector3(0,180, 0);
+    ObjectCamera.eulerAngles = new Vector3(-4,90, 0);
   }
 
 

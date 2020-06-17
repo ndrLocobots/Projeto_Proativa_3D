@@ -56,14 +56,6 @@ public class position : MonoBehaviour
           personagem.position.z - 20
         );
         break;
-
-      default:
-        ObjectCamera.position = new Vector3(
-          parametro,
-          personagem.position.y,
-          personagem.position.z
-        );
-        break;
     }
   }
 }

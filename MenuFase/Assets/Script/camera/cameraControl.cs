@@ -15,7 +15,6 @@ public class cameraControl : MonoBehaviour
     robotXPosition = robot.GetComponent<Transform>().position.x;
   }
 
-  // Update is called once per frame
   void Update()
   {
     isTalk = robot.GetComponent<robotAnimation>().isTalk;
@@ -38,7 +37,7 @@ public class cameraControl : MonoBehaviour
     }
 
     if(isTalk){
-       GetComponent<position>().SliderAux(robotXPosition);
+       GetComponent<position>().SliderAux(0);
        GetComponent<rotation>().LookForRobot();
     }
   }
