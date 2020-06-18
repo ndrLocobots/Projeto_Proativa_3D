@@ -6,26 +6,18 @@ public class position : MonoBehaviour
 {
   public Transform personagem;
   private Transform ObjectCamera;
-
-  private float oldPositionX;
-  private float sliderOption;
   
+  private float sliderOption;
+
   void Start()
   {
     ObjectCamera = GetComponent<Transform>();
-
-    SliderAux(1);
-    sliderOption = 1;
-    oldPositionX = personagem.position.x;
+    sliderOption = 0;
   }
 
   void Update()
   {
-    if (oldPositionX != personagem.position.x)
-    {
-      SliderAux(sliderOption);
-      oldPositionX = personagem.position.x;
-    }
+    SliderAux(sliderOption);
   }
 
   public void SliderAux(float parametro)
