@@ -5,10 +5,11 @@ using UnityEngine;
 public class cameraControl : MonoBehaviour
 {
   public GameObject robot;
+  public GameObject scenaMenu;
   private float robotXPosition;
-  private bool isMenu = false;
-  private bool isTalk = false;
 
+  public bool isMenu = false;
+  private bool isTalk = false;
   private bool isClick = false;
   void Start()
   {
@@ -18,6 +19,7 @@ public class cameraControl : MonoBehaviour
   void Update()
   {
     isTalk = robot.GetComponent<robotAnimation>().isTalk;
+    isMenu = scenaMenu.activeSelf;
 
     if (!isMenu && !isTalk && !isClick)
     {
@@ -25,11 +27,6 @@ public class cameraControl : MonoBehaviour
     }
     else{
       GetComponent<rotation>().DontLook();
-    }
-
-    if (Input.GetKeyDown(KeyCode.M))
-    {
-      isMenu = !isMenu;
     }
 
     if (Input.GetMouseButtonDown(0)){
