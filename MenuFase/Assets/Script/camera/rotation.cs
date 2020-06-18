@@ -10,7 +10,6 @@ public class rotation : MonoBehaviour
   void Start()
   {
     ObjectCamera = GetComponent<Transform>();
-    Cursor.lockState = CursorLockMode.Locked;
   }
 
   public void LookWithMouse()

@@ -12,7 +12,7 @@ public class position : MonoBehaviour
   void Start()
   {
     ObjectCamera = GetComponent<Transform>();
-    
+
     SliderAux(0);
     sliderOption = 0;
     oldPositionX = personagem.position.x;
@@ -34,6 +34,8 @@ public class position : MonoBehaviour
     switch (parametro)
     {
       case 0:
+        ObjectCamera.eulerAngles = new Vector3(-4, 90, 0);
+
         ObjectCamera.position = new Vector3(
           personagem.position.x,
           personagem.position.y + 1,
@@ -42,6 +44,8 @@ public class position : MonoBehaviour
         break;
 
       case 1:
+        ObjectCamera.eulerAngles = new Vector3(30, 90, 0);
+
         ObjectCamera.position = new Vector3(
           personagem.position.x - 10,
           personagem.position.y + 10,
@@ -50,6 +54,8 @@ public class position : MonoBehaviour
         break;
 
       case 2:
+        ObjectCamera.eulerAngles = new Vector3(10, 0, 0);
+
         ObjectCamera.position = new Vector3(
           personagem.position.x,
           personagem.position.y + 10,
