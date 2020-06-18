@@ -9,12 +9,13 @@ public class position : MonoBehaviour
 
   private float oldPositionX;
   private float sliderOption;
+  
   void Start()
   {
     ObjectCamera = GetComponent<Transform>();
 
-    SliderAux(0);
-    sliderOption = 0;
+    SliderAux(1);
+    sliderOption = 1;
     oldPositionX = personagem.position.x;
   }
 

@@ -5,63 +5,28 @@ using TMPro;
 public class dialog : MonoBehaviour
 {
   public TextMeshProUGUI textDisplay;
+  public GameObject panel;
 
-  public Animator robotAnimator;
-  public GameObject panel, robot;
+  Animator robotAnimator;
+
   public string[] setences;
-  private int index;
+  private int index = 0;
   private float typingSpeed = 0.03f;
   public bool isTalk = false;
-  private bool firstWord = true;
+
   void Start()
   {
-    robotAnimator = robot.GetComponent<Animator>();
-
+    robotAnimator = GetComponent<Animator>();
     panel.SetActive(false);
-    textDisplay.text = "";
-    StartCoroutine(Type());
+    robotAnimator.SetBool("isTalk", false);
   }
 
-  void Update()
-  {
-    isTalk = robotAnimator.GetBool("isTalk");
-    panel.SetActive(isTalk);
-
-    if (firstWord && isTalk)
-    {
-      firstWord = false;
-      StopAllCoroutines();
-      textDisplay.text = "";
-      StartCoroutine(Type());
-    }
-    else if (!isTalk)
-    {
-      firstWord = true;
-    }
-  }
   IEnumerator Type()
   {
     foreach (char letter in setences[index].ToCharArray())
     {
       textDisplay.text += letter;
       yield return new WaitForSeconds(typingSpeed);
-    }
-  }
-
-  public void NextSentence()
-  {
-    if (index < setences.Length - 1)
-    {
-      index++;
-      StopAllCoroutines();
-      textDisplay.text = "";
-      StartCoroutine(Type());
-    }
-    else
-    {
-      StopAllCoroutines();
-      textDisplay.text = "";
-      robotAnimator.SetBool("isTalk", false);
     }
   }
 
@@ -75,4 +40,39 @@ public class dialog : MonoBehaviour
       StartCoroutine(Type());
     }
   }
+
+  public void NextSentence()
+  {
+    if (index < setences.Length - 1)
+    {
+      index++;
+      Talk();
+    }
+    else
+    {
+      StopTalk();
+    }
+  }
+
+  public void Talk()
+  {
+    isTalk = true;
+
+    StopAllCoroutines();
+    textDisplay.text = "";
+    panel.SetActive(true);
+
+    robotAnimator.SetBool("isTalk", true);
+    StartCoroutine(Type());
+  }
+
+  public void StopTalk()
+  {
+    isTalk = false;
+
+    robotAnimator.SetBool("isTalk", false);
+    panel.SetActive(false);
+  }
+
+
 }

@@ -10,7 +10,7 @@ public class cameraControl : MonoBehaviour
 
   void Update()
   {
-    isTalk = robot.GetComponent<robotAnimation>().isTalk;
+    isTalk = robot.GetComponent<dialog>().isTalk;
     
     if(isTalk){
        GetComponent<position>().SliderAux(0);  

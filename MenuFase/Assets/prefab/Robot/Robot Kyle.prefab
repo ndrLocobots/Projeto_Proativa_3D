@@ -275,6 +275,7 @@ GameObject:
   - component: {fileID: 871145556457081868}
   - component: {fileID: 871145556457081865}
   - component: {fileID: 871145556457081870}
+  - component: {fileID: 1692401362648659239}
   m_Layer: 0
   m_Name: Robot Kyle
   m_TagString: Untagged
@@ -363,7 +364,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 421cf2da7f72739dfb3423b9d34ef221, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  robotAnimator: {fileID: 0}
   isTalk: 0
 --- !u!114 &871145556457081870
 MonoBehaviour:
@@ -377,4 +377,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4be4636fe86f9524fb063656216485de, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  robot: {fileID: 9166799219892603973}
+--- !u!114 &1692401362648659239
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9166799219892603973}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d78377a0bdcd743f284cc9e514907c54, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  textDisplay: {fileID: 0}
+  panel: {fileID: 0}
+  setences:
+  - Frase 1
+  - Frase 2
+  - Frase 3
+  isTalk: 0
