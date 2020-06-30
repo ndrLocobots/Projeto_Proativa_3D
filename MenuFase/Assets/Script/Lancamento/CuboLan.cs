@@ -27,7 +27,7 @@ public class CuboLan : MonoBehaviour
 
   public void ClickStart(bool b)
   {
-    if (body.velocity.magnitude == 0)
+    if (body.velocity.magnitude == 0 && !isJumper)
     {
       body.velocity = script.SetUserVelocity();
       isJumper = true;
