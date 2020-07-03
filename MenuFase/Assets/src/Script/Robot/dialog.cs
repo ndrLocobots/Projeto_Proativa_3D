@@ -21,6 +21,11 @@ public class dialog : MonoBehaviour
     robotAnimator.SetBool("isTalk", false);
   }
 
+  void StartSentence(string[] setencesParam)
+  {
+    this.setences = setencesParam;
+  }
+
   IEnumerator Type()
   {
     foreach (char letter in setences[index].ToCharArray())
@@ -30,7 +35,7 @@ public class dialog : MonoBehaviour
     }
   }
 
-  public void BackSentence()
+  public int BackSentence()
   {
     if (index > 0)
     {
@@ -39,9 +44,11 @@ public class dialog : MonoBehaviour
       textDisplay.text = "";
       StartCoroutine(Type());
     }
+
+    return index;
   }
 
-  public void NextSentence()
+  public int NextSentence()
   {
     if (index < setences.Length - 1)
     {
@@ -52,6 +59,8 @@ public class dialog : MonoBehaviour
     {
       StopTalk();
     }
+
+    return index;
   }
 
   public void Talk()

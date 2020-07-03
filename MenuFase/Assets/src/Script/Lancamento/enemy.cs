@@ -19,37 +19,33 @@ public class enemy : MonoBehaviour
     agent.acceleration = 40;
   }
 
-  void Update()
+  public void activeEnemy()
   {
-    if (Input.GetMouseButtonDown(1))
+    vectorDirectionToWalk = cube.position - transform.position;
+    vectorUnitary = vectorDirectionToWalk / vectorDirectionToWalk.magnitude;
+
+    switch (tryAnswer)
     {
-      vectorDirectionToWalk = cube.position - transform.position;
-      vectorUnitary = vectorDirectionToWalk / vectorDirectionToWalk.magnitude;
+      case 2:
+        agent.SetDestination(transform.position + 20 * vectorUnitary);
+        break;
 
-      switch (tryAnswer)
-      {
-        case 2:
-          agent.SetDestination(transform.position + 20 * vectorUnitary);
-          break;
+      case 1:
+        agent.SetDestination(
+          transform.position + vectorDirectionToWalk.magnitude * vectorUnitary / 2
+        );
+        break;
 
-        case 1:
-          agent.SetDestination(
-            transform.position + vectorDirectionToWalk.magnitude * vectorUnitary / 2
-          );
-          break;
+      case 0:
+        agent.SetDestination(cube.position);
+        break;
 
-        case 0:
-          agent.SetDestination(cube.position);
-          break;
-
-        default:
-          tryAnswer = 3;
-          agent.SetDestination(initialPosition);
-          break;
-      }
-
-
-      tryAnswer--;
+      default:
+        tryAnswer = 3;
+        agent.SetDestination(initialPosition);
+        break;
     }
+
+    tryAnswer--;
   }
 }

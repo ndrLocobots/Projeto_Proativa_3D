@@ -10,7 +10,7 @@ public class CuboLan : MonoBehaviour
   ScreenResults script;
   Vector3 startingPosition;
 
-  public bool isJumper;
+  bool isJumper, isEnemy;
 
   void Start()
   {
@@ -19,7 +19,7 @@ public class CuboLan : MonoBehaviour
     body = GetComponent<Rigidbody>();
     body.freezeRotation = true;
 
-    isJumper = false;
+    isJumper = isEnemy = false;
 
     startingPosition = body.position;
     panel.SetActive(false);
@@ -30,7 +30,7 @@ public class CuboLan : MonoBehaviour
     if (body.velocity.magnitude == 0 && !isJumper)
     {
       body.velocity = script.SetUserVelocity();
-      isJumper = true;
+      isJumper = isEnemy =true;
     }
   }
 
@@ -38,7 +38,7 @@ public class CuboLan : MonoBehaviour
   {
     body.velocity = new Vector3(0, 0, 0);
     body.position = startingPosition;
-    isJumper = false;
+    isJumper = isEnemy =false;
     panel.SetActive(false);
   }
 
@@ -50,5 +50,11 @@ public class CuboLan : MonoBehaviour
       script.SetOutputParam();
       panel.SetActive(true);
     }
+
+    if (isEnemy){
+      isEnemy = false; 
+      GetComponent<answerEffect>().ActiveEnemy();
+    }
+
   }
 }
