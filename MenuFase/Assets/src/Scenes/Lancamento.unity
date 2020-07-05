@@ -1872,8 +1872,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   robot: {fileID: 967874926}
   scenaMenu: {fileID: 1222372168}
-  objectTocenterAnimation: {fileID: 1488947121}
-  jamisson: 0
 --- !u!111 &534669909
 Animation:
   m_ObjectHideFlags: 0
@@ -2909,9 +2907,9 @@ Terrain:
   m_Enabled: 1
   serializedVersion: 5
   m_TerrainData: {fileID: 15600000, guid: 3977392f26072054c98640f5ed52010d, type: 2}
-  m_TreeDistance: 156
+  m_TreeDistance: 532
   m_TreeBillboardDistance: 166
-  m_TreeCrossFadeLength: 5
+  m_TreeCrossFadeLength: 100
   m_TreeMaximumFullLODCount: 50
   m_DetailObjectDistance: 80
   m_DetailObjectDensity: 1
@@ -4082,11 +4080,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4aa1a286fef9c33f1a34c43c6c44475f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  setencas:
-  - Primeira
-  - Segunda
-  - EfeitoCamera
-  - Mudar altar
+  setencas: []
   robotDialog: {fileID: 967874926}
   altar: {fileID: 1488947115}
   inimigo: {fileID: 296077248}
@@ -4275,12 +4269,6 @@ MonoBehaviour:
   x: 1
   y: 0
   z: 0
---- !u!4 &1488947121 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 1801919448419711799, guid: d1ce4c14e9282cfa18e6a1a467315650,
-    type: 3}
-  m_PrefabInstance: {fileID: 1801919446860337055}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1502399545 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5426488176900782184, guid: dad948e1017b6b8289eb092168e06041,
