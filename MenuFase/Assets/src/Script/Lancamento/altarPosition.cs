@@ -5,10 +5,10 @@ using UnityEngine;
 public class altarPosition : MonoBehaviour
 {
 
-  public float deltaDistance;
   public bool x, y, z;
 
-  Vector3 startPoint, distanceDirection;
+  public Transform startPoint;
+  Vector3 distanceDirection;
   void Start()
   {
     if (x)
@@ -23,15 +23,11 @@ public class altarPosition : MonoBehaviour
     {
       distanceDirection = new Vector3(0, 0, 1);
     }
-
-    startPoint = transform.position;
-    distanceDirection = distanceDirection * deltaDistance;
   }
 
-  public void ChangeAltarPosition()
+  public void ChangeAltarPosition(float distance)
   {
-    float porcentagem = Random.Range(0.0f, 1.0f);
-    transform.position = startPoint + distanceDirection * porcentagem;
+    transform.position = startPoint.position + distanceDirection * distance;
   }
 
 }
