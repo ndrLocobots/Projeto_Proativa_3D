@@ -11,6 +11,8 @@ public class answerEffect : MonoBehaviour
   public GameObject inimigo;
   public GameObject cam;
 
+  public GameObject cube;
+
   int showCameraIndex = 3;
   int changeAltarIndex = 4;
   int index = 0;
@@ -29,16 +31,17 @@ public class answerEffect : MonoBehaviour
     changedPosition = false;
   }
 
-  void MakeDataQuestion(){
-    float velocity = Random.Range(0.0f,50f);
-    float angle =  Random.Range(0.0f,90f);
+  void MakeDataQuestion()
+  {
+    float velocity = Random.Range(0.0f, 50f);
+    float angle = Random.Range(1, 90f);
 
-    angle = angle*Mathf.PI/180;
-    velocityY = velocity*Mathf.Sin(angle);
-    velocityX = velocity*Mathf.Cos(angle);
-    
-    time = velocityY/5;
-    distaceDelta = velocityX*time;
+    angle = angle * Mathf.PI / 180;
+    velocityY = velocity * Mathf.Sin(angle);
+    velocityX = velocity * Mathf.Cos(angle);
+
+    time = velocityY / 5;
+    distaceDelta = velocityX * time;
 
     Debug.Log("Angulo " + angle + " Velocidade " + velocity);
   }
@@ -118,8 +121,21 @@ public class answerEffect : MonoBehaviour
 
     if (numberOfAttempts == 0)
     {
-      ReestoreCena();
+      StartCoroutine(AnimationToLose());
     }
+  }
+
+  IEnumerator AnimationToLose()
+  {
+    cam.GetComponent<position>().SliderAux(0);
+    cube.GetComponent<CuboLan>().TurnCubeAnimation();
+    yield return new WaitForSeconds(4);
+
+    ActiveEnemy();
+    ReestoreCena();
+    cube.transform.eulerAngles = new Vector3 (0,0,0);
+    cube.GetComponent<CuboLan>().ClickRestore(true);
+    
   }
 
   void ReestoreCena()

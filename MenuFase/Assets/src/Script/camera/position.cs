@@ -13,12 +13,9 @@ public class position : MonoBehaviour
   {
     ObjectCamera = GetComponent<Transform>();
     sliderOption = 0;
-  }
-
-  void Update()
-  {
     SliderAux(sliderOption);
   }
+
 
   public void SliderAux(float parametro)
   {

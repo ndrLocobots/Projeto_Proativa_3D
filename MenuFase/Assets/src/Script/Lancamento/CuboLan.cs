@@ -57,4 +57,9 @@ public class CuboLan : MonoBehaviour
     }
 
   }
+
+  public void TurnCubeAnimation(){
+    GetComponent<Animation>().Play();
+  }
+
 }
