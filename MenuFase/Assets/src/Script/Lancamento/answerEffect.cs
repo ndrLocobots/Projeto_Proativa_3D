@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.Playables;
 public class answerEffect : MonoBehaviour
 {
   public string[] setencas;
@@ -13,6 +13,7 @@ public class answerEffect : MonoBehaviour
 
   public GameObject cube;
 
+  public PlayableDirector enemyAnimation, cameraAnimation;
   int showCameraIndex = 3;
   int changeAltarIndex = 4;
   int index = 0;
@@ -33,8 +34,8 @@ public class answerEffect : MonoBehaviour
 
   void MakeDataQuestion()
   {
-    float velocity = Random.Range(0.0f, 50f);
-    float angle = Random.Range(1, 90f);
+    float velocity = Random.Range(10.0f, 50f);
+    float angle = Random.Range(1, 80f);
 
     angle = angle * Mathf.PI / 180;
     velocityY = velocity * Mathf.Sin(angle);
@@ -86,7 +87,7 @@ public class answerEffect : MonoBehaviour
 
   void AnimatorCamera()
   {
-    cam.GetComponent<cameraControl>().AnimatorCamera();
+    cameraAnimation.Play();
   }
 
   void ChangeAltarPosition()
@@ -128,14 +129,12 @@ public class answerEffect : MonoBehaviour
   IEnumerator AnimationToLose()
   {
     cam.GetComponent<position>().SliderAux(0);
-    cube.GetComponent<CuboLan>().TurnCubeAnimation();
-    yield return new WaitForSeconds(4);
+    enemyAnimation.Play();
+
+    yield return new WaitForSeconds((float) enemyAnimation.duration - 1f);
 
     ActiveEnemy();
     ReestoreCena();
-    cube.transform.eulerAngles = new Vector3 (0,0,0);
-    cube.GetComponent<CuboLan>().ClickRestore(true);
-    
   }
 
   void ReestoreCena()
@@ -143,6 +142,9 @@ public class answerEffect : MonoBehaviour
     numberOfAttempts = 3;
     isQuestion = false;
     changedPosition = false;
+
+    cam.GetComponent<position>().SliderAux(1);
+    cube.GetComponent<CuboLan>().ClickRestore(true);
     Debug.Log("You lose");
   }
 

@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.Playables;
 public class cameraControl : MonoBehaviour
 {
   public GameObject robot;
@@ -9,11 +9,9 @@ public class cameraControl : MonoBehaviour
 
   private bool isTalk = false;
 
-  Animation cameraAnimation;
-
   void Start()
   {
-    cameraAnimation = GetComponent<Animation>();
+    
   }
 
   void Update()
@@ -26,11 +24,4 @@ public class cameraControl : MonoBehaviour
     }
   }
 
-  public void AnimatorCamera()
-  {
-    if (cameraAnimation)
-    {
-      cameraAnimation.Play();
-    }
-  }
 }
