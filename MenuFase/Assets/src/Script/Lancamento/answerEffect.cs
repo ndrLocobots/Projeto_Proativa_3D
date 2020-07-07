@@ -14,14 +14,16 @@ public class answerEffect : MonoBehaviour
   public GameObject cube;
 
   public PlayableDirector enemyAnimation, cameraAnimation;
-  int showCameraIndex = 3;
+
+  int showAltarIndex = 3;
   int changeAltarIndex = 4;
+  int showCameraIndex = 1;
   int index = 0;
 
   bool isQuestion, changedPosition;
   int numberOfAttempts = 3;
 
-  float distaceDelta, velocityX, velocityY, time;
+  float distaceDelta, velocityX, velocityY, time, maxHeight;
 
   void Start()
   {
@@ -42,7 +44,9 @@ public class answerEffect : MonoBehaviour
     velocityX = velocity * Mathf.Cos(angle);
 
     time = velocityY / 5;
+
     distaceDelta = velocityX * time;
+    maxHeight = velocityY * time / 2;
 
     Debug.Log("Angulo " + angle + " Velocidade " + velocity);
   }
@@ -51,14 +55,32 @@ public class answerEffect : MonoBehaviour
   {
     setencas = new string[7];
 
-    setencas[0] = "Olá explorador, seja bem vindo ao simulador de universos da Locobots. Esse é o seu primeiro desafio";
-    setencas[1] = "Graças as atualizações em nossos sistema, esse mundo não possui atrito no ar, e sua gravidade é de 10 m/s², um otimo mundo para se viver, Dê uma olhada em nossa linda paisagem !!!";
-    setencas[2] = "Acoplado em você há um propussor de última geração. Você pode setar a velocidade e o ângulo que você desejar em seu painel de controle, não utrapassando nossos limites estipulados. Não queremos que você caia no limbo =D.";
-    setencas[3] = "Seu objetivo é configurar o propussor para te levar até o nosso teletrasportador";
+    setencas[0] = "Olá gamer, meu nome é locobits !! Estou muito feliz de ter você aqui comigo. Seja bem vindo ao simulador de universos da Locobots.";
+
+    setencas[1] = "Você escolheu a simulação de lançamento vertical. Graças às atualizações em  nossos sistema, esse mundo não possui atrito no ar, e sua gravidade é de 10 m/s², um ótimo mundo  para se fazer experimento, Dê uma explorada em nossa linda paisagem ";
+
+    setencas[2] = "(Colocar teoria do lançamento vertical, curiosidades)";
+
+    setencas[3] = "Agora que você já aprendeu como funciona o lançamento vertical, vamos testar o seu conhecimento!\n \nSeu objetivo nessa fase é chegar até o nosso teletransportador, para isso configure seu propussor no seu painel de controle.";
+
     setencas[4] = "Ops, parece que seu teletransportador mudou de posição";
-    setencas[5] = "De acordo com meu relatório, o centro do teletrasportador está a uma distância de "
-    + distaceDelta.ToString("0.00") + " metros de você. O tempo necessário que você conseguirá é de " + time.ToString("0.00") + " segundos";
-    setencas[6] = "Mas cuidade, atrás dessas árvores há um inimigo a sua espera";
+
+    setencas[5] = returnQuestion();
+
+    setencas[6] = "Cuidado! Se você errar, atrás dessas árvores há inimigos à sua espera.";
+  }
+
+  string returnQuestion()
+  {
+    string[] question = new string[2];
+
+    int index = Random.Range(0, 2);
+
+    question[0] = "De acordo com meu relatório, o centro do teletransportador está a uma distância e tempo de " + distaceDelta.ToString("0.00") + " metros e " + time.ToString("0.00") + " segundos de você";
+
+    question[1] = "De acordo com meu relatório, você atingirá a altura máxima, " + maxHeight.ToString("0.00") + "metros, em " + (time/2).ToString("0.00") + " segudos.";
+
+    return question[index];
   }
 
   public void BackSentence()
@@ -75,13 +97,17 @@ public class answerEffect : MonoBehaviour
 
   void SetAnimation(int index)
   {
-    if (index == showCameraIndex)
+    if (index == showAltarIndex)
     {
       AnimatorCamera();
     }
     else if (index == changeAltarIndex)
     {
       ChangeAltarPosition();
+    }
+    else if (index == showCameraIndex)
+    {
+      ShowHowUsePainel();
     }
   }
 
@@ -99,6 +125,10 @@ public class answerEffect : MonoBehaviour
     }
   }
 
+  void ShowHowUsePainel()
+  {
+
+  }
   public void ActiveEnemy()
   {
     Vector3 distaceDelta = altar.transform.position - transform.position;
@@ -131,7 +161,7 @@ public class answerEffect : MonoBehaviour
     cam.GetComponent<position>().SliderAux(0);
     enemyAnimation.Play();
 
-    yield return new WaitForSeconds((float) enemyAnimation.duration - 1f);
+    yield return new WaitForSeconds((float)enemyAnimation.duration - 1f);
 
     ActiveEnemy();
     ReestoreCena();
