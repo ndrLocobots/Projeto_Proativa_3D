@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Playables;
+using UnityEngine.UI;
 public class answerEffect : MonoBehaviour
 {
   public string[] setencas;
@@ -14,6 +15,8 @@ public class answerEffect : MonoBehaviour
   public GameObject cube;
 
   public PlayableDirector enemyAnimation, cameraAnimation;
+
+  public RectTransform arrow, menuComponent, angleComponent, velocityComponent;
 
   int showAltarIndex = 3;
   int changeAltarIndex = 4;
@@ -32,6 +35,7 @@ public class answerEffect : MonoBehaviour
     robotDialog.GetComponent<dialog>().setences = setencas;
     isQuestion = false;
     changedPosition = false;
+    
   }
 
   void MakeDataQuestion()
@@ -127,7 +131,7 @@ public class answerEffect : MonoBehaviour
 
   void ShowHowUsePainel()
   {
-
+    arrow.position = new Vector3 ( menuComponent.position.x, menuComponent.position.y,menuComponent.position.z);
   }
   public void ActiveEnemy()
   {
