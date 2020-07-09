@@ -21,20 +21,6 @@ public class dialog : MonoBehaviour
     robotAnimator.SetBool("isTalk", false);
   }
 
-  void StartSentence(string[] setencesParam)
-  {
-    this.setences = setencesParam;
-  }
-
-  IEnumerator Type()
-  {
-    foreach (char letter in setences[index].ToCharArray())
-    {
-      textDisplay.text += letter;
-      yield return new WaitForSeconds(typingSpeed);
-    }
-  }
-
   public int BackSentence()
   {
     if (index > 0)
@@ -81,6 +67,15 @@ public class dialog : MonoBehaviour
 
     robotAnimator.SetBool("isTalk", false);
     panel.SetActive(false);
+  }
+
+  IEnumerator Type()
+  {
+    foreach (char letter in setences[index].ToCharArray())
+    {
+      textDisplay.text += letter;
+      yield return new WaitForSeconds(typingSpeed);
+    }
   }
 
 
