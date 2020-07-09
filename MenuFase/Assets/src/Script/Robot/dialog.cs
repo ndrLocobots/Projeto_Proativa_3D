@@ -7,7 +7,7 @@ public class dialog : MonoBehaviour
   public TextMeshProUGUI textDisplay;
   public GameObject panel;
 
-  Animator robotAnimator;
+  robotAnimation robotAnimator;
 
   public string[] setences;
   private int index = 0;
@@ -16,9 +16,9 @@ public class dialog : MonoBehaviour
 
   void Start()
   {
-    robotAnimator = GetComponent<Animator>();
+    robotAnimator = FindObjectOfType<robotAnimation>();
     panel.SetActive(false);
-    robotAnimator.SetBool("isTalk", false);
+    robotAnimator.RobotTalk(false);
   }
 
   public int BackSentence()
@@ -57,7 +57,7 @@ public class dialog : MonoBehaviour
     textDisplay.text = "";
     panel.SetActive(true);
 
-    robotAnimator.SetBool("isTalk", true);
+    robotAnimator.RobotTalk(true);
     StartCoroutine(Type());
   }
 
@@ -65,7 +65,7 @@ public class dialog : MonoBehaviour
   {
     isTalk = false;
 
-    robotAnimator.SetBool("isTalk", false);
+    robotAnimator.RobotTalk(false);
     panel.SetActive(false);
   }
 

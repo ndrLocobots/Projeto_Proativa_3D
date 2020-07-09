@@ -11,6 +11,9 @@ public class robotAnimation : MonoBehaviour
   int lookHash = Animator.StringToHash("look");
   int fingerHash = Animator.StringToHash("finger");
   int waveHash = Animator.StringToHash("wave");
+  int sadHash = Animator.StringToHash("sad");
+  int happyHash = Animator.StringToHash("happy");
+
 
   float time = 0, changeSenseBreach = 1, breach;
   const int waitTime = 5;
@@ -18,7 +21,7 @@ public class robotAnimation : MonoBehaviour
   void Start()
   {
     robotAnimator = GetComponent<Animator>();
-    robotAnimator.SetBool("isStop", true); 
+    robotAnimator.SetBool("isStop", true);
   }
 
   void Update()
@@ -35,7 +38,7 @@ public class robotAnimation : MonoBehaviour
       this.choseAnimation();
     }
   }
-  
+
   void choseAnimation()
   {
     int key = Random.Range(1, 13);
@@ -62,6 +65,20 @@ public class robotAnimation : MonoBehaviour
     }
   }
 
+  public void RobotSad()
+  {
+    robotAnimator.SetTrigger(sadHash);
+  }
+
+  public void RobotHappy()
+  {
+    robotAnimator.SetTrigger(happyHash);
+  }
+
+  public void RobotTalk(bool isTalk)
+  {
+    robotAnimator.SetBool("isTalk", isTalk);
+  }
 }
 
 

@@ -53,7 +53,7 @@ public class CuboLan : MonoBehaviour
 
     if (isEnemy){
       isEnemy = false; 
-      GetComponent<answerEffect>().ActiveEnemy();
+      GetComponent<SceneControl>().ActiveEnemy();
     }
 
   }
