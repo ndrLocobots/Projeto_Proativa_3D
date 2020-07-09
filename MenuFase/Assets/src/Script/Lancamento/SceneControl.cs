@@ -55,7 +55,7 @@ public class SceneControl : MonoBehaviour
   {
     Vector3 distaceDelta = altar.transform.position - transform.position;
 
-    if (isQuestion)
+    if (isQuestion &&  !tutorial.isTutorial)
     {
       if (distaceDelta.magnitude > 10)
       {

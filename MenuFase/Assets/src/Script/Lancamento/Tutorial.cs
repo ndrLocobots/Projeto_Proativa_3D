@@ -64,6 +64,9 @@ public class Tutorial : MonoBehaviour
 
     if (index == menuIndex)
     {
+      corretionFacto = 0.90f;
+    }
+    else if(index == restoreIndex){
       corretionFacto = 0.85f;
     }
     else if(index == nextIndex){
@@ -99,7 +102,7 @@ public class Tutorial : MonoBehaviour
 
   public void PressButtonMenu()
   {
-    if (index == menuIndex)
+    if (index == menuIndex && isTutorial)
     {
       index++;
     }
