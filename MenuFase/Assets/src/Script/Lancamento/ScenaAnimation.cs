@@ -72,4 +72,5 @@ public class ScenaAnimation : MonoBehaviour
 
     return (float)enemyAnimation.duration - 1f;
   }
+  
 }

@@ -42,6 +42,11 @@ public class CuboLan : MonoBehaviour
     panel.SetActive(false);
   }
 
+  public void LoseConfig(){
+    panel.SetActive(false);
+    isJumper = isEnemy = false;
+  }
+  
   private void OnCollisionEnter(Collision collision)
   {
     if (isJumper)
@@ -53,7 +58,7 @@ public class CuboLan : MonoBehaviour
 
     if (isEnemy){
       isEnemy = false; 
-      GetComponent<SceneControl>().ActiveEnemy();
+      GetComponent<SceneControl>().isQuestionRight();
     }
 
   }

@@ -6,7 +6,6 @@ using UnityEngine.UI;
 
 public class SceneControl : MonoBehaviour
 {
-  public GameObject robotDialog;
   public GameObject altar;
   public GameObject inimigo;
   public GameObject cam, camSelfRobot;
@@ -20,15 +19,17 @@ public class SceneControl : MonoBehaviour
   robotAnimation robot;
   ScenaAnimation scenaAnimation;
 
+  dialog robotDialog;
+
   void Start()
   {
     tutorial = FindObjectOfType<Tutorial>();
     question = FindObjectOfType<Question>();
     scenaAnimation = FindObjectOfType<ScenaAnimation>();
     robot = FindObjectOfType<robotAnimation>();
+    robotDialog = FindObjectOfType<dialog>();
 
-    robotDialog.GetComponent<dialog>().setences = question.GetSetences();
-
+    robotDialog.setences = question.GetSetences();
     isQuestion = false;
   }
 
@@ -36,7 +37,7 @@ public class SceneControl : MonoBehaviour
   {
     if (!tutorial.isTutorial)
     {
-      robotDialog.GetComponent<dialog>().BackSentence();
+      robotDialog.BackSentence();
     }
   }
 
@@ -44,35 +45,41 @@ public class SceneControl : MonoBehaviour
   {
     if (!tutorial.isTutorial)
     {
-      int index = robotDialog.GetComponent<dialog>().NextSentence();
+      int index = robotDialog.NextSentence();
       scenaAnimation.SetAnimation(index);
 
       isQuestion = true;
     }
   }
 
-  public void ActiveEnemy()
+  public void isQuestionRight()
   {
-    Vector3 distaceDelta = altar.transform.position - transform.position;
-
-    if (isQuestion &&  !tutorial.isTutorial)
+    if (isQuestion && !tutorial.isTutorial)
     {
+
+      Vector3 distaceDelta = altar.transform.position - transform.position;
+
       if (distaceDelta.magnitude > 10)
       {
-
-        enemy[] inimigos = inimigo.GetComponentsInChildren<enemy>();
-        foreach (enemy inimigo in inimigos)
-        {
-          inimigo.activeEnemy();
-        }
-
+        ActiveEnemy();
         StartCoroutine(UpdateTryNumber());
         StartCoroutine(ShowReactionOfRobot(false));
+        robotDialog.SetSadBubble();
       }
       else
       {
         StartCoroutine(ShowReactionOfRobot(true));
+        robotDialog.SetHappyBubble();
       }
+    }
+  }
+
+  void ActiveEnemy()
+  {
+    enemy[] inimigos = inimigo.GetComponentsInChildren<enemy>();
+    foreach (enemy inimigo in inimigos)
+    {
+      inimigo.activeEnemy();
     }
   }
 
@@ -82,8 +89,10 @@ public class SceneControl : MonoBehaviour
 
     if (tryNumber == 0)
     {
+      cube.GetComponent<CuboLan>().LoseConfig();
       yield return new WaitForSeconds(scenaAnimation.AnimationToLose());
       ActiveEnemy();
+      robotDialog.ActivateBubbleSignal();
       ReestoreCena();
     }
   }
@@ -93,7 +102,7 @@ public class SceneControl : MonoBehaviour
     tryNumber = 3;
     isQuestion = false;
 
-    cam.GetComponent<position>().SliderAux(1);
+    cam.GetComponent<position>().SliderAux(0);
     cube.GetComponent<CuboLan>().ClickRestore(true);
     scenaAnimation.RestoreAnimation();
 

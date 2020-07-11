@@ -44,7 +44,7 @@ RenderSettings:
 LightmapSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 11
-  m_GIWorkflowMode: 0
+  m_GIWorkflowMode: 1
   m_GISettings:
     serializedVersion: 2
     m_BounceScale: 1
@@ -584,7 +584,7 @@ Light:
   m_BounceIntensity: 1
   m_ColorTemperature: 6570
   m_UseColorTemperature: 0
-  m_BoundingSphereOverride: {x: 0, y: 0, z: 0, w: 5.596281e-14}
+  m_BoundingSphereOverride: {x: 3.064e-41, y: 0, z: 0, w: -1.52919e+10}
   m_UseBoundingSphereOverride: 0
   m_ShadowRadius: 0
   m_ShadowAngle: 0
@@ -6088,7 +6088,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4aa1a286fef9c33f1a34c43c6c44475f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  robotDialog: {fileID: 967874926}
   altar: {fileID: 1488947115}
   inimigo: {fileID: 296077248}
   cam: {fileID: 534669902}

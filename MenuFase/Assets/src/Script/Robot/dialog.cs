@@ -5,7 +5,8 @@ using TMPro;
 public class dialog : MonoBehaviour
 {
   public TextMeshProUGUI textDisplay;
-  public GameObject panel;
+  public TextMeshPro bubbleText;
+  public GameObject panel, speechBubble;
 
   robotAnimation robotAnimator;
 
@@ -19,6 +20,9 @@ public class dialog : MonoBehaviour
     robotAnimator = FindObjectOfType<robotAnimation>();
     panel.SetActive(false);
     robotAnimator.RobotTalk(false);
+    ActivateBubbleSignal();
+
+    //bubbleText = speechBubble.GetComponent<TextMeshPro>();
   }
 
   public int BackSentence()
@@ -56,6 +60,7 @@ public class dialog : MonoBehaviour
     StopAllCoroutines();
     textDisplay.text = "";
     panel.SetActive(true);
+    DeactivateBubble();
 
     robotAnimator.RobotTalk(true);
     StartCoroutine(Type());
@@ -76,6 +81,36 @@ public class dialog : MonoBehaviour
       textDisplay.text += letter;
       yield return new WaitForSeconds(typingSpeed);
     }
+  }
+
+  public void SetHappyBubble(){
+
+    bubbleText.text = "Parabéns você conseguiu !!!";
+  }
+
+  public void SetSadBubble(){
+
+    bubbleText.text = "Foi quase, tente de novo !!!";
+  }
+
+  public void TalkWithBubble(){
+    StartCoroutine(AnimationForBubble());
+  }
+
+  IEnumerator AnimationForBubble(){
+    speechBubble.SetActive(true);
+
+    yield return new WaitForSeconds(10);
+    speechBubble.SetActive(false);
+  }
+
+  public void ActivateBubbleSignal(){
+    bubbleText.text = "ooo";
+    speechBubble.SetActive(true);
+  }
+
+  public void DeactivateBubble(){
+    speechBubble.SetActive(false);
   }
 
 
