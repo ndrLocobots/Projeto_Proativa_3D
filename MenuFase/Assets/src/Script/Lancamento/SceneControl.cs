@@ -15,7 +15,6 @@ public class SceneControl : MonoBehaviour
   int tryNumber = 3;
 
   Tutorial tutorial;
-  Question question;
   robotAnimation robot;
   ScenaAnimation scenaAnimation;
 
@@ -24,12 +23,10 @@ public class SceneControl : MonoBehaviour
   void Start()
   {
     tutorial = FindObjectOfType<Tutorial>();
-    question = FindObjectOfType<Question>();
     scenaAnimation = FindObjectOfType<ScenaAnimation>();
     robot = FindObjectOfType<robotAnimation>();
     robotDialog = FindObjectOfType<dialog>();
 
-    robotDialog.setences = question.GetSetences();
     isQuestion = false;
   }
 
