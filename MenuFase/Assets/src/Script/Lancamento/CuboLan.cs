@@ -58,7 +58,7 @@ public class CuboLan : MonoBehaviour
 
     if (isEnemy){
       isEnemy = false; 
-      GetComponent<SceneControl>().isQuestionRight();
+      GetComponent<QuestionAnimation>().isQuestionRight();
     }
 
   }
