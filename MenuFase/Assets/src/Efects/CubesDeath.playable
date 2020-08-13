@@ -1748,7 +1748,7 @@ MonoBehaviour:
   m_Name: Recorded (4)
   m_EditorClassIdentifier: 
   m_Clip: {fileID: 4283478141514767530}
-  m_Position: {x: 0, y: 0, z: 0}
+  m_Position: {x: 0, y: 1, z: 0}
   m_EulerAngles: {x: 1.9999987, y: 90, z: 90}
   m_UseTrackMatchFields: 1
   m_MatchTargetFields: 63
@@ -2210,7 +2210,7 @@ AnimationClip:
         outWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334}
       - serializedVersion: 3
         time: 1.55
-        value: {x: 0, y: 0, z: -90}
+        value: {x: 0, y: 1, z: -90}
         inSlope: {x: 0, y: 0, z: 0}
         outSlope: {x: 0, y: 0, z: 0}
         tangentMode: 0
@@ -2303,7 +2303,7 @@ AnimationClip:
         outWeight: 0.33333334
       - serializedVersion: 3
         time: 1.55
-        value: 0
+        value: 1
         inSlope: 0
         outSlope: 0
         tangentMode: 136

@@ -41,7 +41,7 @@ public class Question : MonoBehaviour
 
     setencas[2] = "(Colocar teoria do lançamento vertical, curiosidades)";
 
-    setencas[3] = "Agora que você já aprendeu como funciona o lançamento vertical, vamos testar o seu conhecimento!\n \nSeu objetivo nessa fase é chegar até o nosso teletransportador, para isso configure seu propussor no seu painel de controle.";
+    setencas[3] = "Agora que você já aprendeu como funciona o lançamento vertical, vamos testar o seu conhecimento! Seu objetivo nessa fase é chegar até o nosso teletransportador, Essa máquina brilhante aqui do meu lado.";
 
     setencas[4] = "Ops, parece que seu teletransportador mudou de posição";
 

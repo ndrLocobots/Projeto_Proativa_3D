@@ -5,33 +5,39 @@ using UnityEngine.UI;
 
 public class Tutorial : MonoBehaviour
 {
-  RectTransform arrowTransform;
   public GameObject arrow;
   public GameObject[] objectsCena;
 
+  dialog robotDialog;
+
   public int index;
-  int veloIndex, angleIndex, menuIndex, startIndex, restoreIndex, nextIndex;
+  int veloIndex, angleIndex, cameraIndex;
+  int secondMenuIndex, firstMenuIndex;
+  int startIndex, restoreIndex, nextIndex;
 
   public bool isTutorial = false;
-  bool wasPressStart = false;
 
   void Start()
   {
-    arrowTransform = arrow.GetComponent<RectTransform>();
+    robotDialog = FindObjectOfType<dialog>();
+
     arrow.SetActive(false);
 
     index = 0;
-    menuIndex = 0;
-    angleIndex = 1;
-    veloIndex = 2;
-    startIndex = 3;
-    restoreIndex = 4;
-    nextIndex = 5;
+    firstMenuIndex = 0;
+    cameraIndex = 1;
+    angleIndex = 2;
+    veloIndex = 3;
+    startIndex = 4;
+    secondMenuIndex = 5;
+    restoreIndex = 6;
+    nextIndex = 7;
   }
 
   public void StartTutorial()
   {
     isTutorial = true;
+    index = 0;
     arrow.SetActive(true);
   }
 
@@ -40,9 +46,13 @@ public class Tutorial : MonoBehaviour
 
     if (isTutorial || index == nextIndex)
     {
-      ShowTheObjectsCena();
+      PositionArrowObjectInCena();
 
-      if (index == angleIndex)
+      if (index == cameraIndex)
+      {
+        SliderCameraAvaliable();
+      }
+      else if (index == angleIndex)
       {
         SliderAngleAvaliable();
       }
@@ -50,26 +60,26 @@ public class Tutorial : MonoBehaviour
       {
         SliderVelocityAvaliable();
       }
-      else if (wasPressStart && index == startIndex)
-      {
-        index = restoreIndex;
-      }
     }
   }
 
-  void ShowTheObjectsCena()
+  void PositionArrowObjectInCena()
   {
     RectTransform transform = objectsCena[index].GetComponent<RectTransform>();
+    RectTransform arrowTransform = arrow.GetComponent<RectTransform>();
+
     float corretionFacto = 0.76f; // tive que usar o fator de coreçao devido aos componentes não estarem em posição diferente
 
-    if (index == menuIndex)
+    if (index == firstMenuIndex || index == secondMenuIndex)
     {
       corretionFacto = 0.90f;
     }
-    else if(index == restoreIndex){
+    else if (index == restoreIndex)
+    {
       corretionFacto = 0.85f;
     }
-    else if(index == nextIndex){
+    else if (index == nextIndex)
+    {
       corretionFacto = 0.92f;
     }
 
@@ -100,28 +110,39 @@ public class Tutorial : MonoBehaviour
     }
   }
 
-  public void PressButtonMenu()
+  void SliderCameraAvaliable()
   {
-    if (index == menuIndex && isTutorial)
+    Slider camera = objectsCena[index].GetComponent<Slider>();
+
+    if (camera.value >= 1)
     {
       index++;
     }
   }
 
+  public void PressButtonMenu()
+  {
+    if ((index == firstMenuIndex || index == secondMenuIndex) && isTutorial)
+    {
+      index++;
+      robotDialog.StopTalk();
+    }
+  }
+
   public void PressButtonStart()
   {
-    if (index == startIndex && !wasPressStart)
+    if (index == startIndex)
     {
-      index = 0;
-      wasPressStart = true;
+      index++;
     }
   }
 
   public void PressButtonRestore()
   {
-    if (index == restoreIndex && wasPressStart)
+    if (index == restoreIndex)
     {
-      wasPressStart = isTutorial = false;
+      isTutorial = false;
+      robotDialog.Talk();
       index++;
     }
   }
