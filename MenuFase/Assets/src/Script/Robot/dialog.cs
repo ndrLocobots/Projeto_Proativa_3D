@@ -123,9 +123,10 @@ public class dialog : MonoBehaviour
   }
 
   public void ActivateBubbleOtherQuestion(){
-    bubbleText.text = "Parabéns, está preparado para outro questão?";
+    bubbleText.text = "Parabéns, tente outra questão?";
     speechBubble.SetActive(true);
   }
+  
   public void DeactivateBubble()
   {
     speechBubble.SetActive(false);

@@ -129,6 +129,7 @@ public class QuestionAnimation : MonoBehaviour
     yield return new WaitForSeconds(scenaAnimation.AnimationToWin());
     ReestoreCena();
     robotDialog.ActivateBubbleOtherQuestion();
+    scenaAnimation.ChangeQuestion();
   }
 
   void ReestoreCena()

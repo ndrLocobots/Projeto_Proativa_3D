@@ -58,9 +58,9 @@ public class Question : MonoBehaviour
 
     setencas[4] = "Ops, parece que seu teletransportador mudou de posição";
 
-    setencas[5] = returnQuestion();
-
-    setencas[6] = "Cuidado! Se você errar, atrás dessas árvores há inimigos à sua espera.";
+    setencas[5] = "Cuidado! Meus sensores indicam a aproximação de inimigos. Você terá três tentativas.";
+    
+    setencas[6] = returnQuestion();
 
     return setencas;
   }
@@ -73,7 +73,7 @@ public class Question : MonoBehaviour
 
     question[0] = "De acordo com meu relatório, o centro do teletransportador está a uma distância e tempo de " + distaceDelta.ToString("0.00") + " metros e " + time.ToString("0.00") + " segundos de você";
 
-    question[1] = "De acordo com meu relatório, você atingirá a altura máxima, " + maxHeight.ToString("0.00") + "metros, em " + (time / 2).ToString("0.00") + " segudos.";
+    question[1] = "De acordo com meu relatório, você atingirá a altura máxima, " + maxHeight.ToString("0.00") + " metros, em " + (time / 2).ToString("0.00") + " segudos.";
 
     return question[index];
   }

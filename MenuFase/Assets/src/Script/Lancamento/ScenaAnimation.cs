@@ -7,8 +7,6 @@ public class ScenaAnimation : MonoBehaviour
 {
   public PlayableDirector cameraAnimation, enemyAnimation;
 
-  bool isPositionChange;
-
   Tutorial tutorial;
   Question question;
 
@@ -24,8 +22,6 @@ public class ScenaAnimation : MonoBehaviour
     altar = FindObjectOfType<altarPosition>();
     question = FindObjectOfType<Question>();
     robot = FindObjectOfType<robotAnimation>();
-
-    isPositionChange = false;
   }
 
   public void AnimatorCamera()
@@ -33,13 +29,15 @@ public class ScenaAnimation : MonoBehaviour
     cameraAnimation.Play();
   }
 
+  public void ChangeQuestion()
+  {
+    question.UpadateRobotSetence();
+    ChangeAltarPosition();
+  }
+
   public void ChangeAltarPosition()
   {
-    if (!isPositionChange)
-    {
-      isPositionChange = true;
-      altar.ChangeAltarPosition(question.distaceDelta);
-    }
+    altar.ChangeAltarPosition(question.distaceDelta);
   }
 
   public void StartTutorial()
@@ -56,14 +54,15 @@ public class ScenaAnimation : MonoBehaviour
     }
   }
 
-  public void HideEnemy(){
+  public void HideEnemy()
+  {
     enemy[] inimigos = inimigo.GetComponentsInChildren<enemy>();
     foreach (enemy inimigo in inimigos)
     {
       inimigo.HideEnemy();
     }
   }
- 
+
   public float AnimationToLose()
   {
     enemyAnimation.Play();
