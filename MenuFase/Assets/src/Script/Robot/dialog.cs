@@ -53,6 +53,11 @@ public class dialog : MonoBehaviour
     return index;
   }
 
+  public void Skip (){
+    StopAllCoroutines();
+    textDisplay.text = setences[index];
+  }
+  
   public void Talk()
   {
     isTalk = true;

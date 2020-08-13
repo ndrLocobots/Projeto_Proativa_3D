@@ -837,6 +837,11 @@ PrefabInstance:
       propertyPath: m_LocalPosition.z
       value: 15.000001
       objectReference: {fileID: 0}
+    - target: {fileID: 2658163570527763911, guid: 4330ec7b29a8115f8bbb81b304419d0f,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -324.8
+      objectReference: {fileID: 0}
     - target: {fileID: 2658163570638780864, guid: 4330ec7b29a8115f8bbb81b304419d0f,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
