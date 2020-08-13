@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class menuScript : MonoBehaviour
 {
@@ -16,7 +17,7 @@ public class menuScript : MonoBehaviour
 
   void updateOtherScreenComponents(bool active)
   {
-    for (int i = 0; i < screenComponents.Length - 1; i++)
+    for (int i = 0; i < screenComponents.Length; i++)
     {
       try
       {
@@ -27,6 +28,26 @@ public class menuScript : MonoBehaviour
 
         Debug.Log("none screen component on menuScript");
       }
+    }
+  }
+
+
+  public void ShowOpacityAnimationMenu(){
+    StartCoroutine(ChangeOpacityMenu());
+  }
+
+  IEnumerator ChangeOpacityMenu(){
+    Image image =  GetComponent<Image>();
+    var tempColor = image.color;
+
+    if (image){
+      tempColor.a = 0.2f;
+      image.color = tempColor;
+      
+      yield return new WaitForSeconds(4f);
+      
+      tempColor.a = 1f;
+      image.color = tempColor;
     }
   }
 
