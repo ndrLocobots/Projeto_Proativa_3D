@@ -44,7 +44,7 @@ public class menuScript : MonoBehaviour
       tempColor.a = 0.2f;
       image.color = tempColor;
       
-      yield return new WaitForSeconds(4f);
+      yield return new WaitForSeconds(0.6f);
       
       tempColor.a = 1f;
       image.color = tempColor;

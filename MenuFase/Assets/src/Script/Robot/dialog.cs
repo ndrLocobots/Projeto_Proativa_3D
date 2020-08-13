@@ -83,33 +83,46 @@ public class dialog : MonoBehaviour
     }
   }
 
-  public void SetHappyBubble(){
+  public void SetHappyBubble()
+  {
 
     bubbleText.text = "Parabéns você conseguiu !!!";
   }
 
-  public void SetSadBubble(){
+  public void SetSadBubble()
+  {
 
     bubbleText.text = "Foi quase, tente de novo !!!";
   }
 
-  public void TalkWithBubble(){
-    StartCoroutine(AnimationForBubble());
+  public void TalkWithBubble()
+  {
+    if (!speechBubble.activeSelf)
+    {
+      StartCoroutine(AnimationForBubble());
+    }
   }
 
-  IEnumerator AnimationForBubble(){
+  IEnumerator AnimationForBubble()
+  {
     speechBubble.SetActive(true);
 
     yield return new WaitForSeconds(10);
     speechBubble.SetActive(false);
   }
 
-  public void ActivateBubbleSignal(){
+  public void ActivateBubbleSignal()
+  {
     bubbleText.text = "ooo";
     speechBubble.SetActive(true);
   }
 
-  public void DeactivateBubble(){
+  public void ActivateBubbleOtherQuestion(){
+    bubbleText.text = "Parabéns, está preparado para outro questão?";
+    speechBubble.SetActive(true);
+  }
+  public void DeactivateBubble()
+  {
     speechBubble.SetActive(false);
   }
 

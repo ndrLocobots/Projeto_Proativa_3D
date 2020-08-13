@@ -42,7 +42,7 @@ public class CuboLan : MonoBehaviour
     panel.SetActive(false);
   }
 
-  public void LoseConfig(){
+  public void AnimationConfig(){
     panel.SetActive(false);
     isJumper = isEnemy = false;
   }

@@ -2082,7 +2082,7 @@ Camera:
     y: 0
     width: 1
     height: 1
-  near clip plane: 1.6
+  near clip plane: 0.3
   far clip plane: 400
   field of view: 60
   orthographic: 0
@@ -2699,6 +2699,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cameraAnimation: {fileID: 56597663}
   enemyAnimation: {fileID: 1545012830}
+  robotSelfCam: {fileID: 1480016742}
+  inimigo: {fileID: 296077248}
 --- !u!43 &820404941
 Mesh:
   m_ObjectHideFlags: 0
@@ -4826,10 +4828,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4aa1a286fef9c33f1a34c43c6c44475f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  altar: {fileID: 1488947115}
-  inimigo: {fileID: 296077248}
+  altar: {fileID: 1488947121}
   cam: {fileID: 534669902}
-  camSelfRobot: {fileID: 1480016742}
   cube: {fileID: 1414909854}
 --- !u!95 &1414909863
 Animator:
@@ -5682,6 +5682,12 @@ MonoBehaviour:
   y: 0
   z: 0
   startPoint: {fileID: 1414909858}
+--- !u!4 &1488947121 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1801919448419711799, guid: d1ce4c14e9282cfa18e6a1a467315650,
+    type: 3}
+  m_PrefabInstance: {fileID: 1801919446860337055}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1502399545 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5426488176900782184, guid: dad948e1017b6b8289eb092168e06041,
@@ -7527,6 +7533,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_AnchoredPosition.y
       value: -22.299744
+      objectReference: {fileID: 0}
+    - target: {fileID: 2012545460715385695, guid: 844b74e1392e741af8bd6ed52d77c345,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -7.799988
       objectReference: {fileID: 0}
     - target: {fileID: 2012545460744852670, guid: 844b74e1392e741af8bd6ed52d77c345,
         type: 3}

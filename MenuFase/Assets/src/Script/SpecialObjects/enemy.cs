@@ -41,11 +41,15 @@ public class enemy : MonoBehaviour
         break;
 
       default:
-        tryAnswer = 3;
-        agent.SetDestination(initialPosition);
+        HideEnemy();
         break;
     }
 
     tryAnswer--;
+  }
+
+  public void HideEnemy(){
+    tryAnswer = 3;
+    agent.SetDestination(initialPosition);
   }
 }

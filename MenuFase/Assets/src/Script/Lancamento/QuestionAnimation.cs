@@ -6,25 +6,27 @@ using UnityEngine.UI;
 
 public class QuestionAnimation : MonoBehaviour
 {
-  public GameObject altar;
-  public GameObject inimigo;
-  public GameObject cam, camSelfRobot;
+  public Transform altar;
+
+  public GameObject cam;
   public GameObject cube;
 
   bool isQuestion;
   int tryNumber = 3;
 
   Tutorial tutorial;
-  robotAnimation robot;
   ScenaAnimation scenaAnimation;
 
   dialog robotDialog;
+
+  int showAltarIndex = 3;
+  int changeAltarIndex = 4;
+  int showCameraIndex = 1;
 
   void Start()
   {
     tutorial = FindObjectOfType<Tutorial>();
     scenaAnimation = FindObjectOfType<ScenaAnimation>();
-    robot = FindObjectOfType<robotAnimation>();
     robotDialog = FindObjectOfType<dialog>();
 
     isQuestion = false;
@@ -43,9 +45,25 @@ public class QuestionAnimation : MonoBehaviour
     if (!tutorial.isTutorial)
     {
       int index = robotDialog.NextSentence();
-      scenaAnimation.SetAnimation(index);
+      SetAnimation(index);
 
       isQuestion = true;
+    }
+  }
+
+  public void SetAnimation(int index)
+  {
+    if (index == showAltarIndex)
+    {
+      scenaAnimation.AnimatorCamera();
+    }
+    else if (index == changeAltarIndex)
+    {
+      scenaAnimation.ChangeAltarPosition();
+    }
+    else if (index == showCameraIndex)
+    {
+      scenaAnimation.StartTutorial();
     }
   }
 
@@ -54,44 +72,63 @@ public class QuestionAnimation : MonoBehaviour
     if (isQuestion && !tutorial.isTutorial)
     {
 
-      Vector3 distaceDelta = altar.transform.position - transform.position;
+      Vector3 distaceDelta = altar.position - transform.position;
 
-      if (distaceDelta.magnitude > 10)
+      if (distaceDelta.magnitude < 10)
       {
-        ActiveEnemy();
-        StartCoroutine(UpdateTryNumber());
-        StartCoroutine(ShowReactionOfRobot(false));
-        robotDialog.SetSadBubble();
+        CorrectAnswer();
       }
       else
       {
-        StartCoroutine(ShowReactionOfRobot(true));
-        robotDialog.SetHappyBubble();
+        WrongAnswer();
       }
     }
   }
 
-  void ActiveEnemy()
+  void CorrectAnswer()
   {
-    enemy[] inimigos = inimigo.GetComponentsInChildren<enemy>();
-    foreach (enemy inimigo in inimigos)
-    {
-      inimigo.activeEnemy();
-    }
+    scenaAnimation.HideEnemy();
+    StartCoroutine(scenaAnimation.ShowReactionOfRobot(true));
+    StartCoroutine(ActiveAnimationToWin());
   }
 
-  IEnumerator UpdateTryNumber()
+  void WrongAnswer()
+  {
+    scenaAnimation.ActiveEnemy();
+    StartCoroutine(scenaAnimation.ShowReactionOfRobot(false));
+    robotDialog.SetSadBubble();
+    UpdateTryNumber();
+  }
+
+  void UpdateTryNumber()
   {
     tryNumber--;
 
     if (tryNumber == 0)
     {
-      cube.GetComponent<CuboLan>().LoseConfig();
-      yield return new WaitForSeconds(scenaAnimation.AnimationToLose());
-      ActiveEnemy();
-      robotDialog.ActivateBubbleSignal();
-      ReestoreCena();
+      StartCoroutine(ActiveAnimationToLose());
     }
+  }
+
+  IEnumerator ActiveAnimationToLose()
+  {
+    cube.GetComponent<CuboLan>().AnimationConfig();
+    yield return new WaitForSeconds(scenaAnimation.AnimationToLose());
+    scenaAnimation.HideEnemy();
+
+    cam.GetComponent<position>().SliderAux(0);
+    ReestoreCena();
+    robotDialog.ActivateBubbleSignal();
+  }
+
+  IEnumerator ActiveAnimationToWin()
+  {
+    cube.GetComponent<CuboLan>().AnimationConfig();
+    cam.GetComponent<position>().SliderAux(1);
+
+    yield return new WaitForSeconds(scenaAnimation.AnimationToWin());
+    ReestoreCena();
+    robotDialog.ActivateBubbleOtherQuestion();
   }
 
   void ReestoreCena()
@@ -99,27 +136,7 @@ public class QuestionAnimation : MonoBehaviour
     tryNumber = 3;
     isQuestion = false;
 
-    cam.GetComponent<position>().SliderAux(0);
     cube.GetComponent<CuboLan>().ClickRestore(true);
-    scenaAnimation.RestoreAnimation();
-
-    Debug.Log("You lose");
   }
 
-  IEnumerator ShowReactionOfRobot(bool reaction)
-  {
-    camSelfRobot.SetActive(true);
-
-    if (reaction)
-    {
-      robot.RobotHappy();
-    }
-    else
-    {
-      robot.RobotSad();
-    }
-
-    yield return new WaitForSeconds(5);
-    camSelfRobot.SetActive(false);
-  }
 }

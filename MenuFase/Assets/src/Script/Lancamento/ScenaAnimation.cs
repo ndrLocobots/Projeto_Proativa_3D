@@ -7,52 +7,33 @@ public class ScenaAnimation : MonoBehaviour
 {
   public PlayableDirector cameraAnimation, enemyAnimation;
 
-  int showAltarIndex = 3;
-  int changeAltarIndex = 4;
-  int showCameraIndex = 1;
-
   bool isPositionChange;
 
   Tutorial tutorial;
-  altarPosition altar;
   Question question;
+
+  robotAnimation robot;
+  public GameObject robotSelfCam;
+
+  altarPosition altar;
+  public GameObject inimigo;
 
   void Start()
   {
     tutorial = FindObjectOfType<Tutorial>();
     altar = FindObjectOfType<altarPosition>();
     question = FindObjectOfType<Question>();
+    robot = FindObjectOfType<robotAnimation>();
 
     isPositionChange = false;
   }
 
-  public void RestoreAnimation()
-  {
-    isPositionChange = false;
-  }
-
-  public void SetAnimation(int index)
-  {
-    if (index == showAltarIndex)
-    {
-      AnimatorCamera();
-    }
-    else if (index == changeAltarIndex)
-    {
-      ChangeAltarPosition();
-    }
-    else if (index == showCameraIndex)
-    {
-      StartTutorial();
-    }
-  }
-
-  void AnimatorCamera()
+  public void AnimatorCamera()
   {
     cameraAnimation.Play();
   }
 
-  void ChangeAltarPosition()
+  public void ChangeAltarPosition()
   {
     if (!isPositionChange)
     {
@@ -61,16 +42,58 @@ public class ScenaAnimation : MonoBehaviour
     }
   }
 
-  void StartTutorial()
+  public void StartTutorial()
   {
     tutorial.StartTutorial();
   }
 
+  public void ActiveEnemy()
+  {
+    enemy[] inimigos = inimigo.GetComponentsInChildren<enemy>();
+    foreach (enemy inimigo in inimigos)
+    {
+      inimigo.activeEnemy();
+    }
+  }
+
+  public void HideEnemy(){
+    enemy[] inimigos = inimigo.GetComponentsInChildren<enemy>();
+    foreach (enemy inimigo in inimigos)
+    {
+      inimigo.HideEnemy();
+    }
+  }
+ 
   public float AnimationToLose()
   {
     enemyAnimation.Play();
 
     return (float)enemyAnimation.duration - 1f;
   }
-  
+
+  public float AnimationToWin()
+  {
+    enemyAnimation.Play();
+
+    return (float)enemyAnimation.duration - 1f;
+  }
+
+  public IEnumerator ShowReactionOfRobot(bool reaction)
+  {
+    robotSelfCam.SetActive(true);
+
+    if (reaction)
+    {
+      robot.RobotHappy();
+
+    }
+    else
+    {
+      robot.RobotSad();
+
+    }
+
+    yield return new WaitForSeconds(5);
+    robotSelfCam.SetActive(false);
+  }
 }
