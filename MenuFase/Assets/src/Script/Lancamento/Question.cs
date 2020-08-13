@@ -9,10 +9,23 @@ public class Question : MonoBehaviour
 
   public string[] setencas;
 
-  void Start(){
-    MakeDataQuestion();
+  void Start()
+  {
+    UpadateRobotSetence();
   }
- 
+
+  public void UpadateRobotSetence()
+  {
+    MakeDataQuestion();
+
+    dialog robotDialog = FindObjectOfType<dialog>();
+
+    if (robotDialog)
+    {
+      robotDialog.setences = GetSetences();
+    }
+  }
+
   float MakeDataQuestion()
   {
     float velocity = Random.Range(10.0f, 50f);
@@ -28,10 +41,10 @@ public class Question : MonoBehaviour
     maxHeight = velocityY * time / 2;
 
     return distaceDelta = velocityX * time;
-    
+
   }
 
-  public string[] GetSetences()
+  string[] GetSetences()
   {
     setencas = new string[7];
 
