@@ -8,7 +8,7 @@ public class enemy : MonoBehaviour
   public Transform cube;
   public NavMeshAgent agent;
   Vector3 initialPosition, vectorDirectionToWalk, vectorUnitary;
-  int tryAnswer = 2;
+  int tryAnswer = 3;
 
   void Start()
   {
@@ -26,17 +26,17 @@ public class enemy : MonoBehaviour
 
     switch (tryAnswer)
     {
-      case 2:
+      case 3:
         agent.SetDestination(transform.position + 20 * vectorUnitary);
         break;
 
-      case 1:
+      case 2:
         agent.SetDestination(
           transform.position + vectorDirectionToWalk.magnitude * vectorUnitary / 2
         );
         break;
 
-      case 0:
+      case 1:
         agent.SetDestination(cube.position);
         break;
 

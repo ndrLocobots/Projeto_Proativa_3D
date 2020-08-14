@@ -16,18 +16,21 @@ public class QuestionAnimation : MonoBehaviour
 
   Tutorial tutorial;
   ScenaAnimation scenaAnimation;
+  heart hearts;
 
   dialog robotDialog;
 
   int showAltarIndex = 3;
   int changeAltarIndex = 4;
   int showCameraIndex = 1;
+  int questionIndex = 6;
 
   void Start()
   {
     tutorial = FindObjectOfType<Tutorial>();
     scenaAnimation = FindObjectOfType<ScenaAnimation>();
     robotDialog = FindObjectOfType<dialog>();
+    hearts = FindObjectOfType<heart>();
 
     isQuestion = false;
   }
@@ -64,6 +67,10 @@ public class QuestionAnimation : MonoBehaviour
     else if (index == showCameraIndex)
     {
       scenaAnimation.StartTutorial();
+    }
+    else if (index == questionIndex)
+    {
+      hearts.updateOpacityHearts(1);
     }
   }
 
@@ -103,6 +110,7 @@ public class QuestionAnimation : MonoBehaviour
   void UpdateTryNumber()
   {
     tryNumber--;
+    hearts.loseHeart();
 
     if (tryNumber == 0)
     {
@@ -129,7 +137,7 @@ public class QuestionAnimation : MonoBehaviour
     cam.GetComponent<position>().SliderAux(0);
 
     ReestoreCena();
-    
+
     robotDialog.ActivateBubbleOtherQuestion();
     scenaAnimation.ChangeQuestion();
   }
@@ -140,6 +148,7 @@ public class QuestionAnimation : MonoBehaviour
     isQuestion = false;
 
     cube.GetComponent<CuboLan>().ClickRestore(true);
+    hearts.updateOpacityHearts(0);
   }
 
 }

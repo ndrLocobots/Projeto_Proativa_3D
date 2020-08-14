@@ -31,7 +31,6 @@ public class menuScript : MonoBehaviour
     }
   }
 
-
   public void ShowOpacityAnimationMenu(){
     StartCoroutine(ChangeOpacityMenu());
   }

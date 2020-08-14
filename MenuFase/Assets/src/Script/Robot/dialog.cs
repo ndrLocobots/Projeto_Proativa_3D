@@ -123,7 +123,7 @@ public class dialog : MonoBehaviour
   }
 
   public void ActivateBubbleOtherQuestion(){
-    bubbleText.text = "Parabéns, tente outra questão?";
+    bubbleText.text = "Parabéns, tente outra questão";
     speechBubble.SetActive(true);
   }
   
