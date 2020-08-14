@@ -124,10 +124,12 @@ public class QuestionAnimation : MonoBehaviour
   IEnumerator ActiveAnimationToWin()
   {
     cube.GetComponent<CuboLan>().AnimationConfig();
-    cam.GetComponent<position>().SliderAux(1);
 
     yield return new WaitForSeconds(scenaAnimation.AnimationToWin());
+    cam.GetComponent<position>().SliderAux(0);
+
     ReestoreCena();
+    
     robotDialog.ActivateBubbleOtherQuestion();
     scenaAnimation.ChangeQuestion();
   }

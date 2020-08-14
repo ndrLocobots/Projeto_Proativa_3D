@@ -72,9 +72,9 @@ public class ScenaAnimation : MonoBehaviour
 
   public float AnimationToWin()
   {
-    enemyAnimation.Play();
+    cameraAnimation.Play();
 
-    return (float)enemyAnimation.duration - 1f;
+    return (float)cameraAnimation.duration + 0.5f;
   }
 
   public IEnumerator ShowReactionOfRobot(bool reaction)
