@@ -62,7 +62,7 @@ public class QuestionAnimation : MonoBehaviour
     }
     else if (index == changeAltarIndex)
     {
-      scenaAnimation.ChangeAltarPosition();
+      scenaAnimation.ChangeTeleporterPosition();
     }
     else if (index == showCameraIndex)
     {

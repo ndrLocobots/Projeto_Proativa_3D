@@ -13,13 +13,13 @@ public class ScenaAnimation : MonoBehaviour
   robotAnimation robot;
   public GameObject robotSelfCam;
 
-  altarPosition altar;
+  TeleporterPosition teleporter;
   public GameObject inimigo;
 
   void Start()
   {
     tutorial = FindObjectOfType<Tutorial>();
-    altar = FindObjectOfType<altarPosition>();
+    teleporter = FindObjectOfType<TeleporterPosition>();
     question = FindObjectOfType<Question>();
     robot = FindObjectOfType<robotAnimation>();
   }
@@ -32,12 +32,12 @@ public class ScenaAnimation : MonoBehaviour
   public void ChangeQuestion()
   {
     question.UpadateRobotSetence();
-    ChangeAltarPosition();
+    ChangeTeleporterPosition();
   }
 
-  public void ChangeAltarPosition()
+  public void ChangeTeleporterPosition()
   {
-    altar.ChangeAltarPosition(question.distaceDelta);
+    teleporter.ChangeTeleporterPosition(question.distaceDelta);
   }
 
   public void StartTutorial()

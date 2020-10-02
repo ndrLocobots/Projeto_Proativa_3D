@@ -5,7 +5,7 @@ using UnityEngine;
 public class Question : MonoBehaviour
 {
   public float distaceDelta;
-  float velocityX, velocityY, time, maxHeight;
+  float velocityX, velocityY, time, maxHeight, velocity, angle;
 
   public string[] setencas;
 
@@ -26,22 +26,25 @@ public class Question : MonoBehaviour
     }
   }
 
-  float MakeDataQuestion()
+  void MakeDataQuestion()
   {
-    float velocity = Random.Range(10.0f, 50f);
-    float angle = Random.Range(1, 80f);
-    Debug.Log("Angulo " + angle + " Velocidade " + velocity);
+    distaceDelta = 0;
+    while (distaceDelta<30 || distaceDelta>250)
+    {
+      angle = Random.Range(1, 90f);
+      float RadianAngle = angle * Mathf.PI / 180;
+      velocity = Random.Range(1, 50f);
 
-    angle = angle * Mathf.PI / 180;
-    velocityY = velocity * Mathf.Sin(angle);
-    velocityX = velocity * Mathf.Cos(angle);
+      velocityY = velocity * Mathf.Sin(RadianAngle);
+      velocityX = velocity * Mathf.Cos(RadianAngle);
 
-    time = velocityY / 5;
+      time = velocityY / 5;
 
-    maxHeight = velocityY * time / 2;
+      maxHeight = velocityY * time / 2;
 
-    return distaceDelta = velocityX * time;
-
+      distaceDelta = velocityX * time;
+    }
+    Debug.Log("Angulo: " + angle + " Velocidade: " + velocity);
   }
 
   string[] GetSetences()
@@ -59,7 +62,7 @@ public class Question : MonoBehaviour
     setencas[4] = "Ops, parece que seu teletransportador mudou de posição";
 
     setencas[5] = "Cuidado! Meus sensores indicam a aproximação de inimigos. Você terá três tentativas.";
-    
+
     setencas[6] = returnQuestion();
 
     return setencas;
@@ -67,13 +70,16 @@ public class Question : MonoBehaviour
 
   string returnQuestion()
   {
-    string[] question = new string[2];
+    int tam = 3;
 
-    int index = Random.Range(0, 2);
+    string[] question = new string[tam];
+    int index = Random.Range(0, tam);
 
     question[0] = "De acordo com meu relatório, o centro do teletransportador está a uma distância e tempo de " + distaceDelta.ToString("0.00") + " metros e " + time.ToString("0.00") + " segundos de você";
 
     question[1] = "De acordo com meu relatório, você atingirá a altura máxima, " + maxHeight.ToString("0.00") + " metros, em " + (time / 2).ToString("0.00") + " segudos.";
+
+    question[2] = "De acordo com meu relatório, o ângulo necessário para atingir o teletransportador é de " + angle.ToString() + "graus e a velocidade horizontal de " + velocityX.ToString() + "metros";
 
     return question[index];
   }
