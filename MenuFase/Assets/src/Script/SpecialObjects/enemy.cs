@@ -48,7 +48,8 @@ public class enemy : MonoBehaviour
     tryAnswer--;
   }
 
-  public void HideEnemy(){
+  public void HideEnemy()
+  {
     tryAnswer = 3;
     agent.SetDestination(initialPosition);
   }

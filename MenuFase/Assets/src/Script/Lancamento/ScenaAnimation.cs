@@ -18,9 +18,9 @@ public class ScenaAnimation : MonoBehaviour
 
   void Start()
   {
+    question = gameObject.AddComponent<Question>();
     tutorial = FindObjectOfType<Tutorial>();
     teleporter = FindObjectOfType<TeleporterPosition>();
-    question = FindObjectOfType<Question>();
     robot = FindObjectOfType<robotAnimation>();
   }
 
@@ -30,8 +30,8 @@ public class ScenaAnimation : MonoBehaviour
   }
 
   public void ChangeQuestion()
-  {
-    question.UpadateRobotSetence();
+  { 
+    question.ReturnDialog();
     ChangeTeleporterPosition();
   }
 

@@ -7,22 +7,23 @@ public class Question : MonoBehaviour
   public float distaceDelta;
   float velocityX, velocityY, time, maxHeight, velocity, angle;
 
-  CSVfile csvfile = new CSVfile();
+  CSVfile csvfile;
   
-  void Start()
+  void Awake()
   {
-    UpadateRobotSetence();
+    csvfile = gameObject.AddComponent<CSVfile>();
+    ReturnDialog();
   }
 
-  public void UpadateRobotSetence()
+  public void ReturnDialog()
   {
     MakeDataQuestion();
-
+    
     dialog robotDialog = FindObjectOfType<dialog>();
 
     if (robotDialog)
     {
-      robotDialog.setences = GetSetences();
+      robotDialog.setences = GetDialog();
     }
   }
 
@@ -47,18 +48,18 @@ public class Question : MonoBehaviour
     Debug.Log("Angulo: " + angle + " Velocidade: " + velocity);
   }
 
-  string[] GetSetences()
+  string[] GetDialog()
   {
     List<string> setencas = new List<string>();
 
     string path = "./Text/lancamento_vertical_dialog.csv";
     setencas = csvfile.ReadCSVFile(path);
-    setencas.Add(returnQuestion());
+    setencas.Add(GetExample());
 
     return setencas.ToArray();
   }
 
-  string returnQuestion()
+  string GetExample()
   {
 
     string path = "./Text/lancamento_exemple.csv";
