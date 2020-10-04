@@ -6,82 +6,58 @@ using UnityEngine.UI;
 public class Tutorial : MonoBehaviour
 {
   public GameObject arrow;
-  public GameObject[] objectsCena;
+
+  public GameObject menuButton, startButton, restoreButton, nextButton, velocitySlider, cameraSlider, angleSlider;
 
   dialog robotDialog;
 
   public int index;
-  int veloIndex, angleIndex, cameraIndex;
-  int secondMenuIndex, firstMenuIndex;
-  int startIndex, restoreIndex, nextIndex;
-
   public bool isTutorial = false;
 
   void Start()
   {
     robotDialog = FindObjectOfType<dialog>();
-
     arrow.SetActive(false);
-
-    index = 0;
-    firstMenuIndex = 0;
-    cameraIndex = 1;
-    angleIndex = 2;
-    veloIndex = 3;
-    startIndex = 4;
-    secondMenuIndex = 5;
-    restoreIndex = 6;
-    nextIndex = 7;
   }
 
   public void StartTutorial()
   {
     isTutorial = true;
-    index = 0;
+    index = -1;
     arrow.SetActive(true);
   }
 
   void Update()
   {
-
-    if (isTutorial || index == nextIndex)
+    if (isTutorial)
     {
-      PositionArrowObjectInCena();
+      if (index == -1)
+      {
+        Button button = menuButton.GetComponent<Button>();
+        button.onClick.AddListener(delegate { this.FirstPressButtonMenu(); });
 
-      if (index == cameraIndex)
+        PositionArrowObjectInCena(menuButton, 0.90f);
+        index++;
+      }
+      else if (index == 1)
       {
         SliderCameraAvaliable();
       }
-      else if (index == angleIndex)
+      else if (index == 2)
       {
         SliderAngleAvaliable();
       }
-      else if (index == veloIndex)
+      else if (index == 3)
       {
         SliderVelocityAvaliable();
       }
     }
   }
 
-  void PositionArrowObjectInCena()
+  void PositionArrowObjectInCena(GameObject gameObject, float corretionFacto)
   {
-    RectTransform transform = objectsCena[index].GetComponent<RectTransform>();
+    RectTransform transform = gameObject.GetComponent<RectTransform>();
     RectTransform arrowTransform = arrow.GetComponent<RectTransform>();
-
-    float corretionFacto = 0.76f; // tive que usar o fator de coreçao devido aos componentes não estarem em posição diferente
-
-    if (index == firstMenuIndex || index == secondMenuIndex)
-    {
-      corretionFacto = 0.90f;
-    }
-    else if (index == restoreIndex)
-    {
-      corretionFacto = 0.85f;
-    }
-    else if (index == nextIndex)
-    {
-      corretionFacto = 0.92f;
-    }
 
     arrowTransform.position = new Vector3(
       transform.position.x * corretionFacto,
@@ -90,68 +66,99 @@ public class Tutorial : MonoBehaviour
     );
   }
 
-  void SliderVelocityAvaliable()
+  public void FirstPressButtonMenu()
   {
-    Slider velocity = objectsCena[index].GetComponent<Slider>();
+    Button button = menuButton.GetComponent<Button>();
+    button.onClick.RemoveListener(delegate { this.FirstPressButtonMenu(); });
 
-    if (velocity.value > 5)
+    index++;
+    robotDialog.StopTalk();
+
+    PositionArrowObjectInCena(cameraSlider, 0.76f);
+  }
+
+  void SliderCameraAvaliable()
+  {
+    Slider camera = cameraSlider.GetComponent<Slider>();
+
+    if (camera.value >= 1)
     {
       index++;
+      PositionArrowObjectInCena(angleSlider, 0.76f);
     }
   }
 
   void SliderAngleAvaliable()
   {
-    Slider angle = objectsCena[index].GetComponent<Slider>();
+    Slider angle = angleSlider.GetComponent<Slider>();
 
     if (angle.value > 5)
     {
       index++;
+      PositionArrowObjectInCena(velocitySlider, 0.76f);
     }
   }
 
-  void SliderCameraAvaliable()
+  void SliderVelocityAvaliable()
   {
-    Slider camera = objectsCena[index].GetComponent<Slider>();
+    Slider velocity = velocitySlider.GetComponent<Slider>();
 
-    if (camera.value >= 1)
+    if (velocity.value > 5)
     {
       index++;
-    }
-  }
+      Button button = startButton.GetComponent<Button>();
+      button.onClick.AddListener(delegate { this.PressButtonStart(); });
 
-  public void PressButtonMenu()
-  {
-    if ((index == firstMenuIndex || index == secondMenuIndex) && isTutorial)
-    {
-      index++;
-      robotDialog.StopTalk();
+      PositionArrowObjectInCena(startButton, 0.76f);
     }
   }
 
   public void PressButtonStart()
   {
-    if (index == startIndex)
-    {
-      index++;
-    }
+    Button button = startButton.GetComponent<Button>();
+    button.onClick.RemoveListener(delegate { this.PressButtonStart(); });
+
+    index++;
+
+    button = menuButton.GetComponent<Button>();
+    button.onClick.AddListener(delegate { this.SecondPressButtonMenu(); });
+
+    PositionArrowObjectInCena(menuButton, 0.90f);
+  }
+
+  void SecondPressButtonMenu()
+  {
+    Button button = menuButton.GetComponent<Button>();
+    button.onClick.RemoveListener(delegate { this.SecondPressButtonMenu(); });
+
+    index++;
+
+    button = restoreButton.GetComponent<Button>();
+    button.onClick.AddListener(delegate { this.PressButtonRestore(); });
+
+    PositionArrowObjectInCena(restoreButton, 0.85f);
   }
 
   public void PressButtonRestore()
   {
-    if (index == restoreIndex)
-    {
-      isTutorial = false;
-      robotDialog.Talk();
-      index++;
-    }
+    Button button = restoreButton.GetComponent<Button>();
+    button.onClick.RemoveListener(delegate { this.PressButtonRestore(); });
+
+    isTutorial = false;
+    robotDialog.Talk();
+    index++;
+
+    button = nextButton.GetComponent<Button>();
+    button.onClick.AddListener(delegate { this.PressNextIndex(); });
+
+    PositionArrowObjectInCena(nextButton, 0.92f);
   }
 
   public void PressNextIndex()
   {
-    if (index == nextIndex)
-    {
-      arrow.SetActive(false);
-    }
+    Button button = nextButton.GetComponent<Button>();
+    button.onClick.RemoveListener(delegate { this.PressNextIndex(); });
+
+    arrow.SetActive(false);
   }
 }

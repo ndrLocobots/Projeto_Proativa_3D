@@ -49,8 +49,6 @@ public class QuestionAnimation : MonoBehaviour
     {
       int index = robotDialog.NextSentence();
       SetAnimation(index);
-
-      isQuestion = true;
     }
   }
 
@@ -68,9 +66,10 @@ public class QuestionAnimation : MonoBehaviour
     {
       scenaAnimation.StartTutorial();
     }
-    else if (index == questionIndex)
+    else if (index == questionIndex && !isQuestion)
     {
       hearts.updateOpacityHearts(1);
+      isQuestion = true;
     }
   }
 
@@ -81,7 +80,7 @@ public class QuestionAnimation : MonoBehaviour
 
       Vector3 distaceDelta = altar.position - transform.position;
 
-      if (distaceDelta.magnitude < 10)
+      if (distaceDelta.magnitude < 5)
       {
         CorrectAnswer();
       }

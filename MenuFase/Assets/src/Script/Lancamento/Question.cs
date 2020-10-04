@@ -12,10 +12,10 @@ public class Question : MonoBehaviour
   void Awake()
   {
     csvfile = gameObject.AddComponent<CSVfile>();
-    ReturnDialog();
+    SetRobotDialog();
   }
 
-  public void ReturnDialog()
+  public void SetRobotDialog()
   {
     MakeDataQuestion();
     

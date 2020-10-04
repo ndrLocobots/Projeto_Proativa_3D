@@ -15,19 +15,12 @@ public class heart : MonoBehaviour
   }
 
   public void loseHeart()
-  {
-    if (index >= hearts.Length)
-    {
-      index = 0;
-    }
-    
+  { 
     var tempColor = hearts[index].color;
     tempColor.r = 0;
 
     hearts[index].color = tempColor;
     index++;
-
-
   }
 
   public void updateOpacityHearts(float opacity)
@@ -43,5 +36,7 @@ public class heart : MonoBehaviour
 
       heart.color = tempColor;
     }
+
+    index = 0;
   }
 }

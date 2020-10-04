@@ -31,7 +31,7 @@ public class ScenaAnimation : MonoBehaviour
 
   public void ChangeQuestion()
   { 
-    question.ReturnDialog();
+    question.SetRobotDialog();
     ChangeTeleporterPosition();
   }
 
