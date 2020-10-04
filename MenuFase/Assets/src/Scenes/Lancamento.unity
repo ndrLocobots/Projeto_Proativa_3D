@@ -1008,7 +1008,7 @@ PrefabInstance:
     - target: {fileID: 2658163570638780864, guid: 4330ec7b29a8115f8bbb81b304419d0f,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2658163570638780864, guid: 4330ec7b29a8115f8bbb81b304419d0f,
         type: 3}
@@ -2672,15 +2672,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   arrow: {fileID: 655116043}
-  objectsCena:
-  - {fileID: 745881330}
-  - {fileID: 1972401611}
-  - {fileID: 1812119325}
-  - {fileID: 162924057}
-  - {fileID: 1040661516}
-  - {fileID: 745881330}
-  - {fileID: 87296871}
-  - {fileID: 2127841713}
+  menuButton: {fileID: 745881330}
+  startButton: {fileID: 1040661516}
+  restoreButton: {fileID: 87296871}
+  nextButton: {fileID: 2127841713}
+  velocitySlider: {fileID: 162924057}
+  cameraSlider: {fileID: 1972401611}
+  angleSlider: {fileID: 1812119325}
   index: 0
   isTutorial: 0
 --- !u!1 &837626362
@@ -4087,7 +4085,7 @@ GameObject:
   - component: {fileID: 1208532989}
   - component: {fileID: 1208532988}
   m_Layer: 5
-  m_Name: Panel
+  m_Name: Hearts
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -8428,7 +8426,7 @@ PrefabInstance:
     - target: {fileID: 2012545462586117320, guid: 844b74e1392e741af8bd6ed52d77c345,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 2012545462586117320, guid: 844b74e1392e741af8bd6ed52d77c345,
         type: 3}
@@ -8553,7 +8551,7 @@ PrefabInstance:
     - target: {fileID: 2012545462638157743, guid: 844b74e1392e741af8bd6ed52d77c345,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
-      value: 4
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 2012545462638157743, guid: 844b74e1392e741af8bd6ed52d77c345,
         type: 3}
@@ -8574,11 +8572,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_Target
       value: 
-      objectReference: {fileID: 826575378}
+      objectReference: {fileID: 967874927}
     - target: {fileID: 2012545462638157743, guid: 844b74e1392e741af8bd6ed52d77c345,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_MethodName
-      value: PressButtonRestore
+      value: TalkWithBubble
       objectReference: {fileID: 0}
     - target: {fileID: 2012545462638157743, guid: 844b74e1392e741af8bd6ed52d77c345,
         type: 3}
