@@ -36,6 +36,7 @@ public class CuboLan : MonoBehaviour
 
   public void ClickRestore(bool b)
   {
+    this.gameObject.SetActive(true);
     body.velocity = new Vector3(0, 0, 0);
     body.position = startingPosition;
     isJumper = isEnemy =false;

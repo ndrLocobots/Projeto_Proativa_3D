@@ -7,6 +7,7 @@ using UnityEngine.UI;
 public class QuestionAnimation : MonoBehaviour
 {
   public Transform altar;
+  public Altar alt;
 
   public GameObject cam;
   public GameObject cube;
@@ -93,6 +94,7 @@ public class QuestionAnimation : MonoBehaviour
 
   void CorrectAnswer()
   {
+    alt.setAtingido();
     scenaAnimation.HideEnemy();
     StartCoroutine(scenaAnimation.ShowReactionOfRobot(true));
     StartCoroutine(ActiveAnimationToWin());

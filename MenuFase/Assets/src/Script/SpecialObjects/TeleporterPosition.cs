@@ -9,7 +9,7 @@ public class TeleporterPosition : MonoBehaviour
   void Start()
   {
     directionVector = new Vector3(1,0,0);
-    
+
     startPoint = transform.position;
     startPoint.x = referencePoint.position.x;
   }
