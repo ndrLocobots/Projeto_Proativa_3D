@@ -12,9 +12,13 @@ public class CuboLan : MonoBehaviour
 
   bool isJumper, isEnemy;
 
+  private Altar altar;
+
   void Start()
   {
     script = GetComponent<ScreenResults>();
+
+    altar = FindObjectOfType<Altar>();
 
     body = GetComponent<Rigidbody>();
     body.freezeRotation = true;
@@ -62,6 +66,15 @@ public class CuboLan : MonoBehaviour
       GetComponent<QuestionAnimation>().isQuestionRight();
     }
 
+  }
+
+  //Detecta se o cubo entrou dentro da area de sucesso do altar (TriggerColisao)
+  private void OnTriggerEnter(Collider col)
+  {
+    if(col.gameObject.tag == "Altar")
+    {
+      altar.setAtingido(true);
+    }
   }
 
 }
