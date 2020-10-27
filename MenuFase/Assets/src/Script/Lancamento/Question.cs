@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+using System.Linq;
 public class Question : MonoBehaviour
 {
   public float distaceDelta;
@@ -49,11 +50,10 @@ public class Question : MonoBehaviour
   }
 
   string[] GetDialog()
-  {
+  {    
     List<string> setencas = new List<string>();
+    setencas = csvfile.ReadCSVFile("lancamento_vertical_dialog");
 
-    string path = "./Text/lancamento_vertical_dialog.csv";
-    setencas = csvfile.ReadCSVFile(path);
     setencas.Add(GetExample());
 
     return setencas.ToArray();
@@ -61,9 +61,8 @@ public class Question : MonoBehaviour
 
   string GetExample()
   {
-
-    string path = "./Text/lancamento_exemple.csv";
-    List<string> allquestion = csvfile.ReadCSVFile(path);
+    
+    List<string> allquestion = csvfile.ReadCSVFile("lancamento_exemple");
     int indice = Random.Range(0, allquestion.Count - 1);
 
     string question = allquestion[indice];
