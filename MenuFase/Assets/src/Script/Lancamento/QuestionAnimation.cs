@@ -20,6 +20,8 @@ public class QuestionAnimation : MonoBehaviour
 
   dialog robotDialog;
 
+  private Altar tele;
+
   int showAltarIndex = 5;
   int changeAltarIndex = 6;
   int showCameraIndex = 1;
@@ -31,6 +33,7 @@ public class QuestionAnimation : MonoBehaviour
     scenaAnimation = FindObjectOfType<ScenaAnimation>();
     robotDialog = FindObjectOfType<dialog>();
     hearts = FindObjectOfType<heart>();
+    tele = FindObjectOfType<Altar>();
 
     isQuestion = false;
   }
@@ -96,6 +99,8 @@ public class QuestionAnimation : MonoBehaviour
     scenaAnimation.HideEnemy();
     StartCoroutine(scenaAnimation.ShowReactionOfRobot(true));
     StartCoroutine(ActiveAnimationToWin());
+    //Deixa a variavel resposta correta do altar como verdadeira para ativar a animacao de sucessos
+    tele.setaRespostaCorreta(true);
   }
 
   void WrongAnswer()
