@@ -13,6 +13,8 @@ public class CuboLan : MonoBehaviour
   bool isJumper, isEnemy;
 
   private Altar altar;
+  private Tutorial tutorial;
+  private BotaoStart botaoStart;
 
   void Start()
   {
@@ -21,6 +23,11 @@ public class CuboLan : MonoBehaviour
     altar = FindObjectOfType<Altar>();
 
     body = GetComponent<Rigidbody>();
+
+    tutorial = FindObjectOfType<Tutorial>();
+
+    botaoStart = FindObjectOfType<BotaoStart>();
+
     body.freezeRotation = true;
 
     isJumper = isEnemy = false;
@@ -33,8 +40,23 @@ public class CuboLan : MonoBehaviour
   {
     if (body.velocity.magnitude == 0 && !isJumper)
     {
-      body.velocity = script.SetUserVelocity();
-      isJumper = isEnemy =true;
+      if(!tutorial.isTutorial)
+      {
+        if(botaoStart.getPrimeiroExercicio())
+        {
+          botaoStart.exibeConfirmacao();
+        }
+        else
+        {
+          body.velocity = script.SetUserVelocity();
+          isJumper = isEnemy = true;
+        }
+      }
+      else
+      {
+        body.velocity = script.SetUserVelocity();
+        isJumper = isEnemy = true;
+      }
     }
   }
 

@@ -22,6 +22,7 @@ public class QuestionAnimation : MonoBehaviour
 
   private Altar tele;
 
+  int index;
   int showAltarIndex = 5;
   int changeAltarIndex = 6;
   int showCameraIndex = 1;
@@ -50,7 +51,7 @@ public class QuestionAnimation : MonoBehaviour
   {
     if (!tutorial.isTutorial)
     {
-      int index = robotDialog.NextSentence();
+      index = robotDialog.NextSentence();
       SetAnimation(index);
     }
   }
@@ -153,6 +154,16 @@ public class QuestionAnimation : MonoBehaviour
 
     cube.GetComponent<CuboLan>().ClickRestore(true);
     hearts.updateOpacityHearts(0);
+  }
+
+  public void setIndex(int value)
+  {
+    this.index = value;
+  }
+
+  public int getIndex()
+  {
+    return this.index;
   }
 
 }
