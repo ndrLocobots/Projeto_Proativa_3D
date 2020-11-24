@@ -150,7 +150,7 @@ public class Tutorial : MonoBehaviour
 
     button = nextButton.GetComponent<Button>();
     button.onClick.AddListener(delegate { this.PressNextIndex(); });
-
+    robotDialog.Skip();
     PositionArrowObjectInCena(nextButton, 0.92f);
   }
 
@@ -158,7 +158,8 @@ public class Tutorial : MonoBehaviour
   {
     Button button = nextButton.GetComponent<Button>();
     button.onClick.RemoveListener(delegate { this.PressNextIndex(); });
-
+    
     arrow.SetActive(false);
+    isTutorial = false;
   }
 }
