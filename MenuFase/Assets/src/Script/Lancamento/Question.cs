@@ -6,9 +6,11 @@ using System.Linq;
 public class Question : MonoBehaviour
 {
   public float distaceDelta;
-  float velocityX, velocityY, time, maxHeight, velocity, angle;
 
-  CSVfile csvfile;
+  private float velocityX, velocityY, velocity;
+  private float time, maxHeight, angle;
+
+  private CSVfile csvfile;
   
   void Awake()
   {
@@ -75,7 +77,5 @@ public class Question : MonoBehaviour
     .Replace("{th}", (time/2).ToString("0.00"))
     .Replace("{a}", (angle).ToString("0.00"))
     ;
-
-    
   }
 }

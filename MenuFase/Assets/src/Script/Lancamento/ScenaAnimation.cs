@@ -6,25 +6,20 @@ using UnityEngine.Playables;
 public class ScenaAnimation : MonoBehaviour
 {
   public PlayableDirector cameraAnimation, enemyAnimation;
-  private Altar altar;
-
-  Tutorial tutorial;
-  Question question;
-
-  robotAnimation robot;
   public GameObject robotSelfCam;
-
-  TeleporterPosition teleporter;
   public GameObject inimigo;
 
+  private Tutorial tutorial;
+  private Question question;
+  private robotAnimation robot;
+  private Teleporter teleporter;
 
   void Start()
   {
     question = gameObject.AddComponent<Question>();
     tutorial = FindObjectOfType<Tutorial>();
-    teleporter = FindObjectOfType<TeleporterPosition>();
+    teleporter = FindObjectOfType<Teleporter>();
     robot = FindObjectOfType<robotAnimation>();
-    altar = FindObjectOfType<Altar>();
   }
 
   public void AnimatorCamera()
@@ -41,7 +36,7 @@ public class ScenaAnimation : MonoBehaviour
   public void ChangeTeleporterPosition()
   {
     teleporter.ChangeTeleporterPosition(question.distaceDelta);
-    altar.ativaIdle();
+    teleporter.ativaIdle();
   }
 
   public void StartTutorial()
@@ -88,12 +83,10 @@ public class ScenaAnimation : MonoBehaviour
     if (reaction)
     {
       robot.RobotHappy();
-
     }
     else
     {
       robot.RobotSad();
-
     }
 
     yield return new WaitForSeconds(5);

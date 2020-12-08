@@ -6,27 +6,26 @@ using UnityEngine.UI;
 
 public class QuestionAnimation : MonoBehaviour
 {
-  public Transform altar;
+  private Transform altar;
+  private bool isQuestion;
+
+  private Tutorial tutorial;
+  private ScenaAnimation scenaAnimation;
+  private heart hearts;
+  private dialog robotDialog;
+
+  private Teleporter tele;
+
+  private int attemptsNum = 3;
+
+  private int index;
+  private int showAltarIndex = 5;
+  private int changeAltarIndex = 6;
+  private int showCameraIndex = 1;
+  private int questionIndex = 8;
 
   public GameObject cam;
   public GameObject cube;
-
-  bool isQuestion;
-  int tryNumber = 3;
-
-  Tutorial tutorial;
-  ScenaAnimation scenaAnimation;
-  heart hearts;
-
-  dialog robotDialog;
-
-  private Altar tele;
-
-  int index;
-  int showAltarIndex = 5;
-  int changeAltarIndex = 6;
-  int showCameraIndex = 1;
-  int questionIndex = 8;
 
   void Start()
   {
@@ -34,7 +33,9 @@ public class QuestionAnimation : MonoBehaviour
     scenaAnimation = FindObjectOfType<ScenaAnimation>();
     robotDialog = FindObjectOfType<dialog>();
     hearts = FindObjectOfType<heart>();
-    tele = FindObjectOfType<Altar>();
+    tele = FindObjectOfType<Teleporter>();
+
+    altar = tele.gameObject.transform;
 
     isQuestion = false;
   }
@@ -99,9 +100,8 @@ public class QuestionAnimation : MonoBehaviour
   {
     scenaAnimation.HideEnemy();
     StartCoroutine(scenaAnimation.ShowReactionOfRobot(true));
-    StartCoroutine(ActiveAnimationToWin());
-    //Deixa a variavel resposta correta do altar como verdadeira para ativar a animacao de sucessos
-    tele.setaRespostaCorreta(true);
+    StartCoroutine(ActiveWinAnimation());
+    tele.setAtingido(true);
   }
 
   void WrongAnswer()
@@ -109,47 +109,51 @@ public class QuestionAnimation : MonoBehaviour
     scenaAnimation.ActiveEnemy();
     StartCoroutine(scenaAnimation.ShowReactionOfRobot(false));
     robotDialog.SetSadBubble();
-    UpdateTryNumber();
+    ReduceAttemptsNumber();
   }
 
-  void UpdateTryNumber()
+  void ReduceAttemptsNumber()
   {
-    tryNumber--;
+    attemptsNum--;
     hearts.loseHeart();
 
-    if (tryNumber == 0)
+    if (attemptsNum == 0)
     {
-      StartCoroutine(ActiveAnimationToLose());
+      StartCoroutine(ActiveLoseAnimation());
     }
   }
 
-  IEnumerator ActiveAnimationToLose()
+  IEnumerator ActiveLoseAnimation()
   {
     cube.GetComponent<CuboLan>().AnimationConfig();
     yield return new WaitForSeconds(scenaAnimation.AnimationToLose());
     scenaAnimation.HideEnemy();
 
-    cam.GetComponent<position>().SliderAux(0);
-    ReestoreCena();
+    position camera = cam.GetComponent<position>();
+    camera.SliderAux(camera.getSliderOption());
+
+    RestoreCena();
     robotDialog.ActivateBubbleSignal();
   }
 
-  IEnumerator ActiveAnimationToWin()
+  IEnumerator ActiveWinAnimation()
   {
     cube.GetComponent<CuboLan>().AnimationConfig();
 
     yield return new WaitForSeconds(scenaAnimation.AnimationToWin());
-    cam.GetComponent<position>().SliderAux(0);
 
-    ReestoreCena();
+    position camera = cam.GetComponent<position>();
+    camera.SliderAux(camera.getSliderOption());
+
+    RestoreCena();
 
     robotDialog.ActivateBubbleOtherQuestion();
     scenaAnimation.ChangeQuestion();
   }
 
-  void ReestoreCena()
+  void RestoreCena()
   {
-    tryNumber = 3;
+    attemptsNum = 3;
     isQuestion = false;
 
     cube.GetComponent<CuboLan>().ClickRestore(true);
@@ -165,5 +169,4 @@ public class QuestionAnimation : MonoBehaviour
   {
     return this.index;
   }
-
 }

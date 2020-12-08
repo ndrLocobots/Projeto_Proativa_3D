@@ -6,13 +6,13 @@ using UnityEngine.UI;
 public class Tutorial : MonoBehaviour
 {
   public GameObject arrow;
-
-  public GameObject menuButton, startButton, restoreButton, nextButton, velocitySlider, cameraSlider, angleSlider;
-
-  dialog robotDialog;
+  public GameObject menuButton, startButton, restoreButton, nextButton;
+  public GameObject velocitySlider, cameraSlider, angleSlider;
 
   public int index;
   public bool isTutorial = false;
+
+  private dialog robotDialog;
 
   void Start()
   {
@@ -36,11 +36,19 @@ public class Tutorial : MonoBehaviour
         Button button = menuButton.GetComponent<Button>();
         button.onClick.AddListener(delegate { this.FirstPressButtonMenu(); });
 
-        PositionArrowObjectInCena(menuButton, 0.90f);
+        UpdateArrowPosition(menuButton, 0.90f);
         index++;
       }
       else if (index == 1)
       {
+        Button button1 = menuButton.GetComponent<Button>();
+        Button button2 = startButton.GetComponent<Button>();
+        Button button3 = restoreButton.GetComponent<Button>();
+
+        button1.interactable = false;
+        button2.interactable = false;
+        button3.interactable = false;
+
         SliderCameraAvaliable();
       }
       else if (index == 2)
@@ -54,13 +62,13 @@ public class Tutorial : MonoBehaviour
     }
   }
 
-  void PositionArrowObjectInCena(GameObject gameObject, float corretionFacto)
+  void UpdateArrowPosition(GameObject gameObject, float corretionFactor)
   {
     RectTransform transform = gameObject.GetComponent<RectTransform>();
     RectTransform arrowTransform = arrow.GetComponent<RectTransform>();
 
     arrowTransform.position = new Vector3(
-      transform.position.x * corretionFacto,
+      transform.position.x * corretionFactor,
       transform.position.y,
       transform.position.z
     );
@@ -74,42 +82,59 @@ public class Tutorial : MonoBehaviour
     index++;
     robotDialog.StopTalk();
 
-    PositionArrowObjectInCena(cameraSlider, 0.76f);
+    UpdateArrowPosition(cameraSlider, 0.76f);
   }
 
   void SliderCameraAvaliable()
   {
-    Slider camera = cameraSlider.GetComponent<Slider>();
+    Slider vSlider = velocitySlider.GetComponent<Slider>();
+    Slider aSlider = angleSlider.GetComponent<Slider>();
+    Slider cSlider = cameraSlider.GetComponent<Slider>();
 
-    if (camera.value >= 1)
+    vSlider.interactable = false;
+    aSlider.interactable = false;
+
+
+    if (cSlider.value >= 1)
     {
       index++;
-      PositionArrowObjectInCena(angleSlider, 0.76f);
+      UpdateArrowPosition(angleSlider, 0.76f);
     }
   }
 
   void SliderAngleAvaliable()
   {
-    Slider angle = angleSlider.GetComponent<Slider>();
+    Slider aSlider = angleSlider.GetComponent<Slider>();
 
-    if (angle.value > 5)
+    aSlider.interactable = true;
+
+    if (aSlider.value > 5)
     {
       index++;
-      PositionArrowObjectInCena(velocitySlider, 0.76f);
+      UpdateArrowPosition(velocitySlider, 0.76f);
     }
   }
 
   void SliderVelocityAvaliable()
   {
     Slider velocity = velocitySlider.GetComponent<Slider>();
+    velocity.interactable = true;
 
     if (velocity.value > 5)
     {
       index++;
-      Button button = startButton.GetComponent<Button>();
-      button.onClick.AddListener(delegate { this.PressButtonStart(); });
 
-      PositionArrowObjectInCena(startButton, 0.76f);
+      Button button1 = startButton.GetComponent<Button>();
+      Button button2 = menuButton.GetComponent<Button>();
+      Button button3 = startButton.GetComponent<Button>();
+      Button button4 = restoreButton.GetComponent<Button>();
+
+      button1.onClick.AddListener(delegate { this.PressButtonStart(); });
+
+      UpdateArrowPosition(startButton, 0.76f);
+      button2.interactable = true;
+      button3.interactable = true;
+      button4.interactable = true;
     }
   }
 
@@ -123,7 +148,7 @@ public class Tutorial : MonoBehaviour
     button = menuButton.GetComponent<Button>();
     button.onClick.AddListener(delegate { this.SecondPressButtonMenu(); });
 
-    PositionArrowObjectInCena(menuButton, 0.90f);
+    UpdateArrowPosition(menuButton, 0.90f);
   }
 
   void SecondPressButtonMenu()
@@ -136,7 +161,7 @@ public class Tutorial : MonoBehaviour
     button = restoreButton.GetComponent<Button>();
     button.onClick.AddListener(delegate { this.PressButtonRestore(); });
 
-    PositionArrowObjectInCena(restoreButton, 0.85f);
+    UpdateArrowPosition(restoreButton, 0.85f);
   }
 
   public void PressButtonRestore()
@@ -151,7 +176,7 @@ public class Tutorial : MonoBehaviour
     button = nextButton.GetComponent<Button>();
     button.onClick.AddListener(delegate { this.PressNextIndex(); });
     robotDialog.Skip();
-    PositionArrowObjectInCena(nextButton, 0.92f);
+    UpdateArrowPosition(nextButton, 0.92f);
   }
 
   public void PressNextIndex()

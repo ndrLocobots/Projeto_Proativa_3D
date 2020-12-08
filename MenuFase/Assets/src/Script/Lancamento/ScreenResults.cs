@@ -5,13 +5,12 @@ using UnityEngine.UI;
 
 public class ScreenResults : MonoBehaviour
 {
-  Vector3 userVelocity;
-
   public Text Ttime, TmaxHigh, TdeltaX;
   public Text Tangle, Tvelocity;
 
-  float totalTimer, maxHeight, DeltaX;
-  float velocity, angle;
+  private Vector3 userVelocity;
+  private float totalTimer, maxHeight, DeltaX;
+  private float velocity, angle;
 
   public void SetVelocity(float velocity){
     this.velocity = velocity;

@@ -3,32 +3,32 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class BotaoStart : MonoBehaviour
+public class StartEMenu : MonoBehaviour
 {
     private bool primeiroExercicio;
-    private Button botaoStart;
 
-    public GameObject confirm;
-
+    public Button botaoStart, botaoMenu;
+    public GameObject confirmacao;
+    
     void Start()
     {
         primeiroExercicio = true;
-        botaoStart = GetComponent<Button>();
         botaoStart.interactable = false;
+        botaoMenu.interactable = false;
     }
 
-    public void exibeConfirmacao()
+    public void ExibeConfirmacao()
     {
         if(primeiroExercicio)
         {
-            confirm.SetActive(true);
+            confirmacao.SetActive(true);
             primeiroExercicio = false;
         }
     }
 
-    public void finalizaConfirmacao()
+    public void FinalizaConfirmacao()
     {
-        confirm.SetActive(false);
+        confirmacao.SetActive(false);
     }
 
     public bool getPrimeiroExercicio()

@@ -5,56 +5,52 @@ using UnityEngine.UI;
 
 public class CuboLan : MonoBehaviour
 {
-  Rigidbody body;
-  public GameObject panel;
-  ScreenResults script;
-  Vector3 startingPosition;
+  public GameObject painelResultados;
 
-  bool isJumper, isEnemy;
+  private Rigidbody bodyCubo;
+  private ScreenResults calculaResultados;
+  private Vector3 startingPosition;
 
-  private Altar altar;
+  private bool isJumper, isEnemy;
+  private Teleporter altar;
   private Tutorial tutorial;
-  private BotaoStart botaoStart;
+  private StartEMenu startEMenu;
 
   void Start()
   {
-    script = GetComponent<ScreenResults>();
-
-    altar = FindObjectOfType<Altar>();
-
-    body = GetComponent<Rigidbody>();
+    calculaResultados = GetComponent<ScreenResults>();
+    bodyCubo = GetComponent<Rigidbody>();
 
     tutorial = FindObjectOfType<Tutorial>();
+    altar = FindObjectOfType<Teleporter>();
+    startEMenu = FindObjectOfType<StartEMenu>();
 
-    botaoStart = FindObjectOfType<BotaoStart>();
-
-    body.freezeRotation = true;
-
+    bodyCubo.freezeRotation = true;
     isJumper = isEnemy = false;
 
-    startingPosition = body.position;
-    panel.SetActive(false);
+    startingPosition = bodyCubo.position;
+    painelResultados.SetActive(false);
   }
 
   public void ClickStart(bool b)
   {
-    if (body.velocity.magnitude == 0 && !isJumper)
+    if (bodyCubo.velocity.magnitude == 0 && !isJumper)
     {
       if(!tutorial.isTutorial)
       {
-        if(botaoStart.getPrimeiroExercicio())
+        if(startEMenu.getPrimeiroExercicio())
         {
-          botaoStart.exibeConfirmacao();
+          startEMenu.ExibeConfirmacao();
         }
         else
         {
-          body.velocity = script.SetUserVelocity();
+          bodyCubo.velocity = calculaResultados.SetUserVelocity();
           isJumper = isEnemy = true;
         }
       }
       else
       {
-        body.velocity = script.SetUserVelocity();
+        bodyCubo.velocity = calculaResultados.SetUserVelocity();
         isJumper = isEnemy = true;
       }
     }
@@ -63,14 +59,17 @@ public class CuboLan : MonoBehaviour
   public void ClickRestore(bool b)
   {
     this.gameObject.SetActive(true);
-    body.velocity = new Vector3(0, 0, 0);
-    body.position = startingPosition;
-    isJumper = isEnemy =false;
-    panel.SetActive(false);
+
+    bodyCubo.velocity = new Vector3(0, 0, 0);
+    bodyCubo.position = startingPosition;
+
+    isJumper = isEnemy = false;
+    painelResultados.SetActive(false);
   }
 
-  public void AnimationConfig(){
-    panel.SetActive(false);
+  public void AnimationConfig()
+  {
+    painelResultados.SetActive(false);
     isJumper = isEnemy = false;
   }
   
@@ -78,25 +77,16 @@ public class CuboLan : MonoBehaviour
   {
     if (isJumper)
     {
-      body.velocity = new Vector3(0, 0, 0);
-      script.SetOutputParam();
-      panel.SetActive(true);
-    }
+      bodyCubo.velocity = new Vector3(0, 0, 0);
 
-    if (isEnemy){
+      calculaResultados.SetOutputParam();
+      painelResultados.SetActive(true);
+    }
+    
+    if (isEnemy)
+    {
       isEnemy = false; 
       GetComponent<QuestionAnimation>().isQuestionRight();
     }
-
   }
-
-  //Detecta se o cubo entrou dentro da area de sucesso do altar (TriggerColisao)
-  private void OnTriggerEnter(Collider col)
-  {
-    if(col.gameObject.tag == "Altar")
-    {
-      altar.setAtingido(true);
-    }
-  }
-
 }

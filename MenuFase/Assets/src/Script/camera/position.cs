@@ -54,4 +54,9 @@ public class position : MonoBehaviour
         break;
     }
   }
+
+  public float getSliderOption()
+  {
+    return this.sliderOption;
+  }
 }
