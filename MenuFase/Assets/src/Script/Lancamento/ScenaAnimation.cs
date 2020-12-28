@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Playables;
+using UnityEngine.UI;
 
 public class ScenaAnimation : MonoBehaviour
 {
@@ -14,6 +15,7 @@ public class ScenaAnimation : MonoBehaviour
   private robotAnimation robot;
   private Teleporter teleporter;
 
+  public GameObject respostas;
   void Start()
   {
     question = gameObject.AddComponent<Question>();
@@ -22,13 +24,22 @@ public class ScenaAnimation : MonoBehaviour
     robot = FindObjectOfType<robotAnimation>();
   }
 
+  void FixedUpdate()
+  {
+    if (Input.GetKeyDown(KeyCode.H))
+    {
+      respostas.GetComponent<Text>().text = question.ReturnAnswer();
+      respostas.SetActive(!respostas.activeSelf);
+    }
+  }
+
   public void AnimatorCamera()
   {
     cameraAnimation.Play();
   }
 
   public void ChangeQuestion()
-  { 
+  {
     question.SetRobotDialog();
     ChangeTeleporterPosition();
   }

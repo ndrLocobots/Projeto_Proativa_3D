@@ -78,4 +78,9 @@ public class Question : MonoBehaviour
     .Replace("{a}", (angle).ToString("0.00"))
     ;
   }
+
+  public string ReturnAnswer(){
+    return "V = " + velocity.ToString("0.00") + "\n" +
+    "A = " + angle.ToString("0.00");
+  }
 }

@@ -12,7 +12,7 @@ public class dialog : MonoBehaviour
 
   public string[] setences;
   private int index = 0;
-  private float typingSpeed = 0.03f;
+  private float typingSpeed = 0.02f;
   public bool isTalk = false;
 
   void Start()
