@@ -5,13 +5,13 @@ using UnityEngine.UI;
 
 public class menuScript : MonoBehaviour
 {
-  bool active = true;
+  bool active = false;
   public GameObject[] screenComponents;
 
   public void UpdatePanel()
   {
-    gameObject.SetActive(active);
-    active = !active;
+    gameObject.SetActive(!gameObject.activeSelf);
+    active = !gameObject.activeSelf;
     updateOtherScreenComponents(active);
   }
 
