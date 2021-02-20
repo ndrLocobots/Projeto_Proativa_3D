@@ -7,19 +7,28 @@ public class Control : MonoBehaviour
   public Text Theight, Tenv;
   public GameObject menu;
 
+  QuedaAnimationControl animationControl;
   CuboQue cuboQue;
 
   void Start()
   {
     cuboQue = FindObjectOfType<CuboQue>();
+    animationControl = FindObjectOfType<QuedaAnimationControl>();
   }
 
-  public void StartButton(bool b)
+  public void StartButton()
   {
     cuboQue.isJump = true;
+    
+    float time = cuboQue.CalculateValue(
+      height.value,
+      (int)env.value
+    );
+    
+    animationControl.isQuestionRight(time);
   }
 
-  public void RestartButton(bool b)
+  public void RestartButton()
   {
     height.value = 0;
     env.value = 1;
@@ -27,13 +36,15 @@ public class Control : MonoBehaviour
     cuboQue.SetHeight(0);
     cuboQue.SetEnvironment(1);
 
-    cuboQue.Restart();
+    cuboQue.Restore();
   }
 
-  public void SetMenu(){
+  public void SetMenu()
+  {
     menu.SetActive(!menu.activeSelf);
 
-    if(menu.activeSelf){
+    if (menu.activeSelf)
+    {
       cuboQue.result.SetActive(false);
     }
   }

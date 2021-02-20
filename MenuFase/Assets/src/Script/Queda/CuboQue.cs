@@ -17,29 +17,17 @@ public class CuboQue : MonoBehaviour
 
   public bool isJump;
 
-  /*
-   * Formulas Usadas
-   * Tempo Total (TT) = vy/5
-   * Tempo Altura Máxima (TH) = vy/10
-   * DeltaX = Vx*TT
-   * Altura Maxima = y0 + (Vy*TH) - (5*TH^2)
-   */
+  public float[] gravities = new float[] { 20, 10, 3 };
 
   void Start()
   {
     body = GetComponent<Rigidbody>();
-    Restart();
+    Restore();
   }
 
   void FixedUpdate()
   {
-    if (body.transform.position.y > cubePosition.y)
-    {
-      result.SetActive(false);
-      timer = 0;
-    }
-
-    if (height != pastHigh &&!isJump)
+    if (height != pastHigh && !isJump)
     {
       body.position = new Vector3(
         body.position.x,
@@ -49,8 +37,8 @@ public class CuboQue : MonoBehaviour
 
       pastHigh = height;
     }
-    
-    if(isJump)
+
+    if (isJump)
     {
       Jump();
     }
@@ -60,22 +48,26 @@ public class CuboQue : MonoBehaviour
   {
     if (environment == 0)
     {
-      body.AddForce(Vector3.down * 20);
-      timer = Mathf.Sqrt(Mathf.Abs(height / 20));
+      body.AddForce(Vector3.down * gravities[0]);
+      timer = CalculateValue(height,0);
     }
     else if (environment == 1)
     {
-      body.AddForce(Vector3.down * 10);
-      timer = Mathf.Sqrt(Mathf.Abs(height / 10));
+      body.AddForce(Vector3.down * gravities[1]);
+      timer = CalculateValue(height,1);
     }
     else
     {
-      body.AddForce(Vector3.down * 3);
-      timer = Mathf.Sqrt(Mathf.Abs(height / 3));
+      body.AddForce(Vector3.down * gravities[2]);
+      timer = CalculateValue(height,2);
     }
   }
 
-  public void Restart()
+  public float CalculateValue(float height, int env){
+    return Mathf.Sqrt(height/gravities[env]);
+  }
+
+  public void Restore()
   {
     SetEnvironment(1);
     body.rotation = Quaternion.Euler(0, 90, 0);
@@ -99,15 +91,27 @@ public class CuboQue : MonoBehaviour
     switch (a)
     {
       case 0:
-        cubePosition = new Vector3(-262.4f, -6.69f, 94.7f);
+        cubePosition = new Vector3(
+          body.position.x,
+          body.position.y,
+          88.8f
+          );
         body.position = cubePosition;
         break;
       case 1:
-        cubePosition = new Vector3(-262.4f, -6.69f, -6f);
+        cubePosition = new Vector3(
+          body.position.x,
+          body.position.y,
+          -11.8f
+        );
         body.position = cubePosition;
         break;
       default:
-        cubePosition = new Vector3(-262.4f, -6.69f, -116.94f);
+        cubePosition = new Vector3(
+          body.position.x,
+          body.position.y,
+          -122.8f
+        );
         body.position = cubePosition;
         break;
     }
@@ -115,7 +119,6 @@ public class CuboQue : MonoBehaviour
 
   private void OnCollisionEnter(Collision collision)
   {
-    Debug.Log("Entrei");
     if (timer != 0)
     {
       result.SetActive(true);

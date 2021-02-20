@@ -53,4 +53,32 @@ public class enemy : MonoBehaviour
     tryAnswer = 3;
     agent.SetDestination(initialPosition);
   }
+
+  public void SetVelocity(float time, float z)
+  {
+    float velocity;
+
+    Rigidbody body = gameObject.GetComponent<Rigidbody>();
+    
+    if (time != 0)
+    {
+      velocity = (z - transform.position.z) / time;
+    }
+    else
+    {
+      velocity = 0;
+    }
+
+    body.velocity = Vector3.forward * velocity;
+  }
+
+  public void SetPosition(Vector3 position)
+  {
+    gameObject.transform.position = position;
+  }
+
+  public void RestorePosition()
+  {
+    gameObject.transform.position = initialPosition;
+  }
 }
