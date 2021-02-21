@@ -60,7 +60,7 @@ public class QuedaAnimationControl : MonoBehaviour
     {
       //cenaAnimation.AnimatorCamera();
     }
-    else if (index == questionIndex)
+    else if (index == questionIndex && !isQuestion)
     {
       hearts.updateOpacityHearts(1);
       isQuestion = true;
@@ -76,6 +76,7 @@ public class QuedaAnimationControl : MonoBehaviour
       if (userAnswer == answer)
       {
         CorrectAnswer();
+        question.SetRobotDialog();
       }
       else
       {
@@ -121,7 +122,7 @@ public class QuedaAnimationControl : MonoBehaviour
 
     if (attemptsNum == 0)
     {
-      //StartCoroutine(ActiveLoseAnimation());
+      StartCoroutine(ActiveLoseAnimation());
     }
     else
     {
@@ -129,29 +130,27 @@ public class QuedaAnimationControl : MonoBehaviour
     }
   }
 
+  IEnumerator ActiveLoseAnimation()
+  {
+    //yield return new WaitForSeconds(cenaAnimation.AnimationToLose());
+    //cenaAnimation.HideEnemy();
+    yield return new WaitForSeconds(3);
+
+    RestoreCena();
+    robotDialog.ActivateBubbleSignal();
+  }
+
   IEnumerator ActiveWrongAnimation(float time)
   {
     secondCamera.SetActive(true);
 
-    inimigo.SetVelocity(time, cube.transform.position.z-2f);
+    inimigo.SetVelocity(time, cube.transform.position.z - 2f);
     yield return new WaitForSeconds(time + 3);
 
     inimigo.RestorePosition();
     inimigo.SetVelocity(0, 0);
 
     secondCamera.SetActive(false);
-  }
-
-  IEnumerator ActiveLoseAnimation()
-  {
-    yield return new WaitForSeconds(cenaAnimation.AnimationToLose());
-    //cenaAnimation.HideEnemy();
-
-    position camera = secondCamera.GetComponent<position>();
-    camera.SliderAux(camera.getSliderOption());
-
-    RestoreCena();
-    robotDialog.ActivateBubbleSignal();
   }
 
   void RestoreCena()

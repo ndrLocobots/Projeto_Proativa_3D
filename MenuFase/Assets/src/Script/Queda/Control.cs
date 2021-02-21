@@ -58,7 +58,7 @@ public class Control : MonoBehaviour
   public void SetEnvironment(float a)
   {
     cuboQue.SetEnvironment(a);
-    height.value = 0;
+    SetHeight(0);
     Tenv.text = "Ambiente: " + a;
   }
 }

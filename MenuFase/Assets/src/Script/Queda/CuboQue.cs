@@ -13,6 +13,8 @@ public class CuboQue : MonoBehaviour
   Vector3 cubePosition;
 
   public GameObject result;
+
+  public GameObject city;
   public Text t;
 
   public bool isJump;
@@ -49,22 +51,23 @@ public class CuboQue : MonoBehaviour
     if (environment == 0)
     {
       body.AddForce(Vector3.down * gravities[0]);
-      timer = CalculateValue(height,0);
+      timer = CalculateValue(height, 0);
     }
     else if (environment == 1)
     {
       body.AddForce(Vector3.down * gravities[1]);
-      timer = CalculateValue(height,1);
+      timer = CalculateValue(height, 1);
     }
     else
     {
       body.AddForce(Vector3.down * gravities[2]);
-      timer = CalculateValue(height,2);
+      timer = CalculateValue(height, 2);
     }
   }
 
-  public float CalculateValue(float height, int env){
-    return Mathf.Sqrt(height/gravities[env]);
+  public float CalculateValue(float height, int env)
+  {
+    return Mathf.Sqrt(height / gravities[env]);
   }
 
   public void Restore()
@@ -113,6 +116,36 @@ public class CuboQue : MonoBehaviour
           -122.8f
         );
         body.position = cubePosition;
+        break;
+    }
+
+    ChangeCityPosition(a);
+  }
+
+  private void ChangeCityPosition(float a)
+  {
+    switch (a)
+    {
+      case 0:
+        city.transform.position = new Vector3(
+          33.77487f,
+          -12.85217f,
+          99.8f
+          );
+        break;
+      case 1:
+        city.transform.position = new Vector3(
+          33.77487f,
+          -12.85217f,
+          0
+        );
+        break;
+      default:
+        city.transform.position = new Vector3(
+          33.77487f,
+          -12.85217f,
+          -110.8f
+        );
         break;
     }
   }

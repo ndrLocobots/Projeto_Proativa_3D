@@ -38,8 +38,8 @@ public class QuestionQueda : MonoBehaviour
     float[] gravities = cubo.gravities;
     int index;
 
-    height = 10; //Random.Range(1, 90f);
-    index =  1;//Random.Range(0, gravities.Length);
+    height = (int)Random.Range(1, 50f);
+    index =  Random.Range(0, gravities.Length);
     gravity = gravities[index];
 
     time = Mathf.Sqrt(height / gravity);
