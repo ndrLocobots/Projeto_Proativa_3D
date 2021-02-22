@@ -512,7 +512,7 @@ LightingSettings:
   m_PrefabAsset: {fileID: 0}
   m_Name: Settings.lighting
   serializedVersion: 2
-  m_GIWorkflowMode: 0
+  m_GIWorkflowMode: 1
   m_EnableBakedLightmaps: 1
   m_EnableRealtimeLightmaps: 0
   m_RealtimeEnvironmentLighting: 1
@@ -6743,6 +6743,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1787417041}
     m_Modifications:
+    - target: {fileID: 2012545460715385695, guid: 844b74e1392e741af8bd6ed52d77c345,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -22.299805
+      objectReference: {fileID: 0}
     - target: {fileID: 2012545460744852670, guid: 844b74e1392e741af8bd6ed52d77c345,
         type: 3}
       propertyPath: m_AnchorMax.y
@@ -8274,6 +8279,26 @@ PrefabInstance:
     - target: {fileID: 5290703212927532630, guid: 750af05357c2aeae2acfdc969880b2c5,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8258457054823688881, guid: 750af05357c2aeae2acfdc969880b2c5,
+        type: 3}
+      propertyPath: m_ClearFlags
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8258457054823688881, guid: 750af05357c2aeae2acfdc969880b2c5,
+        type: 3}
+      propertyPath: m_BackGroundColor.r
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8258457054823688881, guid: 750af05357c2aeae2acfdc969880b2c5,
+        type: 3}
+      propertyPath: m_BackGroundColor.g
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8258457054823688881, guid: 750af05357c2aeae2acfdc969880b2c5,
+        type: 3}
+      propertyPath: m_BackGroundColor.b
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9166799219892603973, guid: 750af05357c2aeae2acfdc969880b2c5,
