@@ -15,13 +15,14 @@ public class Timer : MonoBehaviour
     public GameObject results;
 
     private float start;
-    private bool isStarted;
+    private bool isStarted, botaoApertado;
     string minutes;
     string seconds;
+    double ace, vel;
 
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerStay(Collider other)
     {
-        if (other.CompareTag("Start"))
+        if (other.CompareTag("Start") && botaoApertado)
         {
             isStarted = true;
 
@@ -32,6 +33,7 @@ public class Timer : MonoBehaviour
         if (other.CompareTag("End"))
         {
             isStarted = false;
+            botaoApertado = false;
 
             ShowResults();
         }
@@ -41,6 +43,7 @@ public class Timer : MonoBehaviour
     void Start()
     {
         start = Time.time;
+        botaoApertado = false;
     }
 
     void Update()
@@ -58,14 +61,22 @@ public class Timer : MonoBehaviour
 
     private void ShowResults()
     {
-        double ace = CalculaAceleracao(cs.GetAtrito(), cs.GetAngulo(), cs.GetMassa());
-        double vel = CalculaVelocidade(ace);
+        ace = CalculaAceleracao(cs.GetAtrito(), cs.GetAngulo(), cs.GetMassa());
+        vel = CalculaVelocidade(ace);
 
         a.text = "Aceleração: " + ace.ToString("f2") + " m/s²";
         v.text = "Velocidade: " + vel.ToString("f2") + " m/s";
         t.text = timerText.text;
 
         results.SetActive(true);
+    }
+
+    public void HideResults()
+    {
+        results.SetActive(false);
+
+        minutes = 0.ToString();
+        seconds = "0,00";
     }
 
     private double CalculaAceleracao(float atrito, float angulo, float massa)
@@ -93,8 +104,12 @@ public class Timer : MonoBehaviour
         resultado = Mathf.Sqrt(2 * (float)aceleracao * 3.8f);
 
         //Debug.Log("Vel: " + resultado);
-        //PS: Unity 3D Physics SUCKS!
 
         return resultado;
+    }
+
+    public void SetBotaoApertado(bool valor)
+    {
+        this.botaoApertado = valor;
     }
 }

@@ -9,6 +9,8 @@ public class ChangeStuff : MonoBehaviour
     private float massa;
     private float atrito;
 
+    public Restart restart;
+
     public Text textoAngulo;
     public Text textoMassa;
     public Text textoAtrito;
@@ -41,7 +43,7 @@ public class ChangeStuff : MonoBehaviour
         suporte1.SetActive(true);
         suporte2.SetActive(false);
 
-        rb = cubo.gameObject.GetComponent<Rigidbody>();
+        rb = cubo.gameObject.GetComponent<Rigidbody>();;
     }
 
     public void SetAngle(float a)
@@ -108,6 +110,7 @@ public class ChangeStuff : MonoBehaviour
 
             cubo.transform.position = pos;
             cubo.transform.rotation = Quaternion.Euler(20, 0, 0);
+            restart.SetPosInicial(pos, cubo.transform.rotation);
             cubo.transform.localScale = sca;
             //
 
@@ -187,6 +190,7 @@ public class ChangeStuff : MonoBehaviour
 
             cubo.transform.position = pos;
             cubo.transform.rotation = Quaternion.Euler(30, 0, 0);
+            restart.SetPosInicial(pos, cubo.transform.rotation);
             cubo.transform.localScale = sca;
             //
 
@@ -264,6 +268,7 @@ public class ChangeStuff : MonoBehaviour
 
             cubo.transform.position = pos;
             cubo.transform.rotation = Quaternion.Euler(45, 0, 0);
+            restart.SetPosInicial(pos, cubo.transform.rotation);
             cubo.transform.localScale = sca;
             //
 
@@ -342,6 +347,7 @@ public class ChangeStuff : MonoBehaviour
 
             cubo.transform.position = pos;
             cubo.transform.rotation = Quaternion.Euler(60, 0, 0);
+            restart.SetPosInicial(pos, cubo.transform.rotation);
             cubo.transform.localScale = sca;
             //
 
