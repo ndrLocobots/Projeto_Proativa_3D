@@ -32,10 +32,39 @@ public class robotClick : MonoBehaviour
         //gambiarra temporaria
         if(SceneManager.GetActiveScene().name == "Plano")
         {
-          hearts.updateOpacityHearts(1);
-          timer.GetComponent<Text>().enabled = true;
+          ParticularidadesPlano();
         }
       }
+    }
+  }
+
+  void ParticularidadesPlano()
+  {
+    QuestionPlano questionPlano = FindObjectOfType<QuestionPlano>();
+
+    hearts.updateOpacityHearts(1);
+    timer.GetComponent<Text>().enabled = true;
+    
+    if(questionPlano.indice == 0)
+    {
+      if(!questionPlano.sliderAtrito.gameObject.activeSelf)
+      {
+        questionPlano.sliderAtrito.gameObject.SetActive(true);
+        questionPlano.sliderForca.gameObject.SetActive(false);
+      }
+
+      questionPlano.sliderMassa.interactable = false;
+      questionPlano.textoMassa.color = Color.gray;
+    }
+    else if(questionPlano.indice == 1)
+    {
+      if(questionPlano.sliderMassa.interactable == false)
+      {
+        questionPlano.sliderMassa.interactable = true;
+        questionPlano.textoMassa.color = Color.black;
+      }
+      questionPlano.sliderAtrito.gameObject.SetActive(false);
+      questionPlano.sliderForca.gameObject.SetActive(true);
     }
   }
 

@@ -8,12 +8,16 @@ public class ChangeStuff : MonoBehaviour
     private float angulo;
     private float massa;
     private float atrito;
+    
+    private Vector3[] posPortal;
+    private Vector3[] posTrigger;
 
     public Restart restart;
 
     public Text textoAngulo;
     public Text textoMassa;
     public Text textoAtrito;
+    public Text textoForca;
 
     public GameObject suporte1;
     public GameObject suporte2;
@@ -24,6 +28,7 @@ public class ChangeStuff : MonoBehaviour
     public GameObject camera03;
     public GameObject start;
     public GameObject end;
+    public GameObject portal, trigger;
 
     public MeshRenderer cuboMat;
 
@@ -36,6 +41,16 @@ public class ChangeStuff : MonoBehaviour
         this.angulo = 20f;
         this.atrito = 0.10f;
         this.massa = 1f;
+
+        posPortal = new Vector3[3];
+        posPortal[0] = new Vector3(portal.transform.position.x, portal.transform.position.y, portal.transform.position.z);
+        posPortal[1] = new Vector3(portal.transform.position.x, portal.transform.position.y, portal.transform.position.z - 0.69f);
+        posPortal[2] = new Vector3(portal.transform.position.x, portal.transform.position.y, portal.transform.position.z - 0.96f);
+
+        posTrigger = new Vector3[3];
+        posTrigger[0] = new Vector3(trigger.transform.position.x, trigger.transform.position.y, trigger.transform.position.z);
+        posTrigger[1] = new Vector3(trigger.transform.position.x, trigger.transform.position.y, trigger.transform.position.z - 0.69f);
+        posTrigger[2] = new Vector3(trigger.transform.position.x, trigger.transform.position.y, trigger.transform.position.z - 0.96f);
 
         SetAngleText(20f);
         UpdateProperties(20f);
@@ -112,6 +127,11 @@ public class ChangeStuff : MonoBehaviour
             cubo.transform.rotation = Quaternion.Euler(20, 0, 0);
             restart.SetPosInicial(pos, cubo.transform.rotation);
             cubo.transform.localScale = sca;
+            //
+
+            //Setando o PORTAL:
+            portal.transform.position = posPortal[0];
+            trigger.transform.position = posTrigger[0];
             //
 
             //Setando a CAMERA 01:
@@ -194,6 +214,11 @@ public class ChangeStuff : MonoBehaviour
             cubo.transform.localScale = sca;
             //
 
+            //Setando o PORTAL:
+            portal.transform.position = posPortal[0];
+            trigger.transform.position = posTrigger[0];
+            //
+
             //Setando a CAMERA 01:
             Vector3 posCamera = new Vector3(10.57f, 12.39f, -23.12f);
             sca.Set(1f, 1f, 1f);
@@ -270,6 +295,11 @@ public class ChangeStuff : MonoBehaviour
             cubo.transform.rotation = Quaternion.Euler(45, 0, 0);
             restart.SetPosInicial(pos, cubo.transform.rotation);
             cubo.transform.localScale = sca;
+            //
+
+            //Setando o PORTAL:
+            portal.transform.position = posPortal[1];
+            trigger.transform.position = posTrigger[1];
             //
 
             //Setando a CAMERA 01:
@@ -349,6 +379,11 @@ public class ChangeStuff : MonoBehaviour
             cubo.transform.rotation = Quaternion.Euler(60, 0, 0);
             restart.SetPosInicial(pos, cubo.transform.rotation);
             cubo.transform.localScale = sca;
+            //
+            
+            //Setando o PORTAL:
+            portal.transform.position = posPortal[2];
+            trigger.transform.position = posTrigger[2];
             //
 
             //Setando a CAMERA 01:
@@ -446,6 +481,17 @@ public class ChangeStuff : MonoBehaviour
         }
             
     }
+
+    public void ChangeForce(float v)
+    {
+        ChangeForceText(v);
+    }
+
+    public void ChangeForceText(float v)
+    {
+        textoForca.text = "Forca: " + v.ToString("F2");
+    }
+
     public void ChangeFrictionText(float v)
     {
         textoAtrito.text = "Atrito: " + v;

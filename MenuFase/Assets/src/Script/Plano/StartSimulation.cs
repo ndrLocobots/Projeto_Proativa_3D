@@ -11,6 +11,7 @@ public class StartSimulation : MonoBehaviour
     public Slider angulo;
     public Slider massa;
     public Slider atrito;
+    public Slider forca;
 
     private Timer timer;
     private ControleAnimacoes controleAnim;
@@ -28,7 +29,7 @@ public class StartSimulation : MonoBehaviour
     {
         cubo.constraints = ~RigidbodyConstraints.FreezeAll;
         timer.SetBotaoApertado(true);
-        controleAnim.VerificaQuestao(massa.value, atrito.value, angulo.value);
+        controleAnim.VerificaQuestao(massa.value, atrito.value, angulo.value, forca.value);
         StartCoroutine(tempoAbrirPortal());
     }
 

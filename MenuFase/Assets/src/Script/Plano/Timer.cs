@@ -56,7 +56,6 @@ public class Timer : MonoBehaviour
 
             timerText.text = "Tempo: " + minutes + ":" + seconds;
         }
-        
     }
 
     private void ShowResults()
@@ -73,10 +72,9 @@ public class Timer : MonoBehaviour
 
     public void HideResults()
     {
+        start = Time.time;
+        timerText.text = "Tempo: " + 0.ToString() + ":" + "0,00";
         results.SetActive(false);
-
-        minutes = 0.ToString();
-        seconds = "0,00";
     }
 
     private double CalculaAceleracao(float atrito, float angulo, float massa)
@@ -111,5 +109,10 @@ public class Timer : MonoBehaviour
     public void SetBotaoApertado(bool valor)
     {
         this.botaoApertado = valor;
+    }
+
+    public void SetIsStarted(bool valor)
+    {
+        this.isStarted = valor;
     }
 }

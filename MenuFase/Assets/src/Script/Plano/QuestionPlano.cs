@@ -6,8 +6,17 @@ using UnityEngine.UI;
 public class QuestionPlano : MonoBehaviour
 {
     public GameObject timer;
+    public Slider sliderMassa;
+    public Text textoMassa;
+    public Slider sliderAtrito;
+    public Text textoAtrito;
+    public Slider sliderForca;
+    public Text textoForca;
 
     private CSVfile csvfile;
+
+    private int indiceJaSorteado;
+    public int indice;
 
     void Awake()
     {
@@ -15,6 +24,7 @@ public class QuestionPlano : MonoBehaviour
         SetRobotDialog();
         
         timer.GetComponent<Text>().enabled = false;
+        indiceJaSorteado = -1;
     }
 
     public void SetRobotDialog()
@@ -39,26 +49,28 @@ public class QuestionPlano : MonoBehaviour
         List<string> sentencas = new List<string>();
         sentencas = csvfile.ReadCSVFile("plano_inclinado_dialog");
 
-        //sentencas.Add(GetExample());
+        sentencas.Add(GetExample());
 
         return sentencas.ToArray();    
     }
 
-    // private string GetExample()
-    // {
+    public string GetExample()
+    {
     
-    //     List<string> allquestion = csvfile.ReadCSVFile("lancamento_exemple");
-    //     int indice = Random.Range(0, allquestion.Count - 1);
+         List<string> allquestion = csvfile.ReadCSVFile("plano_exemple");
+         indice = Random.Range(0, allquestion.Count);
 
-    //     string question = allquestion[indice];
+         if(indice == 0)
+         {
+             Debug.Log("Angulo: 45  Atrito: 0.3");
+         }
+         else
+         {
+             Debug.Log("Massa: 2  Angulo:  60  Forca:  ~17.3");
+         }
+
+         string question = allquestion[indice];
     
-    //     return question.Replace("{t}", time.ToString("0.00"))
-    //     .Replace("{dx}", distaceDelta.ToString("0.00"))
-    //     .Replace("{vx}", velocityX.ToString("0.00"))
-    //     .Replace("{vy}", velocityY.ToString("0.00"))
-    //     .Replace("{mh}", maxHeight.ToString("0.00"))
-    //     .Replace("{th}", (time/2).ToString("0.00"))
-    //     .Replace("{a}", (angle).ToString("0.00"))
-    //     ;
-    // }
+         return question;
+     }
 }

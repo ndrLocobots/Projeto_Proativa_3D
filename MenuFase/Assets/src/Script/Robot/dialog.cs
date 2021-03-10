@@ -132,5 +132,9 @@ public class dialog : MonoBehaviour
     speechBubble.SetActive(false);
   }
 
+  public void SetIndex(int valor)
+  {
+    this.index = this.index + valor;
+  }
 
 }

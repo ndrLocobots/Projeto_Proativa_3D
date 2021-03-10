@@ -4,41 +4,91 @@ using UnityEngine;
 
 public class ControleAnimacoes : MonoBehaviour
 {
+    public GameObject cubo;
+    public GameObject cuboParaAnimacao;
+    public Animator portal;
+
     private robotAnimation animRobo;
     private AnimInimigo animInimigo;
     private heart coracoes;
+    private bool acertouQuestao, podeRodarAnimFinal;
+    private QuestionPlano questionPlano;
 
-    //TEMPORARIO
-    private float massaCorreta = 5f;
-    private float atritoCorreto = 3f;
-    private float anguloCorreto = 1f;
+    private float massaCorreta;
+    private float atritoCorreto;
+    private float anguloCorreto;
+    private float forcaCorreta;
 
     private int contadorErros;
+
+    void OnTriggerEnter()
+    {
+        if(contadorErros == 1 && !acertouQuestao)
+        {
+            AnimErro(1);
+        }
+        else if(contadorErros == 2 && !acertouQuestao)
+        {
+            AnimErro(2);
+        }
+        else if(contadorErros == 3 && !acertouQuestao)
+        {
+            podeRodarAnimFinal = true;
+            AnimErro(3);
+        }
+            
+    }
 
     void Start()
     {
         animRobo = FindObjectOfType<robotAnimation>();
+        questionPlano = FindObjectOfType<QuestionPlano>();
         coracoes = FindObjectOfType<heart>();
         animInimigo = FindObjectOfType<AnimInimigo>();
 
         contadorErros = 0;
+        acertouQuestao = false;
+        podeRodarAnimFinal = false;
     }
 
-    public void VerificaQuestao(float valorMassa, float valorAtrito, float valorAngulo)
+    public void VerificaQuestao(float valorMassa, float valorAtrito, float valorAngulo, float valorForca)
     {
-        Debug.Log("Massa: " + valorMassa + "Angulo: " + valorAngulo + "Atrito: " + valorAtrito);
-        if(valorMassa == massaCorreta && valorAtrito == atritoCorreto && valorAngulo == anguloCorreto)
-            AnimAcerto();
-        else
+        if(questionPlano.indice == 0)
         {
-            contadorErros++;
-            AnimErro(contadorErros);
+            anguloCorreto = 2f;
+            atritoCorreto = 4f;
+
+            if(valorAtrito == atritoCorreto && valorAngulo == anguloCorreto)
+            {
+                AnimAcerto();
+            }
+            else
+            {
+                contadorErros++;
+            }
+        }
+        else if(questionPlano.indice == 1)
+        {
+            massaCorreta = 2f;
+            anguloCorreto = 3f;
+
+            if(valorMassa == massaCorreta && valorAngulo == anguloCorreto && (valorForca >= 17.20f && valorForca <= 17.45f))
+            {
+                AnimAcerto();
+            }
+            else
+            {
+                contadorErros++;
+            }
         }
     }
 
     public void AnimAcerto()
     {
+        acertouQuestao = true;
         animRobo.RobotHappy();
+        animInimigo.AnimaInimigo(0);
+        portal.SetTrigger("Sucesso");  
     }
 
     public void AnimErro(int tentativa)
@@ -55,12 +105,45 @@ public class ControleAnimacoes : MonoBehaviour
             animRobo.RobotSad();
             animInimigo.AnimaInimigo(2);
         }
-        else if(tentativa == 3)
+        else if(tentativa == 3 && podeRodarAnimFinal)
         {
             coracoes.loseHeart();
             animRobo.RobotSad();
             animInimigo.AnimaInimigo(3);
-            //Animacao do cubo perdendo
+            podeRodarAnimFinal = false;
         }
+    }
+
+    public void AtivaRobosCarregandoCubo()
+    {
+        animInimigo.AnimaInimigo(4);   
+    }
+
+    public void AtivaCuboSendoCarregado()
+    {
+        cubo.GetComponent<MeshRenderer>().enabled = false;
+        cuboParaAnimacao.SetActive(true);
+        cuboParaAnimacao.GetComponent<Animator>().SetTrigger("Perdemo");
+    }
+
+
+    public int getContadorErros()
+    {
+        return this.contadorErros;
+    }
+
+    public void setContadorErros(int valor)
+    {
+        this.contadorErros = valor;
+    }
+
+    public bool getAcertouQuestao()
+    {
+        return this.acertouQuestao;
+    }
+
+    public void setAcertouQuestao(bool valor)
+    {
+        this.acertouQuestao = valor;
     }
 }

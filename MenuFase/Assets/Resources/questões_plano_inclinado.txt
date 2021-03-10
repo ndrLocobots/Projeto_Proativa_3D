@@ -1,0 +1,46 @@
+Questões plano inclinado:
+
+Questão 1
+A força normal exercida sobre um corpo apoiado sobre um plano inclinado é de 20 N. Sendo de 40 N o peso desse corpo, determine o ângulo de inclinação desse plano inclinado em graus.
+
+Resposta: 
+Como sabemos, a força normal é dada pelo produto do peso do corpo pelo cosseno do ângulo de inclinação do plano: P*costeta => teta = 60º
+
+Questão 2
+
+Um bloco de 2 kg desliza sobre uma superfície sem atrito de um plano inclinado em 60º. Determine a força mínima a ser aplicada sobre o bloco, na direção da superfície desse plano, para que o corpo deslize com velocidade constante.
+
+Dados: g = 10 m/s²
+Resposta:
+
+Para que o bloco deslize com velocidade constante, a força resultante sobre ele deve ser, de acordo com a 1ª lei de Newton, nula. Para tanto, a força que se aplica ao bloco deve ter a mesma magnitude da componente x da força peso, a fim de que se cancelem: F = Px -> F = P*senteta -> F = mgsenteta -> F = 10 sqtr(3) N
+
+Questão 3
+
+Um bloco de madeira encontra-se em equilíbrio sobre um plano inclinado de 45º em relação ao solo. A intensidade da força que o bloco exerce perpendicularmente ao plano inclinado é igual a 2,0 N. Entre o bloco e o plano inclinado, a intensidade da força de atrito, em newtons, é igual a:
+
+a) 0,7
+
+b) 1,0
+
+c) 1,4
+
+d) 2,0
+
+Gabarito: letra D
+
+Questão 4
+
+Um bloco escorrega a partir do repouso por um plano inclinado que faz um ângulo de 45º com a horizontal. Sabendo que durante a queda a aceleração do bloco é de 5,0 m/s² e considerando g = 10m/s², podemos dizer que o coeficiente de atrito cinético entre o bloco e o plano é:
+
+a) 0,1
+
+b) 0,2
+
+c) 0,3
+
+d) 0,4
+
+e) 0,5
+
+Gabarito: letra C
