@@ -46,19 +46,21 @@ public class Control : MonoBehaviour
     if (menu.activeSelf)
     {
       cuboQue.result.SetActive(false);
+
+      SetHeight(height.value);
     }
   }
 
   public void SetHeight(float h)
   {
     cuboQue.SetHeight(h);
+    height.value = h;
     Theight.text = "Altura: " + h;
   }
 
   public void SetEnvironment(float a)
   {
     cuboQue.SetEnvironment(a);
-    SetHeight(0);
     Tenv.text = "Ambiente: " + a;
   }
 }

@@ -38,7 +38,7 @@ public class QuestionQueda : MonoBehaviour
     float[] gravities = cubo.gravities;
     int index;
 
-    height = (int)Random.Range(1, 50f);
+    height = (int)Random.Range(10, 50f);
     index =  Random.Range(0, gravities.Length);
     gravity = gravities[index];
 
@@ -50,9 +50,12 @@ public class QuestionQueda : MonoBehaviour
   string[] GetDialog()
   {
     List<string> setencas = new List<string>();
-    setencas = csvfile.ReadCSVFile("lancamento_vertical_dialog");
+    setencas = csvfile.ReadCSVFile("queda_dialog");
 
-    setencas.Add(GetExample());
+    string answer = GetExample();
+    answer  = answer + "\nResposta: Altura: " + height + " Gravidade: " + gravity;
+    
+    setencas.Add(answer);
 
     return setencas.ToArray();
   }
@@ -60,7 +63,7 @@ public class QuestionQueda : MonoBehaviour
   string GetExample()
   {
 
-    List<string> allquestion = csvfile.ReadCSVFile("lancamento_exemple");
+    List<string> allquestion = csvfile.ReadCSVFile("queda_exemple");
     int indice = Random.Range(0, allquestion.Count - 1);
 
     string question = allquestion[indice];

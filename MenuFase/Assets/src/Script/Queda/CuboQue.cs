@@ -24,22 +24,12 @@ public class CuboQue : MonoBehaviour
   void Start()
   {
     body = GetComponent<Rigidbody>();
+    cubePosition = body.position;
     Restore();
   }
 
   void FixedUpdate()
   {
-    if (height != pastHigh && !isJump)
-    {
-      body.position = new Vector3(
-        body.position.x,
-        height + cubePosition.y,
-        body.position.z
-      );
-
-      pastHigh = height;
-    }
-
     if (isJump)
     {
       Jump();
@@ -85,37 +75,46 @@ public class CuboQue : MonoBehaviour
 
   public void SetHeight(float h)
   {
-    height = h;
+    if (height != h || body.position.y - cubePosition.y != height)
+    {
+      height = h;
+      body.position = new Vector3(
+        body.position.x,
+        height + cubePosition.y,
+        body.position.z
+      );
+    }
   }
 
   public void SetEnvironment(float a)
   {
     environment = a;
+    Vector3 position;
     switch (a)
     {
       case 0:
-        cubePosition = new Vector3(
+        position = new Vector3(
           body.position.x,
           body.position.y,
           88.8f
           );
-        body.position = cubePosition;
+        body.position = position;
         break;
       case 1:
-        cubePosition = new Vector3(
+        position = new Vector3(
           body.position.x,
           body.position.y,
           -11.8f
         );
-        body.position = cubePosition;
+        body.position = position;
         break;
       default:
-        cubePosition = new Vector3(
+        position = new Vector3(
           body.position.x,
           body.position.y,
           -122.8f
         );
-        body.position = cubePosition;
+        body.position = position;
         break;
     }
 
