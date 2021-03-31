@@ -26,8 +26,9 @@ public class QuedaAnimationControl : MonoBehaviour
   private int attemptsNum = 3;
 
   private int index;
-  private int showInimigo = 5;
-  private int questionIndex = 8;
+  private int showInimigo = 2;
+
+  private int questionIndex = 3;
 
   public GameObject secondCamera;
   public GameObject cube;
@@ -60,7 +61,7 @@ public class QuedaAnimationControl : MonoBehaviour
     {
       //cenaAnimation.AnimatorCamera();
     }
-    else if (index == questionIndex && !isQuestion)
+    else if (index >= questionIndex && !isQuestion)
     {
       hearts.updateOpacityHearts(1);
       isQuestion = true;
@@ -144,12 +145,9 @@ public class QuedaAnimationControl : MonoBehaviour
   {
     secondCamera.SetActive(true);
 
-    inimigo.SetVelocity(time, cube.transform.position.z - 2f);
-    yield return new WaitForSeconds(time + 3);
+    yield return new WaitForSeconds(cenaAnimation.AnimationToWrongAnswer());
 
     inimigo.RestorePosition();
-    inimigo.SetVelocity(0, 0);
-
     secondCamera.SetActive(false);
   }
 
