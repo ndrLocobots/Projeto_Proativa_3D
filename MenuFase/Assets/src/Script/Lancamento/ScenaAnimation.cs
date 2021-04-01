@@ -6,8 +6,8 @@ using UnityEngine.UI;
 
 public class ScenaAnimation : MonoBehaviour
 {
-  public PlayableDirector cameraAnimation, enemyAnimation;
-  public GameObject robotSelfCam;
+  public PlayableDirector cameraAnimation;
+  
   public GameObject inimigo;
 
   private Tutorial tutorial;
@@ -16,6 +16,7 @@ public class ScenaAnimation : MonoBehaviour
   private Teleporter teleporter;
 
   public GameObject respostas;
+
   void Start()
   {
     question = gameObject.AddComponent<Question>();
@@ -33,9 +34,11 @@ public class ScenaAnimation : MonoBehaviour
     }
   }
 
-  public void AnimatorCamera()
+  public float AnimatorCamera()
   {
     cameraAnimation.Play();
+
+    return (float)cameraAnimation.duration;
   }
 
   public void ChangeQuestion()
@@ -71,36 +74,5 @@ public class ScenaAnimation : MonoBehaviour
     {
       inimigo.HideEnemy();
     }
-  }
-
-  public float AnimationToLose()
-  {
-    enemyAnimation.Play();
-
-    return (float)enemyAnimation.duration - 1f;
-  }
-
-  public float AnimationToWin()
-  {
-    cameraAnimation.Play();
-
-    return (float)cameraAnimation.duration + 0.5f;
-  }
-
-  public IEnumerator ShowReactionOfRobot(bool reaction)
-  {
-    robotSelfCam.SetActive(true);
-
-    if (reaction)
-    {
-      robot.RobotHappy();
-    }
-    else
-    {
-      robot.RobotSad();
-    }
-
-    yield return new WaitForSeconds(5);
-    robotSelfCam.SetActive(false);
   }
 }

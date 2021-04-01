@@ -10,7 +10,10 @@ public class QuestionAnimation : MonoBehaviour
   private bool isQuestion;
 
   private Tutorial tutorial;
-  private ScenaAnimation scenaAnimation;
+  private ScenaAnimation lancamentoAnimation;
+
+  private GenericAnimations ScenaAnimation;
+
   private heart hearts;
   private dialog robotDialog;
 
@@ -30,7 +33,8 @@ public class QuestionAnimation : MonoBehaviour
   void Start()
   {
     tutorial = FindObjectOfType<Tutorial>();
-    scenaAnimation = FindObjectOfType<ScenaAnimation>();
+    lancamentoAnimation = FindObjectOfType<ScenaAnimation>();
+    ScenaAnimation = FindObjectOfType<GenericAnimations>();
     robotDialog = FindObjectOfType<dialog>();
     hearts = FindObjectOfType<heart>();
     tele = FindObjectOfType<Teleporter>();
@@ -61,21 +65,31 @@ public class QuestionAnimation : MonoBehaviour
   {
     if (index == showAltarIndex)
     {
-      scenaAnimation.AnimatorCamera();
+      StartCoroutine(ActiveCameraAnimation());
     }
     else if (index == changeAltarIndex)
     {
-      scenaAnimation.ChangeTeleporterPosition();
+      lancamentoAnimation.ChangeTeleporterPosition();
     }
     else if (index == showCameraIndex)
     {
-      scenaAnimation.StartTutorial();
+      lancamentoAnimation.StartTutorial();
     }
     else if (index == questionIndex && !isQuestion)
     {
       hearts.updateOpacityHearts(1);
       isQuestion = true;
     }
+  }
+
+  IEnumerator ActiveCameraAnimation()
+  {
+    cube.GetComponent<CuboLan>().AnimationConfig();
+
+    yield return new WaitForSeconds(lancamentoAnimation.AnimatorCamera()+0.3f);
+
+    position camera = cam.GetComponent<position>();
+    camera.SliderAux(camera.getSliderOption());
   }
 
   public void isQuestionRight()
@@ -98,16 +112,16 @@ public class QuestionAnimation : MonoBehaviour
 
   void CorrectAnswer()
   {
-    scenaAnimation.HideEnemy();
-    StartCoroutine(scenaAnimation.ShowReactionOfRobot(true));
+    lancamentoAnimation.HideEnemy();
+    StartCoroutine(ScenaAnimation.ShowReactionOfRobot(true));
     StartCoroutine(ActiveWinAnimation());
     tele.setAtingido(true);
   }
 
   void WrongAnswer()
   {
-    scenaAnimation.ActiveEnemy();
-    StartCoroutine(scenaAnimation.ShowReactionOfRobot(false));
+    lancamentoAnimation.ActiveEnemy();
+    StartCoroutine(ScenaAnimation.ShowReactionOfRobot(false));
     robotDialog.SetSadBubble();
     ReduceAttemptsNumber();
   }
@@ -126,11 +140,8 @@ public class QuestionAnimation : MonoBehaviour
   IEnumerator ActiveLoseAnimation()
   {
     cube.GetComponent<CuboLan>().AnimationConfig();
-    yield return new WaitForSeconds(scenaAnimation.AnimationToLose());
-    scenaAnimation.HideEnemy();
-
-    position camera = cam.GetComponent<position>();
-    camera.SliderAux(camera.getSliderOption());
+    yield return new WaitForSeconds(ScenaAnimation.AnimationToLose());
+    lancamentoAnimation.HideEnemy();
 
     RestoreCena();
     robotDialog.ActivateBubbleSignal();
@@ -140,15 +151,12 @@ public class QuestionAnimation : MonoBehaviour
   {
     cube.GetComponent<CuboLan>().AnimationConfig();
 
-    yield return new WaitForSeconds(scenaAnimation.AnimationToWin());
-
-    position camera = cam.GetComponent<position>();
-    camera.SliderAux(camera.getSliderOption());
+    yield return new WaitForSeconds(ScenaAnimation.AnimationToWin());
 
     RestoreCena();
 
     robotDialog.ActivateBubbleOtherQuestion();
-    scenaAnimation.ChangeQuestion();
+    lancamentoAnimation.ChangeQuestion();
   }
 
   void RestoreCena()
@@ -156,17 +164,10 @@ public class QuestionAnimation : MonoBehaviour
     attemptsNum = 3;
     isQuestion = false;
 
+    position camera = cam.GetComponent<position>();
+    camera.SliderAux(camera.getSliderOption());
+
     cube.GetComponent<CuboLan>().ClickRestore(true);
     hearts.updateOpacityHearts(0);
-  }
-
-  public void setIndex(int value)
-  {
-    this.index = value;
-  }
-
-  public int getIndex()
-  {
-    return this.index;
   }
 }

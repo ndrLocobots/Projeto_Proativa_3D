@@ -10,23 +10,28 @@ public class Question : MonoBehaviour
   private float velocityX, velocityY, velocity;
   private float time, maxHeight, angle;
 
+  public int level;
+
   private CSVfile csvfile;
-  
+
   void Awake()
   {
     csvfile = gameObject.AddComponent<CSVfile>();
+    level = 0;
+
     SetRobotDialog();
   }
 
   public void SetRobotDialog()
   {
     MakeDataQuestion();
-    
+
     dialog robotDialog = FindObjectOfType<dialog>();
 
     if (robotDialog)
     {
       robotDialog.setences = GetDialog();
+      level += 1;
     }
   }
 
@@ -35,9 +40,9 @@ public class Question : MonoBehaviour
     distaceDelta = 0;
     while (distaceDelta < 30 || distaceDelta > 250)
     {
-      angle = Random.Range(1, 90f);
+      angle = (int)Random.Range(1, 90f);
       float RadianAngle = angle * Mathf.PI / 180;
-      velocity = Random.Range(1, 50f);
+      velocity = (int)Random.Range(1, 50f);
 
       velocityY = velocity * Mathf.Sin(RadianAngle);
       velocityX = velocity * Mathf.Cos(RadianAngle);
@@ -52,7 +57,7 @@ public class Question : MonoBehaviour
   }
 
   string[] GetDialog()
-  {    
+  {
     List<string> setencas = new List<string>();
     setencas = csvfile.ReadCSVFile("lancamento_vertical_dialog");
 
@@ -63,23 +68,28 @@ public class Question : MonoBehaviour
 
   string GetExample()
   {
-    
-    List<string> allquestion = csvfile.ReadCSVFile("lancamento_exemple");
-    int indice = Random.Range(0, allquestion.Count - 1);
 
-    string question = allquestion[indice];
-    
+    List<string> allquestion = csvfile.ReadCSVFile("lancamento_exemple");
+
+    if (level >= allquestion.Count)
+    {
+      level = allquestion.Count - 1;
+    }
+
+    string question = allquestion[level];
+
     return question.Replace("{t}", time.ToString("0.00"))
     .Replace("{dx}", distaceDelta.ToString("0.00"))
     .Replace("{vx}", velocityX.ToString("0.00"))
     .Replace("{vy}", velocityY.ToString("0.00"))
     .Replace("{mh}", maxHeight.ToString("0.00"))
-    .Replace("{th}", (time/2).ToString("0.00"))
+    .Replace("{th}", (time / 2).ToString("0.00"))
     .Replace("{a}", (angle).ToString("0.00"))
     ;
   }
 
-  public string ReturnAnswer(){
+  public string ReturnAnswer()
+  {
     return "V = " + velocity.ToString("0.00") + "\n" +
     "A = " + angle.ToString("0.00");
   }

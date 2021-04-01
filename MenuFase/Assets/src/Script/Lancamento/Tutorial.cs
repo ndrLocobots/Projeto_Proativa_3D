@@ -41,6 +41,7 @@ public class Tutorial : MonoBehaviour
       }
       else if (index == 1)
       {
+
         Button button1 = menuButton.GetComponent<Button>();
         Button button2 = startButton.GetComponent<Button>();
         Button button3 = restoreButton.GetComponent<Button>();
