@@ -21,7 +21,6 @@ public class QuedaAnimationControl : MonoBehaviour
   private QuestionQueda question;
 
   [SerializeField]
-  private enemy inimigo;
 
   private int attemptsNum = 3;
 
@@ -39,7 +38,6 @@ public class QuedaAnimationControl : MonoBehaviour
     robotDialog = FindObjectOfType<dialog>();
     hearts = FindObjectOfType<heart>();
     question = FindObjectOfType<QuestionQueda>();
-    inimigo = FindObjectOfType<enemy>();
     isQuestion = false;
   }
 
@@ -98,9 +96,6 @@ public class QuedaAnimationControl : MonoBehaviour
     Vector3 position = cube.transform.position;
     position.y = 0.98f;
 
-    inimigo.SetVelocity(0, 0);
-    inimigo.SetPosition(position);
-
     float time = question.ReturnAnswer();
 
     yield return new WaitForSeconds(time + 3);
@@ -111,13 +106,6 @@ public class QuedaAnimationControl : MonoBehaviour
 
   void WrongAnswer(float time)
   {
-    StartCoroutine(cenaAnimation.ShowReactionOfRobot(false));
-    robotDialog.SetSadBubble();
-    ReduceAttemptsNumber(time);
-  }
-
-  void ReduceAttemptsNumber(float time)
-  {
     attemptsNum--;
     hearts.loseHeart();
 
@@ -127,16 +115,16 @@ public class QuedaAnimationControl : MonoBehaviour
     }
     else
     {
+      StartCoroutine(cenaAnimation.ShowReactionOfRobot(false));
+      robotDialog.SetSadBubble();
       StartCoroutine(ActiveWrongAnimation(time));
     }
   }
 
   IEnumerator ActiveLoseAnimation()
   {
-    //yield return new WaitForSeconds(cenaAnimation.AnimationToLose());
-    //cenaAnimation.HideEnemy();
-    yield return new WaitForSeconds(3);
-
+    RestoreCena();
+    yield return new WaitForSeconds(cenaAnimation.AnimationToLose());
     RestoreCena();
     robotDialog.ActivateBubbleSignal();
   }
@@ -144,10 +132,7 @@ public class QuedaAnimationControl : MonoBehaviour
   IEnumerator ActiveWrongAnimation(float time)
   {
     secondCamera.SetActive(true);
-
     yield return new WaitForSeconds(cenaAnimation.AnimationToWrongAnswer());
-
-    inimigo.RestorePosition();
     secondCamera.SetActive(false);
   }
 
@@ -159,7 +144,6 @@ public class QuedaAnimationControl : MonoBehaviour
 
     cube.GetComponent<Control>().RestartButton();
     hearts.updateOpacityHearts(0);
-    inimigo.RestorePosition();
   }
 
 }

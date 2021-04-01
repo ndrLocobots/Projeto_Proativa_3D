@@ -118,7 +118,7 @@ public class dialog : MonoBehaviour
 
   public void ActivateBubbleSignal()
   {
-    bubbleText.text = "ooo";
+    bubbleText.text = "clique em mim !!!";
     speechBubble.SetActive(true);
   }
 

@@ -62,7 +62,6 @@ public class CuboQue : MonoBehaviour
 
   public void Restore()
   {
-    SetEnvironment(1);
     body.rotation = Quaternion.Euler(0, 90, 0);
 
     timer = 0;

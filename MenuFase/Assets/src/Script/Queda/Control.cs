@@ -31,11 +31,7 @@ public class Control : MonoBehaviour
   public void RestartButton()
   {
     height.value = 0;
-    env.value = 1;
-
     cuboQue.SetHeight(0);
-    cuboQue.SetEnvironment(1);
-
     cuboQue.Restore();
   }
 
