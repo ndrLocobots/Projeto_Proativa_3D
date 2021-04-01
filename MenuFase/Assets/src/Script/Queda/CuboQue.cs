@@ -67,6 +67,7 @@ public class CuboQue : MonoBehaviour
     timer = 0;
     height = 0;
     pastHigh = height;
+    Jump();
     isJump = false;
 
     result.SetActive(false);

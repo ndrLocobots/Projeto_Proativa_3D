@@ -8,6 +8,8 @@ public class QuestionQueda : MonoBehaviour
   private float gravity, height;
   private float time;
 
+  public int level;
+
   private CSVfile csvfile;
 
   [SerializeField]
@@ -17,7 +19,8 @@ public class QuestionQueda : MonoBehaviour
   {
     csvfile = gameObject.AddComponent<CSVfile>();
     cubo = FindObjectOfType<CuboQue>();
-
+    
+    level = 0;
     SetRobotDialog();
   }
 
@@ -30,6 +33,7 @@ public class QuestionQueda : MonoBehaviour
     if (robotDialog)
     {
       robotDialog.setences = GetDialog();
+      level += 1;
     }
   }
 
@@ -39,7 +43,7 @@ public class QuestionQueda : MonoBehaviour
     int index;
 
     height = (int)Random.Range(10, 50f);
-    index =  Random.Range(0, gravities.Length);
+    index = Random.Range(0, gravities.Length);
     gravity = gravities[index];
 
     time = Mathf.Sqrt(height / gravity);
@@ -53,8 +57,8 @@ public class QuestionQueda : MonoBehaviour
     setencas = csvfile.ReadCSVFile("queda_dialog");
 
     string answer = GetExample();
-    answer  = answer + "\nResposta: Altura: " + height + " Gravidade: " + gravity;
-    
+    answer = answer + "\nResposta: Altura: " + height + " Gravidade: " + gravity;
+
     setencas.Add(answer);
 
     return setencas.ToArray();
@@ -64,9 +68,13 @@ public class QuestionQueda : MonoBehaviour
   {
 
     List<string> allquestion = csvfile.ReadCSVFile("queda_exemple");
-    int indice = Random.Range(0, allquestion.Count - 1);
 
-    string question = allquestion[indice];
+    if (level >= allquestion.Count)
+    {
+      level = allquestion.Count - 1;
+    }
+
+    string question = allquestion[level];
 
     return question.Replace("{t}", time.ToString("0.00"))
     //.Replace("{dx}", distaceDelta.ToString("0.00"))

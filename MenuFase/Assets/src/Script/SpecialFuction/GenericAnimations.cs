@@ -4,7 +4,7 @@ using UnityEngine.Playables;
 
 public class GenericAnimations : MonoBehaviour
 {
-  public PlayableDirector cameraAnimation, enemyAnimation, wrongAnimation;
+  public PlayableDirector winAnimation, loseAnimation, wrongAnimation;
   public GameObject robotSelfCam;
 
   private robotAnimation robot;
@@ -16,7 +16,7 @@ public class GenericAnimations : MonoBehaviour
 
   public void AnimatorCamera()
   {
-    cameraAnimation.Play();
+    winAnimation.Play();
   }
 
   public float AnimationToWrongAnswer()
@@ -28,16 +28,16 @@ public class GenericAnimations : MonoBehaviour
 
   public float AnimationToLose()
   {
-    enemyAnimation.Play();
+    loseAnimation.Play();
 
-    return (float)enemyAnimation.duration - 1f;
+    return (float)loseAnimation.duration - 1f;
   }
 
   public float AnimationToWin()
   {
-    cameraAnimation.Play();
+    winAnimation.Play();
 
-    return (float)cameraAnimation.duration + 0.5f;
+    return (float)winAnimation.duration + 0.5f;
   }
 
   public IEnumerator ShowReactionOfRobot(bool reaction)

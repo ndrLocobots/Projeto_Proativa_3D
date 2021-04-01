@@ -92,14 +92,7 @@ public class QuedaAnimationControl : MonoBehaviour
 
   IEnumerator ActiveWinAnimation()
   {
-    secondCamera.SetActive(true);
-    Vector3 position = cube.transform.position;
-    position.y = 0.98f;
-
-    float time = question.ReturnAnswer();
-
-    yield return new WaitForSeconds(time + 3);
-
+    yield return new WaitForSeconds(cenaAnimation.AnimationToWin());
     RestoreCena();
     robotDialog.ActivateBubbleOtherQuestion();
   }
