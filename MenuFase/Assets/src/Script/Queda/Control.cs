@@ -19,12 +19,12 @@ public class Control : MonoBehaviour
   public void StartButton()
   {
     cuboQue.isJump = true;
-    
+
     float time = cuboQue.CalculateValue(
       height.value,
       (int)env.value
     );
-    
+
     animationControl.isQuestionRight(time);
   }
 
@@ -57,6 +57,19 @@ public class Control : MonoBehaviour
   public void SetEnvironment(float a)
   {
     cuboQue.SetEnvironment(a);
-    Tenv.text = "Ambiente: " + a;
+    switch (a)
+    {
+      case 0:
+        Tenv.text = "Gravidade: " + 20 + " m/s²";
+        break;
+
+      case 1:
+        Tenv.text = "Gravidade: " + 10 + " m/s²";
+        break;
+
+      case 2:
+        Tenv.text = "Gravidade: " + 3 + " m/s²";
+        break;
+    }
   }
 }

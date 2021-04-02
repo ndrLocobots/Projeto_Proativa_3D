@@ -7057,7 +7057,7 @@ PrefabInstance:
     - target: {fileID: 2012545460981553251, guid: 844b74e1392e741af8bd6ed52d77c345,
         type: 3}
       propertyPath: m_Text
-      value: 'Ambiente:'
+      value: "Gravidade: 10 m/s\xB2"
       objectReference: {fileID: 0}
     - target: {fileID: 2012545461335524008, guid: 844b74e1392e741af8bd6ed52d77c345,
         type: 3}
