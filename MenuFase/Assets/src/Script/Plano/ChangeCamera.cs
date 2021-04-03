@@ -39,8 +39,8 @@ public class ChangeCamera : MonoBehaviour
             camera02.SetActive(false);
             camera03.SetActive(false);
 
-            robo.transform.position = posicoesRobo[0];
-            robo.transform.rotation = rotacoesRobo[0];
+            robo.transform.position = posicoesRobo[(int)value];
+            robo.transform.rotation = rotacoesRobo[(int)value];
         }
         if (value == 1)
         {
@@ -48,8 +48,8 @@ public class ChangeCamera : MonoBehaviour
             camera02.SetActive(true);
             camera03.SetActive(false);
 
-            robo.transform.position = posicoesRobo[1];
-            robo.transform.rotation = rotacoesRobo[1];
+            robo.transform.position = posicoesRobo[(int)value];
+            robo.transform.rotation = rotacoesRobo[(int)value];
         }
         if (value == 2)
         {
@@ -57,8 +57,8 @@ public class ChangeCamera : MonoBehaviour
             camera02.SetActive(false);
             camera03.SetActive(true);
 
-            robo.transform.position = posicoesRobo[2];
-            robo.transform.rotation = rotacoesRobo[2];
+            robo.transform.position = posicoesRobo[(int)value];
+            robo.transform.rotation = rotacoesRobo[(int)value];
         }
     }
 }

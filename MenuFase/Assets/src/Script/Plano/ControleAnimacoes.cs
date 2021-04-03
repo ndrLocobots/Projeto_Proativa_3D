@@ -13,6 +13,7 @@ public class ControleAnimacoes : MonoBehaviour
     private heart coracoes;
     private bool acertouQuestao, podeRodarAnimFinal;
     private QuestionPlano questionPlano;
+    private dialog robotDialogue;
 
     private float massaCorreta;
     private float atritoCorreto;
@@ -45,6 +46,7 @@ public class ControleAnimacoes : MonoBehaviour
         questionPlano = FindObjectOfType<QuestionPlano>();
         coracoes = FindObjectOfType<heart>();
         animInimigo = FindObjectOfType<AnimInimigo>();
+        robotDialogue=  FindObjectOfType<dialog>();
 
         contadorErros = 0;
         acertouQuestao = false;
@@ -87,12 +89,17 @@ public class ControleAnimacoes : MonoBehaviour
     {
         acertouQuestao = true;
         animRobo.RobotHappy();
+        robotDialogue.SetHappyBubble();
+        robotDialogue.TalkWithBubble();
         animInimigo.AnimaInimigo(0);
         portal.SetTrigger("Sucesso");  
     }
 
     public void AnimErro(int tentativa)
     {
+        robotDialogue.SetSadBubble();
+        robotDialogue.TalkWithBubble();
+
         if(tentativa == 1)
         {
             coracoes.loseHeart();
@@ -145,5 +152,10 @@ public class ControleAnimacoes : MonoBehaviour
     public void setAcertouQuestao(bool valor)
     {
         this.acertouQuestao = valor;
+    }
+
+    public dialog getRobotDialogue()
+    {
+        return this.robotDialogue;
     }
 }

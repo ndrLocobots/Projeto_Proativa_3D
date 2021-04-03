@@ -90,14 +90,14 @@ public class dialog : MonoBehaviour
 
   public void SetHappyBubble()
   {
-
-    bubbleText.text = "Parabéns você conseguiu !!!";
+    bubbleText.fontSize = 5;
+    bubbleText.text = "Parabéns, você conseguiu!";
   }
 
   public void SetSadBubble()
   {
-
-    bubbleText.text = "Foi quase, tente de novo !!!";
+    bubbleText.fontSize = 5;
+    bubbleText.text = "Foi quase, tente de novo!";
   }
 
   public void TalkWithBubble()
@@ -118,13 +118,14 @@ public class dialog : MonoBehaviour
 
   public void ActivateBubbleSignal()
   {
-    bubbleText.text = "clique em mim !!!";
+    bubbleText.fontSize = 6;
+    bubbleText.text = "Clique em mim!";
     speechBubble.SetActive(true);
   }
 
   public void ActivateBubbleOtherQuestion(){
-    bubbleText.text = "Parabéns, tente outra questão";
-    speechBubble.SetActive(true);
+    bubbleText.fontSize = 4;
+    bubbleText.text = "Parabéns! Clique em mim para outra questão.";
   }
   
   public void DeactivateBubble()

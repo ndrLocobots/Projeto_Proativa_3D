@@ -2,13 +2,14 @@
 using System.Collections.Generic;
 using System;
 using UnityEngine;
-using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class Restart : MonoBehaviour
 {
     public GameObject cubo;
     public GameObject cuboAnimacao;
     public Animator portal, gameOver;
+    public Slider angulo, massa, atrito, forca;
 
     private Vector3 posicaoInicial;
     private Quaternion rotacaoInicial;
@@ -17,6 +18,7 @@ public class Restart : MonoBehaviour
     private ControleAnimacoes controleAnimacoes;
     private heart coracoes;
     private QuestionPlano questionPlano;
+    private ChangeStuff resetaPosicoes;
 
     void Start()
     {
@@ -25,6 +27,7 @@ public class Restart : MonoBehaviour
         controleAnimacoes = FindObjectOfType<ControleAnimacoes>();
         questionPlano = FindObjectOfType<QuestionPlano>();
         coracoes = FindObjectOfType<heart>();
+        resetaPosicoes = FindObjectOfType<ChangeStuff>();
     }
 
     public void SetPosInicial(Vector3 posCubo, Quaternion rotCubo)
@@ -47,6 +50,10 @@ public class Restart : MonoBehaviour
             animInimigo.AnimaInimigo(0);
             coracoes.updateOpacityHearts(1);
             controleAnimacoes.setContadorErros(0);
+            angulo.value = 0;
+            massa.value = 1;
+            atrito.value = 1;
+            forca.value = 10;
     
             gameOver.SetTrigger("EscondeGameOver");
             cubo.GetComponent<MeshRenderer>().enabled = true;
@@ -59,9 +66,14 @@ public class Restart : MonoBehaviour
             animInimigo.AnimaInimigo(-1);
             coracoes.updateOpacityHearts(1);
             controleAnimacoes.setContadorErros(0);
+            angulo.value = 0;
+            massa.value = 1;
+            atrito.value = 1;
+            forca.value = 10;
 
             //Trocar de questao (robo)
             questionPlano.SetRobotDialog();
+            controleAnimacoes.getRobotDialogue().ActivateBubbleOtherQuestion();
         }
 
         portal.SetTrigger("Fechar");
