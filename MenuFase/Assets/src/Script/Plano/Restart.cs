@@ -19,6 +19,7 @@ public class Restart : MonoBehaviour
     private heart coracoes;
     private QuestionPlano questionPlano;
     private ChangeStuff resetaPosicoes;
+    private ControleQuestoes controleQuestoes;
 
     void Start()
     {
@@ -28,6 +29,7 @@ public class Restart : MonoBehaviour
         questionPlano = FindObjectOfType<QuestionPlano>();
         coracoes = FindObjectOfType<heart>();
         resetaPosicoes = FindObjectOfType<ChangeStuff>();
+        controleQuestoes = FindObjectOfType<ControleQuestoes>();
     }
 
     public void SetPosInicial(Vector3 posCubo, Quaternion rotCubo)
@@ -72,8 +74,19 @@ public class Restart : MonoBehaviour
             forca.value = 10;
 
             //Trocar de questao (robo)
-            questionPlano.SetRobotDialog();
-            controleAnimacoes.getRobotDialogue().ActivateBubbleOtherQuestion();
+            if(questionPlano.indice < 3)
+            {
+                questionPlano.indice++;
+                questionPlano.SetRobotDialog();
+                controleAnimacoes.getRobotDialogue().ActivateBubbleOtherQuestion();
+            }
+            else
+            {
+                questionPlano.indice = 0;
+                questionPlano.SetRobotDialog();
+                controleAnimacoes.getRobotDialogue().ActivateBubbleOtherQuestion();
+                controleQuestoes.AtualizaQuestaoAtiva(0);
+            }
         }
 
         portal.SetTrigger("Fechar");

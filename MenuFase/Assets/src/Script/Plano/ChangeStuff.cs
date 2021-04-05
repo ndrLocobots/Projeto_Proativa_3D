@@ -422,14 +422,14 @@ public class ChangeStuff : MonoBehaviour
         rb.mass = m;
         rb.AddForce(new Vector3(0, -(m * 10), 0), ForceMode.Acceleration);
 
-        color = cuboMat.material.color;
+        color = cuboMat.sharedMaterial.color;
 
         color.r = (1.5f / m);
         color.g = (3.5f / m) / 2;
         color.b = (1.8f / m);
 
-        cuboMat.material.color = color;
-        cuboMat.material.SetColor("_Color", color);
+        cuboMat.sharedMaterial.color = color;
+        cuboMat.sharedMaterial.SetColor("_Color", color);
     }
 
     public void ChangeMassText()

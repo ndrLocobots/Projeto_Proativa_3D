@@ -9,6 +9,7 @@ public class robotClick : MonoBehaviour
   bool mouseOnCollider = false;
 
   private heart hearts;
+  private ControleBotoes controleBotoes;
 
   public GameObject timer;
   public Button botaoStart;
@@ -17,6 +18,7 @@ public class robotClick : MonoBehaviour
   void Awake()
   {
     hearts = FindObjectOfType<heart>();
+    controleBotoes = FindObjectOfType<ControleBotoes>();
   }
 
   void Update()
@@ -29,7 +31,6 @@ public class robotClick : MonoBehaviour
         botaoStart.interactable = true;
         botaoMenu.interactable = true;
 
-        //gambiarra temporaria
         if(SceneManager.GetActiveScene().name == "Plano")
         {
           ParticularidadesPlano();
@@ -41,6 +42,7 @@ public class robotClick : MonoBehaviour
   void ParticularidadesPlano()
   {
     QuestionPlano questionPlano = FindObjectOfType<QuestionPlano>();
+    controleBotoes.HabilitaBotoes();
 
     hearts.updateOpacityHearts(1);
     timer.GetComponent<Text>().enabled = true;

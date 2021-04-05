@@ -8,6 +8,9 @@ TagManager:
   - End
   - Start
   - Rampa
+  - Primeiro
+  - Segundo
+  - Terceiro
   layers:
   - Default
   - TransparentFX

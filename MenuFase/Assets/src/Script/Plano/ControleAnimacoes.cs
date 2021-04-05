@@ -14,6 +14,7 @@ public class ControleAnimacoes : MonoBehaviour
     private bool acertouQuestao, podeRodarAnimFinal;
     private QuestionPlano questionPlano;
     private dialog robotDialogue;
+    private ControleQuestoes controleQuestoes;
 
     private float massaCorreta;
     private float atritoCorreto;
@@ -46,7 +47,9 @@ public class ControleAnimacoes : MonoBehaviour
         questionPlano = FindObjectOfType<QuestionPlano>();
         coracoes = FindObjectOfType<heart>();
         animInimigo = FindObjectOfType<AnimInimigo>();
-        robotDialogue=  FindObjectOfType<dialog>();
+        robotDialogue = FindObjectOfType<dialog>();
+        controleQuestoes = FindObjectOfType<ControleQuestoes>();
+        controleQuestoes.AtualizaQuestaoAtiva(0);
 
         contadorErros = 0;
         acertouQuestao = false;
@@ -62,7 +65,7 @@ public class ControleAnimacoes : MonoBehaviour
 
             if(valorAtrito == atritoCorreto && valorAngulo == anguloCorreto)
             {
-                AnimAcerto();
+                AnimAcerto(1);
             }
             else
             {
@@ -76,7 +79,22 @@ public class ControleAnimacoes : MonoBehaviour
 
             if(valorMassa == massaCorreta && valorAngulo == anguloCorreto && (valorForca >= 17.20f && valorForca <= 17.45f))
             {
-                AnimAcerto();
+                AnimAcerto(2);
+            }
+            else
+            {
+                contadorErros++;
+            }
+        }
+        else if(questionPlano.indice == 2)
+        {
+            massaCorreta = 4f;
+            anguloCorreto = 1f;
+            forcaCorreta = 20f;
+
+            if (valorAngulo == anguloCorreto && valorMassa == massaCorreta && valorForca == forcaCorreta)
+            {
+                AnimAcerto(3);
             }
             else
             {
@@ -85,14 +103,15 @@ public class ControleAnimacoes : MonoBehaviour
         }
     }
 
-    public void AnimAcerto()
+    public void AnimAcerto(int i)
     {
         acertouQuestao = true;
         animRobo.RobotHappy();
         robotDialogue.SetHappyBubble();
         robotDialogue.TalkWithBubble();
         animInimigo.AnimaInimigo(0);
-        portal.SetTrigger("Sucesso");  
+        portal.SetTrigger("Sucesso"); 
+        controleQuestoes.AtualizaQuestaoAtiva(i);
     }
 
     public void AnimErro(int tentativa)

@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class ControleBotoes : MonoBehaviour
 {
     public GameObject menu;
+    public GameObject botoesFases;
     public Button start;
     public Button menuBotao;
 
@@ -16,6 +17,12 @@ public class ControleBotoes : MonoBehaviour
     }
 
     void Update() {}
+
+    public void HabilitaBotoes()
+    {
+        if(!botoesFases.activeSelf)
+            botoesFases.SetActive(true);
+    }
 
     public void AbreMenu()
     {
