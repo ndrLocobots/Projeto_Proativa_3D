@@ -1,26 +1,28 @@
-﻿# Projeto Proativa 3D <font color = 'red'>Loco</font>bits
+﻿# Projeto Proativa 3D - <font color = 'red'>Loco</font>Bits
 
 <p align = "justify">
-Este projeto visa continuar o desenvolvimento de um simulador com o uso do Kinect para melhor compreensão dos assuntos abordados na disciplina da Física Mecânica. Uma vez que a complexidade dos conceitos explanados é responsável pela grande dificuldade dos discentes em obter sucesso na disciplina.  
+Este projeto visa continuar o desenvolvimento de um simulador com o uso do Kinect para melhor compreensão dos assuntos abordados na disciplina de Física I nas universidades. Tendo em vista que essa é uma disciplina com altos índices de evasão e reprovação, as simulações funcionarão como material complementar aos discentes.  
 
-O simulador permitirá a visualização de eventos, bem como o aprendizado de novos conteúdos previstos na formação dos alunos de forma didática e participativa.  Além disso, o uso de ferramentas tecnológicas em sala de aula pode representar um avanço significativo na interação de ensino e tecnologia.
+O simulador irá estabelecer objetivos através de um robô interativo e de uma interface bem similar às interfaces de jogos eletrônicos, o que irá trazer o aprendizado de novos conteúdos previstos na formação dos alunos de forma didática e participativa.  Além disso, o uso de ferramentas tecnológicas em sala de aula pode representar um avanço significativo na interação de ensino e tecnologia.
+
+Atualmente, o projeto conta com três simulações bem similares ao que se espera de uma versão final, e outras duas simulações ainda a serem aprimoradas. As simulações que já possuem um aspecto de jogo eletrônico são: Lançamento Oblíquo, Plano Inclinado e Queda Livre. As simulações que ainda precisam ser atualizadas são: Força e Massa-mola.
+
 </p>
 
+## Simulações Encaminhadas
+<div style = "display : flex">
+    <img style = "width: 33%" src = "./imagens/lancamentoVertical.png">
+    <img style = "width: 33%" src = "./imagens/planoInclinado.png">
+    <img style = "width: 34%" src = "./imagens/quedaLivre.png">
+</div>
+<br>
+
+## Simulações Pendentes
 <div style = "display : flex">
     <img style = "width: 50%" src = "./imagens/forca01.png">
-    <img style = "width: 50%" src = "./imagens/lancamento01.png">
-</div>
-<br>
-
-<div style = "display : flex">
     <img style = "width: 50%" src = "./imagens/massa01.png">
-    <img style = "width: 50%" src = "./imagens/plano01.png">
 </div>
 <br>
-
-<div style = "display : flex">
-    <img style = "width: 100%" src = "./imagens/queda01.png">
-</div>
 <hr>
 
 ## Instalar
