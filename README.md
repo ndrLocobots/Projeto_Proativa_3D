@@ -5,7 +5,7 @@ Este projeto visa continuar o desenvolvimento de um simulador com o uso do Kinec
 
 O simulador irá estabelecer objetivos através de um robô interativo e de uma interface bem similar às interfaces de jogos eletrônicos, o que irá trazer o aprendizado de novos conteúdos previstos na formação dos alunos de forma didática e participativa.  Além disso, o uso de ferramentas tecnológicas em sala de aula pode representar um avanço significativo na interação de ensino e tecnologia.
 
-Atualmente, o projeto conta com três simulações bem similares ao que se espera de uma versão final, e outras duas simulações ainda a serem aprimoradas. As simulações que já possuem um aspecto de jogo eletrônico são: Lançamento Oblíquo, Plano Inclinado e Queda Livre. As simulações que ainda precisam ser atualizadas são: Força e Massa-mola.
+Atualmente, o projeto conta com três simulações bem similares ao que se espera de uma versão final, e outras duas simulações ainda a serem aprimoradas. As simulações que já possuem um aspecto de jogo eletrônico são: Lançamento Oblíquo, Plano Inclinado e Queda Livre. As simulações que ainda precisam ser atualizadas são: Força e Massa-mola. A integração do projeto com o Kinect ainda não foi realizada.
 
 </p>
 
@@ -27,11 +27,7 @@ Atualmente, o projeto conta com três simulações bem similares ao que se esper
 
 ## Instalar
 
-Para modificar o projeto utilize o Unity 3D versão  2019.2.18f1, que pode ser encontrado no [Unity hub](https://store.unity.com/pt/download)
-
-Para configurar o Kinect, primeiro baixe e instale o Kinect For Windows SDK v1.8 através do site da [Microsoft](https://www.microsoft.com/en-us/download/details.aspx?id=40278)
-
-Logo em seguida, faça o download e a instalação do Kinect For Windows Developer Toolkit v1.8, também pelo site da [Microsoft](https://www.microsoft.com/en-us/download/details.aspx?id=40276)
+Para modificar o projeto utilize o Unity 3D versão  2020.3.1f1, que pode ser encontrado no [Unity hub](https://store.unity.com/pt/download)
 
 ## Configurando o ambiente
 
