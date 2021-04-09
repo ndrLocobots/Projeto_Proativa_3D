@@ -126,6 +126,13 @@ public class dialog : MonoBehaviour
   public void ActivateBubbleOtherQuestion(){
     bubbleText.fontSize = 4;
     bubbleText.text = "Parabéns! Clique em mim para outra questão.";
+    this.TalkWithBubble();
+  }
+
+  public void ActivateBubbleReminder()
+  {
+    bubbleText.fontSize = 4;
+    bubbleText.text = "Esqueceu o enunciado? Clique em mim!";
   }
   
   public void DeactivateBubble()

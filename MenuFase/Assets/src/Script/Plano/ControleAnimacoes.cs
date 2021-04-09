@@ -20,6 +20,8 @@ public class ControleAnimacoes : MonoBehaviour
     private float atritoCorreto;
     private float anguloCorreto;
     private float forcaCorreta;
+    private float tempoInicio;
+    private bool estaResolvendo;
 
     private int contadorErros;
 
@@ -54,6 +56,21 @@ public class ControleAnimacoes : MonoBehaviour
         contadorErros = 0;
         acertouQuestao = false;
         podeRodarAnimFinal = false;
+        estaResolvendo = false;
+    }
+
+    void Update()
+    {
+        if(estaResolvendo && !robotDialogue.isTalk)
+        {
+            if(Time.time - tempoInicio >= 25)
+            {
+                robotDialogue.ActivateBubbleReminder();
+                robotDialogue.TalkWithBubble();
+                tempoInicio = Time.time;
+                estaResolvendo = false;
+            }
+        }
     }
 
     public void VerificaQuestao(float valorMassa, float valorAtrito, float valorAngulo, float valorForca)
@@ -112,6 +129,7 @@ public class ControleAnimacoes : MonoBehaviour
         animInimigo.AnimaInimigo(0);
         portal.SetTrigger("Sucesso"); 
         controleQuestoes.AtualizaQuestaoAtiva(i);
+        controleQuestoes.setConcluidas(1, i - 1);
     }
 
     public void AnimErro(int tentativa)
@@ -176,5 +194,15 @@ public class ControleAnimacoes : MonoBehaviour
     public dialog getRobotDialogue()
     {
         return this.robotDialogue;
+    }
+
+    public void setEstResolvendo(bool valor)
+    {
+        this.estaResolvendo = valor;
+    }
+
+    public void setTempoInicio()
+    {
+        this.tempoInicio = Time.time;
     }
 }

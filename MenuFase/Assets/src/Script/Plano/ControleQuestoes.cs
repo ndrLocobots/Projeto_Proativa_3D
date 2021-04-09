@@ -9,10 +9,15 @@ public class ControleQuestoes : MonoBehaviour
     public Text titulo, enunciado, dadosInformados, dadosEsperados, pontuacao;
 
     private QuestionPlano questionPlano;
+    private int[] concluidas;
 
     void Start()
     {
         questionPlano = FindObjectOfType<QuestionPlano>();
+        concluidas = new int[3];
+        concluidas[0] = 0;
+        concluidas[1] = 0;
+        concluidas[2] = 0;
     }
 
     public void AtualizaQuestaoAtiva(int indice)
@@ -79,7 +84,7 @@ public class ControleQuestoes : MonoBehaviour
     {
         if(!infoQuestoes.GetBool("Mostrar"))
         {
-            if(questionPlano.indice > 0)
+            if(concluidas[0] == 1)
             {
                 titulo.text = "Questão: 1";
                 enunciado.text = "Enunciado: ";
@@ -101,7 +106,7 @@ public class ControleQuestoes : MonoBehaviour
     {
         if(!infoQuestoes.GetBool("Mostrar"))
         {
-            if(questionPlano.indice > 1)
+            if(concluidas[1] == 1)
             {
                 titulo.text = "Questão: 2";
                 enunciado.text = "Enunciado: ";
@@ -123,7 +128,17 @@ public class ControleQuestoes : MonoBehaviour
     {
         if(!infoQuestoes.GetBool("Mostrar"))
         {
-            infoQuestoes.SetBool("Mostrar", true);
+            if(concluidas[2] == 1)
+            {
+                titulo.text = "Questão: 3";
+                enunciado.text = "Enunciado: ";
+                enunciado.text += questionPlano.GetQuestion(2);
+                dadosInformados.text = "Dados informados por você: NaN";
+                dadosEsperados.text = "Dados esperados pelo LocoBits: NaN";
+                pontuacao.text = "Sua pontuação: NaN";
+
+                infoQuestoes.SetBool("Mostrar", true);
+            }
         }
         else
         {
@@ -134,5 +149,10 @@ public class ControleQuestoes : MonoBehaviour
     public void EscondeDados()
     {
         infoQuestoes.SetBool("Mostrar", false);
+    }
+
+    public void setConcluidas(int valor, int indice)
+    {
+        this.concluidas[indice] = valor;
     }
 }

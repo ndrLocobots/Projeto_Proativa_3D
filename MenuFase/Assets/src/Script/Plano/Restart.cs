@@ -72,6 +72,7 @@ public class Restart : MonoBehaviour
             massa.value = 1;
             atrito.value = 1;
             forca.value = 10;
+            controleAnimacoes.setEstResolvendo(false);
 
             //Trocar de questao (robo)
             if(questionPlano.indice < 3)

@@ -10,6 +10,7 @@ public class robotClick : MonoBehaviour
 
   private heart hearts;
   private ControleBotoes controleBotoes;
+  private ControleAnimacoes controleAnimacoes;
 
   public GameObject timer;
   public Button botaoStart;
@@ -19,6 +20,7 @@ public class robotClick : MonoBehaviour
   {
     hearts = FindObjectOfType<heart>();
     controleBotoes = FindObjectOfType<ControleBotoes>();
+    controleAnimacoes = FindObjectOfType<ControleAnimacoes>();
   }
 
   void Update()
@@ -43,6 +45,8 @@ public class robotClick : MonoBehaviour
   {
     QuestionPlano questionPlano = FindObjectOfType<QuestionPlano>();
     controleBotoes.HabilitaBotoes();
+    controleAnimacoes.setEstResolvendo(true);
+    controleAnimacoes.setTempoInicio();
 
     hearts.updateOpacityHearts(1);
     timer.GetComponent<Text>().enabled = true;
