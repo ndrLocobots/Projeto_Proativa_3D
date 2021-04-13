@@ -9,7 +9,9 @@ public class ChangeStuff : MonoBehaviour
     private float massa;
     private float atrito;
     
+    [SerializeField]
     private Vector3[] posPortal;
+    [SerializeField]
     private Vector3[] posTrigger;
 
     public Restart restart;
@@ -42,12 +44,12 @@ public class ChangeStuff : MonoBehaviour
         this.atrito = 0.10f;
         this.massa = 1f;
 
-        posPortal = new Vector3[3];
+        //posPortal = new Vector3[3];
         posPortal[0] = new Vector3(portal.transform.position.x, portal.transform.position.y, portal.transform.position.z);
         posPortal[1] = new Vector3(portal.transform.position.x, portal.transform.position.y, portal.transform.position.z - 0.69f);
         posPortal[2] = new Vector3(portal.transform.position.x, portal.transform.position.y, portal.transform.position.z - 0.96f);
 
-        posTrigger = new Vector3[3];
+        //posTrigger = new Vector3[3];
         posTrigger[0] = new Vector3(trigger.transform.position.x, trigger.transform.position.y, trigger.transform.position.z);
         posTrigger[1] = new Vector3(trigger.transform.position.x, trigger.transform.position.y, trigger.transform.position.z - 0.69f);
         posTrigger[2] = new Vector3(trigger.transform.position.x, trigger.transform.position.y, trigger.transform.position.z - 0.96f);

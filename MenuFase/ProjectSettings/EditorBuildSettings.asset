@@ -20,10 +20,10 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/src/Scenes/Massa.unity
     guid: 9fc0d4010bbf28b4594072e72b8655ab
-  - enabled: 1
+  - enabled: 0
     path: Assets/src/Scenes/Plano.unity
     guid: 33d1f108513bbdb46a56120e108f0928
-  - enabled: 0
+  - enabled: 1
     path: Assets/src/Scenes/Queda.unity
     guid: 21572c63f3ffed64cb4f45aeb6fdbc6b
   m_configObjects: {}

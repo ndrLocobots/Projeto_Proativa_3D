@@ -9226,6 +9226,11 @@ PrefabInstance:
       propertyPath: m_TextStyleHashCode
       value: 97690656
       objectReference: {fileID: 0}
+    - target: {fileID: 871145556457081865, guid: 750af05357c2aeae2acfdc969880b2c5,
+        type: 3}
+      propertyPath: robotAnimator
+      value: 
+      objectReference: {fileID: 1464892697}
     - target: {fileID: 871145556457081870, guid: 750af05357c2aeae2acfdc969880b2c5,
         type: 3}
       propertyPath: botaoMenu
@@ -9635,6 +9640,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d78377a0bdcd743f284cc9e514907c54, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!95 &1464892697 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 2875083594479735596, guid: 750af05357c2aeae2acfdc969880b2c5,
+    type: 3}
+  m_PrefabInstance: {fileID: 1464892695}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1496044744
 GameObject:
   m_ObjectHideFlags: 0

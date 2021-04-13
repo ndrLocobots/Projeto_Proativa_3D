@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class robotAnimation : MonoBehaviour
 {
+  [SerializeField]
   Animator robotAnimator;
 
   int jumpHash = Animator.StringToHash("jumping");

@@ -218,7 +218,7 @@ Transform:
   m_Children:
   - {fileID: 1490117771}
   m_Father: {fileID: 0}
-  m_RootOrder: 16
+  m_RootOrder: 18
   m_LocalEulerAnglesHint: {x: 30, y: 0, z: 0}
 --- !u!1 &8758859
 GameObject:
@@ -939,7 +939,7 @@ Light:
   m_Type: 1
   m_Shape: 0
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 0.3
+  m_Intensity: 0.6
   m_Range: 10
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
@@ -984,7 +984,7 @@ Light:
   m_BounceIntensity: 1
   m_ColorTemperature: 6570
   m_UseColorTemperature: 0
-  m_BoundingSphereOverride: {x: 0, y: 9.1835e-41, z: 6.979499e-39, w: -2.0335445}
+  m_BoundingSphereOverride: {x: 0, y: 0, z: 0, w: 0}
   m_UseBoundingSphereOverride: 0
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
@@ -1181,10 +1181,9 @@ Transform:
   - {fileID: 1405167209}
   - {fileID: 765869724}
   - {fileID: 170076735}
-  - {fileID: 2061494396}
   - {fileID: 1675152833}
   m_Father: {fileID: 0}
-  m_RootOrder: 11
+  m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &200167311
 PrefabInstance:
@@ -1436,7 +1435,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2040141779}
-  m_RootOrder: 9
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &233487720
 MonoBehaviour:
@@ -1552,6 +1551,11 @@ PrefabInstance:
       propertyPath: m_TextStyleHashCode
       value: 97690656
       objectReference: {fileID: 0}
+    - target: {fileID: 871145556457081865, guid: 750af05357c2aeae2acfdc969880b2c5,
+        type: 3}
+      propertyPath: robotAnimator
+      value: 
+      objectReference: {fileID: 365460772}
     - target: {fileID: 871145556457081870, guid: 750af05357c2aeae2acfdc969880b2c5,
         type: 3}
       propertyPath: timer
@@ -1775,7 +1779,7 @@ PrefabInstance:
     - target: {fileID: 5290703212927532630, guid: 750af05357c2aeae2acfdc969880b2c5,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.78129727
+      value: 0.7812972
       objectReference: {fileID: 0}
     - target: {fileID: 5290703212927532630, guid: 750af05357c2aeae2acfdc969880b2c5,
         type: 3}
@@ -2164,6 +2168,12 @@ PrefabInstance:
 --- !u!1 &365460766 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 9166799219892603973, guid: 750af05357c2aeae2acfdc969880b2c5,
+    type: 3}
+  m_PrefabInstance: {fileID: 325338816}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &365460772 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 2875083594479735596, guid: 750af05357c2aeae2acfdc969880b2c5,
     type: 3}
   m_PrefabInstance: {fileID: 325338816}
   m_PrefabAsset: {fileID: 0}
@@ -2590,7 +2600,7 @@ Skybox:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 534669902}
   m_Enabled: 1
-  m_CustomSkybox: {fileID: 2100000, guid: 9af23ba5fa5364ff598888460e0e2759, type: 2}
+  m_CustomSkybox: {fileID: 0}
 --- !u!1 &552923426
 GameObject:
   m_ObjectHideFlags: 0
@@ -2618,7 +2628,7 @@ Skybox:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 552923426}
   m_Enabled: 1
-  m_CustomSkybox: {fileID: 2100000, guid: 9af23ba5fa5364ff598888460e0e2759, type: 2}
+  m_CustomSkybox: {fileID: 0}
 --- !u!81 &552923428
 AudioListener:
   m_ObjectHideFlags: 0
@@ -3649,7 +3659,7 @@ Transform:
   m_LocalScale: {x: 1, y: 0.14465374, z: 3.171731}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 14
+  m_RootOrder: 16
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &719824316
 GameObject:
@@ -4001,7 +4011,7 @@ Skybox:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 805296581}
   m_Enabled: 1
-  m_CustomSkybox: {fileID: 2100000, guid: 3777c2609a2482a48a60ef07326b3646, type: 2}
+  m_CustomSkybox: {fileID: 0}
 --- !u!1 &809250446
 GameObject:
   m_ObjectHideFlags: 0
@@ -5191,7 +5201,7 @@ RectTransform:
   - {fileID: 1761412560}
   - {fileID: 629467343}
   m_Father: {fileID: 0}
-  m_RootOrder: 12
+  m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -5704,63 +5714,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1188662149}
   m_CullTransparentMesh: 0
---- !u!134 &1206619743
-PhysicMaterial:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_Name: Friction (Instance) (Instance) (Instance) (Instance) (Instance) (Instance)
-    (Instance) (Instance) (Instance) (Instance) (Instance) (Instance) (Instance)
-    (Instance) (Instance) (Instance) (Instance) (Instance) (Instance) (Instance)
-    (Instance) (Instance) (Instance) (Instance) (Instance) (Instance) (Instance)
-    (Instance) (Instance) (Instance) (Instance) (Instance) (Instance) (Instance)
-    (Instance) (Instance) (Instance) (Instance) (Instance) (Instance) (Instance)
-    (Instance) (Instance) (Instance) (Instance) (Instance) (Instance) (Instance)
-    (Instance) (Instance) (Instance) (Instance) (Instance) (Instance) (Instance)
-    (Instance) (Instance) (Instance) (Instance) (Instance) (Instance) (Instance)
-    (Instance) (Instance) (Instance) (Instance) (Instance) (Instance) (Instance)
-    (Instance) (Instance) (Instance) (Instance) (Instance) (Instance) (Instance)
-    (Instance) (Instance) (Instance) (Instance) (Instance) (Instance) (Instance)
-    (Instance) (Instance) (Instance) (Instance) (Instance) (Instance) (Instance)
-    (Instance) (Instance) (Instance) (Instance) (Instance) (Instance) (Instance)
-    (Instance) (Instance) (Instance) (Instance) (Instance) (Instance) (Instance)
-    (Instance) (Instance) (Instance) (Instance) (Instance) (Instance) (Instance)
-    (Instance) (Instance) (Instance) (Instance) (Instance) (Instance) (Instance)
-    (Instance) (Instance) (Instance) (Instance) (Instance) (Instance) (Instance)
-    (Instance) (Instance) (Instance) (Instance) (Instance) (Instance) (Instance)
-    (Instance) (Instance) (Instance) (Instance) (Instance) (Instance) (Instance)
-    (Instance) (Instance) (Instance) (Instance) (Instance) (Instance) (Instance)
-    (Instance) (Instance) (Instance) (Instance) (Instance) (Instance) (Instance)
-    (Instance) (Instance) (Instance) (Instance) (Instance) (Instance) (Instance)
-    (Instance) (Instance) (Instance) (Instance) (Instance) (Instance) (Instance)
-    (Instance) (Instance) (Instance) (Instance) (Instance) (Instance) (Instance)
-    (Instance) (Instance) (Instance) (Instance) (Instance) (Instance) (Instance)
-    (Instance) (Instance) (Instance) (Instance) (Instance) (Instance) (Instance)
-    (Instance) (Instance) (Instance) (Instance) (Instance) (Instance) (Instance)
-    (Instance) (Instance) (Instance) (Instance) (Instance) (Instance) (Instance)
-    (Instance) (Instance) (Instance) (Instance) (Instance) (Instance) (Instance)
-    (Instance) (Instance) (Instance) (Instance) (Instance) (Instance) (Instance)
-    (Instance) (Instance) (Instance) (Instance) (Instance) (Instance) (Instance)
-    (Instance) (Instance) (Instance) (Instance) (Instance) (Instance) (Instance)
-    (Instance) (Instance) (Instance) (Instance) (Instance) (Instance) (Instance)
-    (Instance) (Instance) (Instance) (Instance) (Instance) (Instance) (Instance)
-    (Instance) (Instance) (Instance) (Instance) (Instance) (Instance) (Instance)
-    (Instance) (Instance) (Instance) (Instance) (Instance) (Instance) (Instance)
-    (Instance) (Instance) (Instance) (Instance) (Instance) (Instance) (Instance)
-    (Instance) (Instance) (Instance) (Instance) (Instance) (Instance) (Instance)
-    (Instance) (Instance) (Instance) (Instance) (Instance) (Instance) (Instance)
-    (Instance) (Instance) (Instance) (Instance) (Instance) (Instance) (Instance)
-    (Instance) (Instance) (Instance) (Instance) (Instance) (Instance) (Instance)
-    (Instance) (Instance) (Instance) (Instance) (Instance) (Instance) (Instance)
-    (Instance) (Instance) (Instance) (Instance) (Instance) (Instance) (Instance)
-    (Instance) (Instance) (Instance) (Instance) (Instance) (Instance) (Instance)
-    (Instance) (Instance) (Instance) (Instance)
-  dynamicFriction: 0.12
-  staticFriction: 0.12
-  bounciness: 0
-  frictionCombine: 0
-  bounceCombine: 0
 --- !u!1001 &1210980670
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7048,6 +7001,14 @@ MonoBehaviour:
   camera02: {fileID: 552923426}
   camera03: {fileID: 805296581}
   robo: {fileID: 365460766}
+  posicoesRobo:
+  - {x: 6.267623, y: 9.52, z: -22.11263}
+  - {x: 6.139, y: 9.52, z: -25.129}
+  - {x: 6.519951, y: 9.52, z: -23.08969}
+  rotacoesRobo:
+  - {x: 0, y: 0.7812972, z: 0, w: 0.62415916}
+  - {x: 0, y: 0.027049303, z: 0, w: 0.9996341}
+  - {x: 0, y: 0.94665766, z: 0, w: 0.32224095}
 --- !u!4 &1577961975
 Transform:
   m_ObjectHideFlags: 0
@@ -7426,7 +7387,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 200161510}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!154 &1675152834
 TerrainCollider:
@@ -7472,6 +7433,65 @@ Terrain:
   m_GroupingID: 0
   m_RenderingLayerMask: 1
   m_AllowAutoConnect: 1
+--- !u!134 &1680365574
+PhysicMaterial:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Friction (Instance) (Instance) (Instance) (Instance) (Instance) (Instance)
+    (Instance) (Instance) (Instance) (Instance) (Instance) (Instance) (Instance)
+    (Instance) (Instance) (Instance) (Instance) (Instance) (Instance) (Instance)
+    (Instance) (Instance) (Instance) (Instance) (Instance) (Instance) (Instance)
+    (Instance) (Instance) (Instance) (Instance) (Instance) (Instance) (Instance)
+    (Instance) (Instance) (Instance) (Instance) (Instance) (Instance) (Instance)
+    (Instance) (Instance) (Instance) (Instance) (Instance) (Instance) (Instance)
+    (Instance) (Instance) (Instance) (Instance) (Instance) (Instance) (Instance)
+    (Instance) (Instance) (Instance) (Instance) (Instance) (Instance) (Instance)
+    (Instance) (Instance) (Instance) (Instance) (Instance) (Instance) (Instance)
+    (Instance) (Instance) (Instance) (Instance) (Instance) (Instance) (Instance)
+    (Instance) (Instance) (Instance) (Instance) (Instance) (Instance) (Instance)
+    (Instance) (Instance) (Instance) (Instance) (Instance) (Instance) (Instance)
+    (Instance) (Instance) (Instance) (Instance) (Instance) (Instance) (Instance)
+    (Instance) (Instance) (Instance) (Instance) (Instance) (Instance) (Instance)
+    (Instance) (Instance) (Instance) (Instance) (Instance) (Instance) (Instance)
+    (Instance) (Instance) (Instance) (Instance) (Instance) (Instance) (Instance)
+    (Instance) (Instance) (Instance) (Instance) (Instance) (Instance) (Instance)
+    (Instance) (Instance) (Instance) (Instance) (Instance) (Instance) (Instance)
+    (Instance) (Instance) (Instance) (Instance) (Instance) (Instance) (Instance)
+    (Instance) (Instance) (Instance) (Instance) (Instance) (Instance) (Instance)
+    (Instance) (Instance) (Instance) (Instance) (Instance) (Instance) (Instance)
+    (Instance) (Instance) (Instance) (Instance) (Instance) (Instance) (Instance)
+    (Instance) (Instance) (Instance) (Instance) (Instance) (Instance) (Instance)
+    (Instance) (Instance) (Instance) (Instance) (Instance) (Instance) (Instance)
+    (Instance) (Instance) (Instance) (Instance) (Instance) (Instance) (Instance)
+    (Instance) (Instance) (Instance) (Instance) (Instance) (Instance) (Instance)
+    (Instance) (Instance) (Instance) (Instance) (Instance) (Instance) (Instance)
+    (Instance) (Instance) (Instance) (Instance) (Instance) (Instance) (Instance)
+    (Instance) (Instance) (Instance) (Instance) (Instance) (Instance) (Instance)
+    (Instance) (Instance) (Instance) (Instance) (Instance) (Instance) (Instance)
+    (Instance) (Instance) (Instance) (Instance) (Instance) (Instance) (Instance)
+    (Instance) (Instance) (Instance) (Instance) (Instance) (Instance) (Instance)
+    (Instance) (Instance) (Instance) (Instance) (Instance) (Instance) (Instance)
+    (Instance) (Instance) (Instance) (Instance) (Instance) (Instance) (Instance)
+    (Instance) (Instance) (Instance) (Instance) (Instance) (Instance) (Instance)
+    (Instance) (Instance) (Instance) (Instance) (Instance) (Instance) (Instance)
+    (Instance) (Instance) (Instance) (Instance) (Instance) (Instance) (Instance)
+    (Instance) (Instance) (Instance) (Instance) (Instance) (Instance) (Instance)
+    (Instance) (Instance) (Instance) (Instance) (Instance) (Instance) (Instance)
+    (Instance) (Instance) (Instance) (Instance) (Instance) (Instance) (Instance)
+    (Instance) (Instance) (Instance) (Instance) (Instance) (Instance) (Instance)
+    (Instance) (Instance) (Instance) (Instance) (Instance) (Instance) (Instance)
+    (Instance) (Instance) (Instance) (Instance) (Instance) (Instance) (Instance)
+    (Instance) (Instance) (Instance) (Instance) (Instance) (Instance) (Instance)
+    (Instance) (Instance) (Instance) (Instance) (Instance) (Instance) (Instance)
+    (Instance) (Instance) (Instance) (Instance) (Instance) (Instance) (Instance)
+    (Instance) (Instance) (Instance) (Instance) (Instance) (Instance) (Instance)
+  dynamicFriction: 0.12
+  staticFriction: 0.12
+  bounciness: 0
+  frictionCombine: 0
+  bounceCombine: 0
 --- !u!114 &1681728440 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 3895136102653190196, guid: ab2f2e673fac47e4089d84a7d0d3423b,
@@ -8698,12 +8718,12 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1982399153}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0, y: -0.519, z: 5.238}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 7.51, y: 9.709999, z: -20.289999}
   m_LocalScale: {x: 1, y: 0.15511, z: 1}
   m_Children: []
-  m_Father: {fileID: 2040141779}
-  m_RootOrder: 8
+  m_Father: {fileID: 0}
+  m_RootOrder: 14
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1982399155
 MonoBehaviour:
@@ -8987,11 +9007,10 @@ Transform:
   - {fileID: 1349812734}
   - {fileID: 2142551745}
   - {fileID: 562226995}
-  - {fileID: 1982399154}
   - {fileID: 233487719}
   - {fileID: 2105082951}
   m_Father: {fileID: 0}
-  m_RootOrder: 13
+  m_RootOrder: 15
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2061494392
 GameObject:
@@ -9085,13 +9104,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2061494392}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.010964013, y: -0.51604366, z: 3.7600002}
-  m_LocalScale: {x: 0.039474078, y: 0.7309407, z: 0.03592634}
+  m_LocalPosition: {x: 7.605, y: 9.533, z: -20.31594}
+  m_LocalScale: {x: 0.054004487, y: 1, z: 0.049150825}
   m_Children:
   - {fileID: 1921428845}
   - {fileID: 23526735}
-  m_Father: {fileID: 200161510}
-  m_RootOrder: 3
+  m_Father: {fileID: 0}
+  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!95 &2061494397
 Animator:
@@ -9124,11 +9143,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6db70c67a9a3de44d82d5783462b1cef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  botaoMenu: {fileID: 0}
-  botaoStart: {fileID: 0}
-  botaoRestart: {fileID: 0}
+  botaoMenu: {fileID: 1040394189}
+  botaoStart: {fileID: 346828634}
+  botaoRestart: {fileID: 1893927367}
   cubo: {fileID: 842856407}
-  gameOver: {fileID: 0}
+  gameOver: {fileID: 1422950972}
 --- !u!1 &2083933588
 GameObject:
   m_ObjectHideFlags: 0
@@ -9437,6 +9456,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6fa474be6c1fe1a4cb6ebe5556583226, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  posPortal:
+  - {x: 7.605, y: 9.533, z: -20.31594}
+  - {x: 0, y: 0, z: 0}
+  - {x: 0, y: 0, z: 0}
+  posTrigger:
+  - {x: 7.51, y: 9.709999, z: -20.29}
+  - {x: 0, y: 0, z: 0}
+  - {x: 0, y: 0, z: 0}
   restart: {fileID: 809250447}
   textoAngulo: {fileID: 36820066}
   textoMassa: {fileID: 1483642043}
@@ -9562,7 +9589,7 @@ Transform:
   m_LocalScale: {x: 0.37038, y: 0.37038, z: 0.37038}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 15
+  m_RootOrder: 17
   m_LocalEulerAnglesHint: {x: 30, y: 0, z: 0}
 --- !u!1 &2142551744
 GameObject:
@@ -10168,6 +10195,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Material
       value: 
-      objectReference: {fileID: 1206619743}
+      objectReference: {fileID: 1680365574}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 083ac0c91878c0f42be928160201865f, type: 3}
