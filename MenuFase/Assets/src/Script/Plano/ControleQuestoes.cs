@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class ControleQuestoes : MonoBehaviour
 {
@@ -9,11 +10,21 @@ public class ControleQuestoes : MonoBehaviour
     public Text titulo, enunciado, dadosInformados, dadosEsperados, pontuacao;
 
     private QuestionPlano questionPlano;
+    private QuestionQueda questionQueda;
+
     private int[] concluidas;
 
     void Start()
     {
-        questionPlano = FindObjectOfType<QuestionPlano>();
+        if(SceneManager.GetActiveScene().name == "Plano")
+        {
+            questionPlano = FindObjectOfType<QuestionPlano>();
+        }
+        else if(SceneManager.GetActiveScene().name == "Queda")
+        {
+            questionQueda = FindObjectOfType<QuestionQueda>();
+        }
+        
         concluidas = new int[3];
         concluidas[0] = 0;
         concluidas[1] = 0;
@@ -88,7 +99,12 @@ public class ControleQuestoes : MonoBehaviour
             {
                 titulo.text = "Questão: 1";
                 enunciado.text = "Enunciado: ";
-                enunciado.text += questionPlano.GetQuestion(0);
+
+                if(questionPlano)
+                    enunciado.text += questionPlano.GetQuestion(0);
+                else if(questionQueda)
+                    enunciado.text += questionQueda.GetQuestion(0);
+
                 dadosInformados.text = "Dados informados por você: NaN";
                 dadosEsperados.text = "Dados esperados pelo LocoBits: NaN";
                 pontuacao.text = "Sua pontuação: NaN";
@@ -110,7 +126,12 @@ public class ControleQuestoes : MonoBehaviour
             {
                 titulo.text = "Questão: 2";
                 enunciado.text = "Enunciado: ";
-                enunciado.text += questionPlano.GetQuestion(1);
+
+                if(questionPlano)
+                    enunciado.text += questionPlano.GetQuestion(1);
+                else if(questionQueda)
+                    enunciado.text += questionQueda.GetQuestion(1);
+
                 dadosInformados.text = "Dados informados por você: NaN";
                 dadosEsperados.text = "Dados esperados pelo LocoBits: NaN";
                 pontuacao.text = "Sua pontuação: NaN";
@@ -132,7 +153,12 @@ public class ControleQuestoes : MonoBehaviour
             {
                 titulo.text = "Questão: 3";
                 enunciado.text = "Enunciado: ";
-                enunciado.text += questionPlano.GetQuestion(2);
+
+                if(questionPlano)
+                    enunciado.text += questionPlano.GetQuestion(2);
+                else if(questionQueda)
+                    enunciado.text += questionQueda.GetQuestion(2);
+
                 dadosInformados.text = "Dados informados por você: NaN";
                 dadosEsperados.text = "Dados esperados pelo LocoBits: NaN";
                 pontuacao.text = "Sua pontuação: NaN";

@@ -11,6 +11,7 @@ public class robotClick : MonoBehaviour
   private heart hearts;
   private ControleBotoes controleBotoes;
   private ControleAnimacoes controleAnimacoes;
+  private QuedaAnimationControl quedaAnimationControl;
 
   public GameObject timer;
   public Button botaoStart;
@@ -20,7 +21,11 @@ public class robotClick : MonoBehaviour
   {
     hearts = FindObjectOfType<heart>();
     controleBotoes = FindObjectOfType<ControleBotoes>();
-    controleAnimacoes = FindObjectOfType<ControleAnimacoes>();
+
+    if(SceneManager.GetActiveScene().name == "Plano")
+      controleAnimacoes = FindObjectOfType<ControleAnimacoes>();
+    else if(SceneManager.GetActiveScene().name == "Queda")
+      quedaAnimationControl = FindObjectOfType<QuedaAnimationControl>();
   }
 
   void Update()
@@ -36,6 +41,10 @@ public class robotClick : MonoBehaviour
         if(SceneManager.GetActiveScene().name == "Plano")
         {
           ParticularidadesPlano();
+        }
+        else if(SceneManager.GetActiveScene().name == "Queda")
+        {
+          ParticularidadesQueda();
         }
       }
     }
@@ -72,6 +81,16 @@ public class robotClick : MonoBehaviour
       questionPlano.sliderAtrito.gameObject.SetActive(false);
       questionPlano.sliderForca.gameObject.SetActive(true);
     }
+  }
+
+  void ParticularidadesQueda()
+  {
+    ButtonControl control = FindObjectOfType<ButtonControl>();
+
+    quedaAnimationControl.setEstResolvendo(true);
+    quedaAnimationControl.setTempoInicio();
+
+    control.Habilita();
   }
 
   void OnMouseEnter()

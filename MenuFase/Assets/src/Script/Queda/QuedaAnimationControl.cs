@@ -26,8 +26,13 @@ public class QuedaAnimationControl : MonoBehaviour
 
   private int index;
   private int showInimigo = 2;
+  private bool estaResolvendo;
+  private float tempoInicio;
+
+  private ControleQuestoes controleQuestoes;
 
   private int questionIndex = 3;
+  private int i = 1;
 
   public GameObject secondCamera;
   public GameObject cube;
@@ -38,7 +43,25 @@ public class QuedaAnimationControl : MonoBehaviour
     robotDialog = FindObjectOfType<dialog>();
     hearts = FindObjectOfType<heart>();
     question = FindObjectOfType<QuestionQueda>();
+    controleQuestoes = FindObjectOfType<ControleQuestoes>();
+    controleQuestoes.AtualizaQuestaoAtiva(0);
+
     isQuestion = false;
+    estaResolvendo = false;
+  }
+
+  void Update()
+  {
+        if(estaResolvendo && !robotDialog.isTalk)
+        {
+            if(Time.time - tempoInicio >= 25)
+            {
+                robotDialog.ActivateBubbleReminder();
+                robotDialog.TalkWithBubble();
+                tempoInicio = Time.time;
+                estaResolvendo = false;
+            }
+        }
   }
 
   public void BackSentence()
@@ -88,6 +111,11 @@ public class QuedaAnimationControl : MonoBehaviour
   {
     StartCoroutine(cenaAnimation.ShowReactionOfRobot(true));
     StartCoroutine(ActiveWinAnimation());
+    controleQuestoes.AtualizaQuestaoAtiva(i);
+    controleQuestoes.setConcluidas(1, i - 1);
+
+    if(i <= 3)
+      i++;
   }
 
   IEnumerator ActiveWinAnimation()
@@ -138,5 +166,15 @@ public class QuedaAnimationControl : MonoBehaviour
     cube.GetComponent<Control>().RestartButton();
     hearts.updateOpacityHearts(0);
   }
+
+    public void setEstResolvendo(bool valor)
+    {
+        this.estaResolvendo = valor;
+    }
+
+    public void setTempoInicio()
+    {
+        this.tempoInicio = Time.time;
+    }
 
 }

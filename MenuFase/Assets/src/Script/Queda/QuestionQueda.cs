@@ -86,6 +86,12 @@ public class QuestionQueda : MonoBehaviour
     ;
   }
 
+  public string GetQuestion(int index)
+  {
+    List<string> allquestion = csvfile.ReadCSVFile("queda_exemple");
+    return allquestion[index];
+  }
+
   public float ReturnAnswer()
   {
     return time;

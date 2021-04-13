@@ -21,9 +21,13 @@ public class CuboQue : MonoBehaviour
 
   public float[] gravities = new float[] { 20, 10, 3 };
 
+  private QuedaAnimationControl quedaAnimationControl;
+
   void Start()
   {
     body = GetComponent<Rigidbody>();
+    quedaAnimationControl = FindObjectOfType<QuedaAnimationControl>();
+
     cubePosition = body.position;
     Restore();
   }
@@ -71,6 +75,7 @@ public class CuboQue : MonoBehaviour
     isJump = false;
 
     result.SetActive(false);
+    quedaAnimationControl.setEstResolvendo(false);
   }
 
   public void SetHeight(float h)
