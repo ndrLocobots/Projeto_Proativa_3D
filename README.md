@@ -42,28 +42,6 @@ git checkout develop
 ```
 <hr>
 
-## Arvore de arquivos 
-
-```
-├── Library
-│   └── Cidade
-├── MenuFase
-│   ├── Assets
-│   ├── Script
-│   └── Materiais, objetos, terrenos, texturas, cidade
-├── Package
-│   ├── Forca
-│   ├── LancamentoVertical
-│   ├── MassaEMola
-│   ├── PlanoInclinado
-│   ├── QuedaLivre
-├── Simulacoes3D
-│   ├── linux/Linux_v1.x86_64
-│   └── windows/windows_v1.exe
-├── .gitignore
-```
-
-<hr>
 
 ## Modificando o projeto
 
