@@ -16,6 +16,11 @@ public class StartSimulation : MonoBehaviour
     private Timer timer;
     private ControleAnimacoes controleAnim;
 
+    private int anguloCorreto;
+    private int atritoCorreto;
+    private int massaCorreta;
+    private float forcaCorreta;
+
     public void Start()
     {
         controleAnim = FindObjectOfType<ControleAnimacoes>();
@@ -29,8 +34,16 @@ public class StartSimulation : MonoBehaviour
     {
         cubo.constraints = ~RigidbodyConstraints.FreezeAll;
         timer.SetBotaoApertado(true);
-        controleAnim.VerificaQuestao(massa.value, atrito.value, angulo.value, forca.value);
+        controleAnim.VerificaQuestao(massa.value, atrito.value, angulo.value, forca.value, anguloCorreto, atritoCorreto, massaCorreta, forcaCorreta);
         StartCoroutine(tempoAbrirPortal());
+    }
+
+    public void setRespostasCorretas(int anguloCorreto, int atritoCorreto, int massaCorreta, float forcaCorreta)
+    {
+        this.anguloCorreto = anguloCorreto;
+        this.atritoCorreto = atritoCorreto;
+        this.massaCorreta = massaCorreta;
+        this.forcaCorreta = forcaCorreta;
     }
 
     IEnumerator tempoAbrirPortal()

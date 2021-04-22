@@ -26,6 +26,9 @@ public class QuestionAnimation : MonoBehaviour
   private int changeAltarIndex = 6;
   private int showCameraIndex = 1;
   private int questionIndex = 8;
+  private int levelIndex = 0;
+
+  private ControleQuestoes controle;
 
   public GameObject cam;
   public GameObject cube;
@@ -35,9 +38,12 @@ public class QuestionAnimation : MonoBehaviour
     tutorial = FindObjectOfType<Tutorial>();
     lancamentoAnimation = FindObjectOfType<ScenaAnimation>();
     ScenaAnimation = FindObjectOfType<GenericAnimations>();
+    controle = FindObjectOfType<ControleQuestoes>();
     robotDialog = FindObjectOfType<dialog>();
     hearts = FindObjectOfType<heart>();
     tele = FindObjectOfType<Teleporter>();
+
+    controle.AtualizaQuestaoAtiva(levelIndex);
 
     altar = tele.gameObject.transform;
 
@@ -115,6 +121,12 @@ public class QuestionAnimation : MonoBehaviour
     lancamentoAnimation.HideEnemy();
     StartCoroutine(ScenaAnimation.ShowReactionOfRobot(true));
     StartCoroutine(ActiveWinAnimation());
+    controle.AtualizaQuestaoAtiva(levelIndex + 1);
+    controle.setConcluidas(1, levelIndex);
+
+    if(levelIndex <= 3)
+      levelIndex++;
+    
     tele.setAtingido(true);
   }
 

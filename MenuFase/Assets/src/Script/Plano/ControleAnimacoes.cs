@@ -16,10 +16,6 @@ public class ControleAnimacoes : MonoBehaviour
     private dialog robotDialogue;
     private ControleQuestoes controleQuestoes;
 
-    private float massaCorreta;
-    private float atritoCorreto;
-    private float anguloCorreto;
-    private float forcaCorreta;
     private float tempoInicio;
     private bool estaResolvendo;
 
@@ -73,13 +69,10 @@ public class ControleAnimacoes : MonoBehaviour
         }
     }
 
-    public void VerificaQuestao(float valorMassa, float valorAtrito, float valorAngulo, float valorForca)
+    public void VerificaQuestao(float valorMassa, float valorAtrito, float valorAngulo, float valorForca, int anguloCorreto, int atritoCorreto, int massaCorreta, float forcaCorreta)
     {
         if(questionPlano.indice == 0)
         {
-            anguloCorreto = 2f;
-            atritoCorreto = 4f;
-
             if(valorAtrito == atritoCorreto && valorAngulo == anguloCorreto)
             {
                 AnimAcerto(1);
@@ -91,10 +84,7 @@ public class ControleAnimacoes : MonoBehaviour
         }
         else if(questionPlano.indice == 1)
         {
-            massaCorreta = 2f;
-            anguloCorreto = 3f;
-
-            if(valorMassa == massaCorreta && valorAngulo == anguloCorreto && (valorForca >= 17.20f && valorForca <= 17.45f))
+            if(valorMassa == massaCorreta && valorAngulo == anguloCorreto && (valorForca >= (forcaCorreta - 0.3f) && valorForca <= (forcaCorreta + 0.3f)))
             {
                 AnimAcerto(2);
             }
@@ -105,11 +95,7 @@ public class ControleAnimacoes : MonoBehaviour
         }
         else if(questionPlano.indice == 2)
         {
-            massaCorreta = 4f;
-            anguloCorreto = 1f;
-            forcaCorreta = 20f;
-
-            if (valorAngulo == anguloCorreto && valorMassa == massaCorreta && valorForca == forcaCorreta)
+            if (valorAngulo == anguloCorreto && valorMassa == massaCorreta && (valorForca >= (forcaCorreta - 0.3f)) && (valorForca <= (forcaCorreta + 0.3f)))
             {
                 AnimAcerto(3);
             }

@@ -71,12 +71,27 @@ public class Question : MonoBehaviour
 
     List<string> allquestion = csvfile.ReadCSVFile("lancamento_exemple");
 
-    if (level >= allquestion.Count)
+    if (level >= 3)
     {
-      level = allquestion.Count - 1;
+      level = 3;
     }
 
     string question = allquestion[level];
+
+    return question.Replace("{t}", time.ToString("0.00"))
+    .Replace("{dx}", distaceDelta.ToString("0.00"))
+    .Replace("{vx}", velocityX.ToString("0.00"))
+    .Replace("{vy}", velocityY.ToString("0.00"))
+    .Replace("{mh}", maxHeight.ToString("0.00"))
+    .Replace("{th}", (time / 2).ToString("0.00"))
+    .Replace("{a}", (angle).ToString("0.00"))
+    ;
+  }
+
+  public string GetQuestion(int index)
+  {
+    List<string> allquestion = csvfile.ReadCSVFile("lancamento_exemple");
+    string question = allquestion[index];
 
     return question.Replace("{t}", time.ToString("0.00"))
     .Replace("{dx}", distaceDelta.ToString("0.00"))

@@ -441,47 +441,214 @@ public class ChangeStuff : MonoBehaviour
 
     public void ChangeFriction(float a)
     {
-        if (a == 1)
+        if(a == 1)
         {
-            rampa.gameObject.GetComponent<BoxCollider>().material.dynamicFriction = 0.12f;
-            rampa.gameObject.GetComponent<BoxCollider>().material.staticFriction = 0.12f;
-
-            ChangeFrictionText(0.10f);
             this.atrito = 0.10f;
-        }
-        if (a == 2)
-        {
-            rampa.gameObject.GetComponent<BoxCollider>().material.dynamicFriction = 0.18f;
-            rampa.gameObject.GetComponent<BoxCollider>().material.staticFriction = 0.18f;
+            ChangeFrictionText(this.atrito);
 
-            ChangeFrictionText(0.15f);
-            this.atrito = 0.15f;
+            rampa.gameObject.GetComponent<BoxCollider>().material.dynamicFriction = this.atrito;
+            rampa.gameObject.GetComponent<BoxCollider>().material.staticFriction = this.atrito;
         }
-        if (a == 3)
+        else if (a == 2)
         {
-            rampa.gameObject.GetComponent<BoxCollider>().material.dynamicFriction = 0.20f;
-            rampa.gameObject.GetComponent<BoxCollider>().material.staticFriction = 0.20f;
+            this.atrito = 0.12f;
+            ChangeFrictionText(this.atrito);
 
-            ChangeFrictionText(0.20f);
+            rampa.gameObject.GetComponent<BoxCollider>().material.dynamicFriction = this.atrito;
+            rampa.gameObject.GetComponent<BoxCollider>().material.staticFriction = this.atrito;
+        }
+        else if (a == 3)
+        {
+            this.atrito = 0.14f;
+            ChangeFrictionText(this.atrito);
+
+            rampa.gameObject.GetComponent<BoxCollider>().material.dynamicFriction = this.atrito;
+            rampa.gameObject.GetComponent<BoxCollider>().material.staticFriction = this.atrito;
+        }
+        else if(a == 4)
+        {
+            this.atrito = 0.16f;
+            ChangeFrictionText(this.atrito);
+
+            rampa.gameObject.GetComponent<BoxCollider>().material.dynamicFriction = this.atrito;
+            rampa.gameObject.GetComponent<BoxCollider>().material.staticFriction = this.atrito;
+        }
+        else if(a == 5)
+        {
+            this.atrito = 0.18f;
+            ChangeFrictionText(this.atrito);
+
+            rampa.gameObject.GetComponent<BoxCollider>().material.dynamicFriction = this.atrito;
+            rampa.gameObject.GetComponent<BoxCollider>().material.staticFriction = this.atrito;
+        }
+        else if(a == 6)
+        {
             this.atrito = 0.20f;
-        }
-        if(a == 4)
-        {
-            rampa.gameObject.GetComponent<BoxCollider>().material.dynamicFriction = 0.30f;
-            rampa.gameObject.GetComponent<BoxCollider>().material.staticFriction = 0.30f;
+            ChangeFrictionText(this.atrito);
 
-            ChangeFrictionText(0.30f);
+            rampa.gameObject.GetComponent<BoxCollider>().material.dynamicFriction = this.atrito;
+            rampa.gameObject.GetComponent<BoxCollider>().material.staticFriction = this.atrito;
+        }
+        else if(a == 7)
+        {
+            this.atrito = 0.22f;
+            ChangeFrictionText(this.atrito);
+
+            rampa.gameObject.GetComponent<BoxCollider>().material.dynamicFriction = this.atrito;
+            rampa.gameObject.GetComponent<BoxCollider>().material.staticFriction = this.atrito;
+        }
+        else if(a == 8)
+        {
+            this.atrito = 0.24f;
+            ChangeFrictionText(this.atrito);
+
+            rampa.gameObject.GetComponent<BoxCollider>().material.dynamicFriction = this.atrito;
+            rampa.gameObject.GetComponent<BoxCollider>().material.staticFriction = this.atrito;
+        }
+        else if(a == 9)
+        {
+            this.atrito = 0.26f;
+            ChangeFrictionText(this.atrito);
+
+            rampa.gameObject.GetComponent<BoxCollider>().material.dynamicFriction = this.atrito;
+            rampa.gameObject.GetComponent<BoxCollider>().material.staticFriction = this.atrito;
+        }
+        else if(a == 10)
+        {
+            this.atrito = 0.28f;
+            ChangeFrictionText(this.atrito);
+
+            rampa.gameObject.GetComponent<BoxCollider>().material.dynamicFriction = this.atrito;
+            rampa.gameObject.GetComponent<BoxCollider>().material.staticFriction = this.atrito;
+        }
+        else if(a == 11)
+        {
             this.atrito = 0.30f;
-        }
-        if(a == 5)
-        {
-            rampa.gameObject.GetComponent<BoxCollider>().material.dynamicFriction = 0.40f;
-            rampa.gameObject.GetComponent<BoxCollider>().material.staticFriction = 0.40f;
+            ChangeFrictionText(this.atrito);
 
-            ChangeFrictionText(0.40f);
-            this.atrito = 0.40f;
+            rampa.gameObject.GetComponent<BoxCollider>().material.dynamicFriction = this.atrito;
+            rampa.gameObject.GetComponent<BoxCollider>().material.staticFriction = this.atrito;
         }
-            
+        else if(a == 12)
+        {
+            this.atrito = 0.32f;
+            ChangeFrictionText(this.atrito);
+
+            rampa.gameObject.GetComponent<BoxCollider>().material.dynamicFriction = this.atrito;
+            rampa.gameObject.GetComponent<BoxCollider>().material.staticFriction = this.atrito;
+        }
+        else if(a == 13)
+        {
+            this.atrito = 0.34f;
+            ChangeFrictionText(this.atrito);
+
+            rampa.gameObject.GetComponent<BoxCollider>().material.dynamicFriction = this.atrito;
+            rampa.gameObject.GetComponent<BoxCollider>().material.staticFriction = this.atrito;
+        }
+        else if(a == 14)
+        {
+            this.atrito = 0.38f;
+            ChangeFrictionText(this.atrito);
+
+            rampa.gameObject.GetComponent<BoxCollider>().material.dynamicFriction = this.atrito;
+            rampa.gameObject.GetComponent<BoxCollider>().material.staticFriction = this.atrito;
+        }
+        else if(a == 15)
+        {
+            this.atrito = 0.40f;
+            ChangeFrictionText(this.atrito);
+
+            rampa.gameObject.GetComponent<BoxCollider>().material.dynamicFriction = this.atrito;
+            rampa.gameObject.GetComponent<BoxCollider>().material.staticFriction = this.atrito;
+        }
+        else if(a == 16)
+        {
+            this.atrito = 0.42f;
+            ChangeFrictionText(this.atrito);
+
+            rampa.gameObject.GetComponent<BoxCollider>().material.dynamicFriction = this.atrito;
+            rampa.gameObject.GetComponent<BoxCollider>().material.staticFriction = this.atrito;
+        }
+        else if(a == 17)
+        {
+            this.atrito = 0.48f;
+            ChangeFrictionText(this.atrito);
+
+            rampa.gameObject.GetComponent<BoxCollider>().material.dynamicFriction = this.atrito;
+            rampa.gameObject.GetComponent<BoxCollider>().material.staticFriction = this.atrito;
+        }
+        else if(a == 18)
+        {
+            this.atrito = 0.52f;
+            ChangeFrictionText(this.atrito);
+
+            rampa.gameObject.GetComponent<BoxCollider>().material.dynamicFriction = this.atrito;
+            rampa.gameObject.GetComponent<BoxCollider>().material.staticFriction = this.atrito;
+        }
+        else if(a == 19)
+        {
+            this.atrito = 0.54f;
+            ChangeFrictionText(this.atrito);
+        
+            rampa.gameObject.GetComponent<BoxCollider>().material.dynamicFriction = this.atrito;
+            rampa.gameObject.GetComponent<BoxCollider>().material.staticFriction = this.atrito;
+        }
+        else if(a == 20)
+        {
+            this.atrito = 0.56f;
+            ChangeFrictionText(this.atrito);
+
+            rampa.gameObject.GetComponent<BoxCollider>().material.dynamicFriction = this.atrito;
+            rampa.gameObject.GetComponent<BoxCollider>().material.staticFriction = this.atrito;
+        }
+        else if(a == 21)
+        {
+            this.atrito = 0.58f;
+            ChangeFrictionText(this.atrito);
+
+            rampa.gameObject.GetComponent<BoxCollider>().material.dynamicFriction = this.atrito;
+            rampa.gameObject.GetComponent<BoxCollider>().material.staticFriction = this.atrito;
+        }
+        else if(a == 22)
+        {
+            this.atrito = 0.60f;
+            ChangeFrictionText(this.atrito);
+
+            rampa.gameObject.GetComponent<BoxCollider>().material.dynamicFriction = this.atrito;
+            rampa.gameObject.GetComponent<BoxCollider>().material.staticFriction = this.atrito;
+        }
+        else if(a == 23)
+        {
+            this.atrito = 0.62f;
+            ChangeFrictionText(this.atrito);
+
+            rampa.gameObject.GetComponent<BoxCollider>().material.dynamicFriction = this.atrito;
+            rampa.gameObject.GetComponent<BoxCollider>().material.staticFriction = this.atrito;
+        }
+        else if(a == 24)
+        {
+            this.atrito = 0.64f;
+            ChangeFrictionText(this.atrito);
+
+            rampa.gameObject.GetComponent<BoxCollider>().material.dynamicFriction = this.atrito;
+            rampa.gameObject.GetComponent<BoxCollider>().material.staticFriction = this.atrito;
+        }
+        else if(a == 25)
+        {
+            this.atrito = 0.66f;
+            ChangeFrictionText(this.atrito);
+
+            rampa.gameObject.GetComponent<BoxCollider>().material.dynamicFriction = this.atrito;
+            rampa.gameObject.GetComponent<BoxCollider>().material.staticFriction = this.atrito;
+        }
+        else if(a == 26)
+        {
+            this.atrito = 0.70f;
+            ChangeFrictionText(this.atrito);
+
+            rampa.gameObject.GetComponent<BoxCollider>().material.dynamicFriction = this.atrito;
+            rampa.gameObject.GetComponent<BoxCollider>().material.staticFriction = this.atrito;
+        }
     }
 
     public void ChangeForce(float v)

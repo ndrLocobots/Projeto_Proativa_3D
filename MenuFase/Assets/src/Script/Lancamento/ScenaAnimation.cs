@@ -19,7 +19,7 @@ public class ScenaAnimation : MonoBehaviour
 
   void Start()
   {
-    question = gameObject.AddComponent<Question>();
+    question = FindObjectOfType<Question>();
     tutorial = FindObjectOfType<Tutorial>();
     teleporter = FindObjectOfType<Teleporter>();
     robot = FindObjectOfType<robotAnimation>();
@@ -74,5 +74,10 @@ public class ScenaAnimation : MonoBehaviour
     {
       inimigo.HideEnemy();
     }
+  }
+
+  public Question getQuestion()
+  {
+    return this.question;
   }
 }

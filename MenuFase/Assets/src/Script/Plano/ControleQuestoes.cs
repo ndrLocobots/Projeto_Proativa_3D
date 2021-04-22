@@ -11,6 +11,8 @@ public class ControleQuestoes : MonoBehaviour
 
     private QuestionPlano questionPlano;
     private QuestionQueda questionQueda;
+    private ScenaAnimation scenaAnimation;
+    private Question questionLancamento;
 
     private int[] concluidas;
 
@@ -23,6 +25,10 @@ public class ControleQuestoes : MonoBehaviour
         else if(SceneManager.GetActiveScene().name == "Queda")
         {
             questionQueda = FindObjectOfType<QuestionQueda>();
+        }
+        else if(SceneManager.GetActiveScene().name == "Lancamento")
+        {
+            questionLancamento = FindObjectOfType<Question>();
         }
         
         concluidas = new int[3];
@@ -104,6 +110,8 @@ public class ControleQuestoes : MonoBehaviour
                     enunciado.text += questionPlano.GetQuestion(0);
                 else if(questionQueda)
                     enunciado.text += questionQueda.GetQuestion(0);
+                else if(questionLancamento)
+                    enunciado.text += questionLancamento.GetQuestion(0);
 
                 dadosInformados.text = "Dados informados por você: NaN";
                 dadosEsperados.text = "Dados esperados pelo LocoBits: NaN";
@@ -131,6 +139,8 @@ public class ControleQuestoes : MonoBehaviour
                     enunciado.text += questionPlano.GetQuestion(1);
                 else if(questionQueda)
                     enunciado.text += questionQueda.GetQuestion(1);
+                else if(questionLancamento)
+                    enunciado.text += questionLancamento.GetQuestion(1);
 
                 dadosInformados.text = "Dados informados por você: NaN";
                 dadosEsperados.text = "Dados esperados pelo LocoBits: NaN";
@@ -158,6 +168,8 @@ public class ControleQuestoes : MonoBehaviour
                     enunciado.text += questionPlano.GetQuestion(2);
                 else if(questionQueda)
                     enunciado.text += questionQueda.GetQuestion(2);
+                else if(questionLancamento)
+                    enunciado.text += questionLancamento.GetQuestion(2);
 
                 dadosInformados.text = "Dados informados por você: NaN";
                 dadosEsperados.text = "Dados esperados pelo LocoBits: NaN";
