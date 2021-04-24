@@ -74,7 +74,8 @@ public class robotAnimation : MonoBehaviour
   public void RobotHappy()
   {
     robotAnimator.SetTrigger(happyHash);
-  }
+        GetComponent<AudioSource>().Play();
+    }
 
   public void RobotTalk(bool isTalk)
   {

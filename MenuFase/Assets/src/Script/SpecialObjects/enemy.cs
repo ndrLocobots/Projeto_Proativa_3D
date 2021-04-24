@@ -28,17 +28,20 @@ public class enemy : MonoBehaviour
     {
       case 3:
         agent.SetDestination(transform.position + 20 * vectorUnitary);
-        break;
+                GetComponent<AudioSource>().Play();
+                break;
 
       case 2:
         agent.SetDestination(
           transform.position + vectorDirectionToWalk.magnitude * vectorUnitary / 2
         );
-        break;
+                GetComponent<AudioSource>().Play();
+                break;
 
       case 1:
         agent.SetDestination(cube.position);
-        break;
+                GetComponent<AudioSource>().Play();
+                break;
 
       default:
         HideEnemy();

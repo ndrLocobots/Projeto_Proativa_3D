@@ -40,17 +40,20 @@ public class CuboLan : MonoBehaviour
       {
         if(startEMenu.getPrimeiroExercicio())
         {
-          startEMenu.ExibeConfirmacao();
+                    
+                    startEMenu.ExibeConfirmacao();
         }
         else
         {
-          bodyCubo.velocity = calculaResultados.SetUserVelocity();
+                    GetComponent<AudioSource>().Play();
+                    bodyCubo.velocity = calculaResultados.SetUserVelocity();
           isJumper = isEnemy = true;
         }
       }
       else
       {
-        bodyCubo.velocity = calculaResultados.SetUserVelocity();
+                GetComponent<AudioSource>().Play();
+                bodyCubo.velocity = calculaResultados.SetUserVelocity();
         isJumper = isEnemy = true;
       }
     }
