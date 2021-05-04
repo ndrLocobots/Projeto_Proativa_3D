@@ -64,7 +64,8 @@ public class ScenaAnimation : MonoBehaviour
     foreach (enemy inimigo in inimigos)
     {
       inimigo.activeEnemy();
-    }
+            GetComponent<AudioSource>().Play();
+        }
   }
 
   public void HideEnemy()

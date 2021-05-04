@@ -1220,6 +1220,10 @@ MonoBehaviour:
   attemptsNum: 3
   secondCamera: {fileID: 1739208947}
   cube: {fileID: 1414909854}
+  win: {fileID: 8300000, guid: 08f1b61f48588404496411e725844409, type: 3}
+  lose: {fileID: 8300000, guid: 8c73dd1b833a42e49b1e441e0d01931b, type: 3}
+  audioSource: {fileID: 363811043}
+  volume: 0.5
 --- !u!1001 &460216076
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6548,6 +6552,21 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2658163570527763909, guid: 4330ec7b29a8115f8bbb81b304419d0f,
         type: 3}
+      propertyPath: m_text
+      value: BACK
+      objectReference: {fileID: 0}
+    - target: {fileID: 2658163570527763909, guid: 4330ec7b29a8115f8bbb81b304419d0f,
+        type: 3}
+      propertyPath: m_fontSize
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 2658163570527763909, guid: 4330ec7b29a8115f8bbb81b304419d0f,
+        type: 3}
+      propertyPath: m_fontSizeBase
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 2658163570527763909, guid: 4330ec7b29a8115f8bbb81b304419d0f,
+        type: 3}
       propertyPath: m_textAlignment
       value: 65535
       objectReference: {fileID: 0}
@@ -6570,6 +6589,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
       value: QuedaAnimationControl, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 2658163570638780865, guid: 4330ec7b29a8115f8bbb81b304419d0f,
+        type: 3}
+      propertyPath: m_text
+      value: NEXT
+      objectReference: {fileID: 0}
+    - target: {fileID: 2658163570638780865, guid: 4330ec7b29a8115f8bbb81b304419d0f,
+        type: 3}
+      propertyPath: m_fontSize
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 2658163570638780865, guid: 4330ec7b29a8115f8bbb81b304419d0f,
+        type: 3}
+      propertyPath: m_fontSizeBase
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 2658163570638780865, guid: 4330ec7b29a8115f8bbb81b304419d0f,
         type: 3}
@@ -6695,6 +6729,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_textAlignment
       value: 65535
+      objectReference: {fileID: 0}
+    - target: {fileID: 2913668097402908529, guid: 4330ec7b29a8115f8bbb81b304419d0f,
+        type: 3}
+      propertyPath: m_text
+      value: SKIP
+      objectReference: {fileID: 0}
+    - target: {fileID: 2913668097402908529, guid: 4330ec7b29a8115f8bbb81b304419d0f,
+        type: 3}
+      propertyPath: m_fontSize
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 2913668097402908529, guid: 4330ec7b29a8115f8bbb81b304419d0f,
+        type: 3}
+      propertyPath: m_fontSizeBase
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 2913668097402908529, guid: 4330ec7b29a8115f8bbb81b304419d0f,
         type: 3}

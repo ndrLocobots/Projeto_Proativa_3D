@@ -45,7 +45,7 @@ public class CuboLan : MonoBehaviour
         }
         else
         {
-                    GetComponent<AudioSource>().Play();
+                   GetComponent<AudioSource>().Play();
                     bodyCubo.velocity = calculaResultados.SetUserVelocity();
           isJumper = isEnemy = true;
         }

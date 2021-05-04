@@ -71,8 +71,11 @@ public class QuestionAnimation : MonoBehaviour
   {
     if (index == showAltarIndex)
     {
-      StartCoroutine(ActiveCameraAnimation());
-    }
+           
+            ChangeMusic.Instancia.TrocarParaMusicaSecundaria();
+            StartCoroutine(ActiveCameraAnimation());
+
+        }
     else if (index == changeAltarIndex)
     {
       lancamentoAnimation.ChangeTeleporterPosition();

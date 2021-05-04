@@ -36,8 +36,12 @@ public class QuedaAnimationControl : MonoBehaviour
 
   public GameObject secondCamera;
   public GameObject cube;
+  public AudioClip win;
+  public AudioClip lose;
+  public AudioSource audioSource;
+  public float volume = 0.5f;
 
-  void Start()
+    void Start()
   {
     cenaAnimation = FindObjectOfType<GenericAnimations>();
     robotDialog = FindObjectOfType<dialog>();
@@ -129,18 +133,23 @@ public class QuedaAnimationControl : MonoBehaviour
   {
     attemptsNum--;
     hearts.loseHeart();
+    
 
-    if (attemptsNum == 0)
+        if (attemptsNum == 0)
     {
+            Debug.Log("Antes do predio cair");
       StartCoroutine(ActiveLoseAnimation());
-    }
+            Debug.Log("Depois do predio cair");
+        }
     else
     {
       StartCoroutine(cenaAnimation.ShowReactionOfRobot(false));
       robotDialog.SetSadBubble();
       StartCoroutine(ActiveWrongAnimation(time));
     }
-  }
+        //GetComponent<AudioSource>().Play();
+        audioSource.PlayOneShot(lose, volume);
+    }
 
   IEnumerator ActiveLoseAnimation()
   {
@@ -148,7 +157,8 @@ public class QuedaAnimationControl : MonoBehaviour
     yield return new WaitForSeconds(cenaAnimation.AnimationToLose());
     RestoreCena();
     robotDialog.ActivateBubbleSignal();
-  }
+    
+    }
 
   IEnumerator ActiveWrongAnimation(float time)
   {
