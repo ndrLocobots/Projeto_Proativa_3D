@@ -5,7 +5,7 @@ using UnityEngine.Playables;
 public class GenericAnimations : MonoBehaviour
 {
   public PlayableDirector winAnimation, loseAnimation, wrongAnimation;
-  public GameObject robotSelfCam;
+  public GameObject robotSelfCam, buttons;
 
   private robotAnimation robot;
 
@@ -43,6 +43,8 @@ public class GenericAnimations : MonoBehaviour
   public IEnumerator ShowReactionOfRobot(bool reaction)
   {
     robotSelfCam.SetActive(true);
+    if(buttons)
+      buttons.SetActive(false);
 
     if (reaction)
     {
@@ -55,5 +57,7 @@ public class GenericAnimations : MonoBehaviour
 
     yield return new WaitForSeconds(5);
     robotSelfCam.SetActive(false);
+    if(buttons)
+      buttons.SetActive(true);
   }
 }

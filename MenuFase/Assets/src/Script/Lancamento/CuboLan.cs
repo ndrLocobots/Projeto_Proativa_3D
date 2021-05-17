@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class CuboLan : MonoBehaviour
 {
-  public GameObject painelResultados;
+  public GameObject painelResultados, menu;
 
   private Rigidbody bodyCubo;
   private ScreenResults calculaResultados;
@@ -32,6 +32,14 @@ public class CuboLan : MonoBehaviour
     painelResultados.SetActive(false);
   }
 
+  public void ClickOk()
+  {
+    if(!tutorial.isTutorial)
+    {
+      
+    }
+  }
+
   public void ClickStart(bool b)
   {
     if (bodyCubo.velocity.magnitude == 0 && !isJumper)
@@ -40,20 +48,19 @@ public class CuboLan : MonoBehaviour
       {
         if(startEMenu.getPrimeiroExercicio())
         {
-                    
-                    startEMenu.ExibeConfirmacao();
+          startEMenu.ExibeConfirmacao();
         }
         else
         {
-                   GetComponent<AudioSource>().Play();
-                    bodyCubo.velocity = calculaResultados.SetUserVelocity();
+          GetComponent<AudioSource>().Play();
+          bodyCubo.velocity = calculaResultados.SetUserVelocity();
           isJumper = isEnemy = true;
         }
       }
       else
       {
-                GetComponent<AudioSource>().Play();
-                bodyCubo.velocity = calculaResultados.SetUserVelocity();
+        GetComponent<AudioSource>().Play();
+        bodyCubo.velocity = calculaResultados.SetUserVelocity();
         isJumper = isEnemy = true;
       }
     }

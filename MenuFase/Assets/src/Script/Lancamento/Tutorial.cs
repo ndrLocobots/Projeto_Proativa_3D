@@ -5,8 +5,8 @@ using UnityEngine.UI;
 
 public class Tutorial : MonoBehaviour
 {
-  public GameObject arrow;
-  public GameObject menuButton, startButton, restoreButton, nextButton;
+  public GameObject arrow, menu;
+  public GameObject menuButton, startButton, restoreButton, nextButton, okButton;
   public GameObject velocitySlider, cameraSlider, angleSlider;
 
   public int index;
@@ -68,11 +68,22 @@ public class Tutorial : MonoBehaviour
     RectTransform transform = gameObject.GetComponent<RectTransform>();
     RectTransform arrowTransform = arrow.GetComponent<RectTransform>();
 
-    arrowTransform.position = new Vector3(
-      transform.position.x * corretionFactor,
-      transform.position.y,
-      transform.position.z
-    );
+    if(index == 5)
+    {
+      arrowTransform.position = new Vector3(
+        transform.position.x * corretionFactor,
+        transform.position.y * 1.75f,
+        transform.position.z
+      );
+    }
+    else
+    {
+      arrowTransform.position = new Vector3(
+        transform.position.x * corretionFactor,
+        transform.position.y,
+        transform.position.z
+      );
+    }
   }
 
   public void FirstPressButtonMenu()
@@ -125,18 +136,31 @@ public class Tutorial : MonoBehaviour
     {
       index++;
 
-      Button button1 = startButton.GetComponent<Button>();
+      Button button1 = okButton.GetComponent<Button>();
       Button button2 = menuButton.GetComponent<Button>();
       Button button3 = startButton.GetComponent<Button>();
       Button button4 = restoreButton.GetComponent<Button>();
 
-      button1.onClick.AddListener(delegate { this.PressButtonStart(); });
+      button1.onClick.AddListener(delegate { this.PressButtonOk(); });
 
-      UpdateArrowPosition(startButton, 0.76f);
+      UpdateArrowPosition(okButton, 0.76f);
       button2.interactable = true;
       button3.interactable = true;
       button4.interactable = true;
     }
+  }
+
+  void PressButtonOk()
+  {
+    Button button = okButton.GetComponent<Button>();
+    button.onClick.RemoveListener(delegate { this.PressButtonOk(); });
+
+    index++;
+    
+    button = startButton.GetComponent<Button>();
+    button.onClick.AddListener(delegate { this.PressButtonStart(); });
+
+    UpdateArrowPosition(startButton, 0.30f);
   }
 
   public void PressButtonStart()
