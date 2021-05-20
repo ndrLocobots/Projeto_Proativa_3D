@@ -32,6 +32,7 @@ public class QuestionAnimation : MonoBehaviour
 
   public GameObject cam;
   public GameObject cube;
+    public SoundsAnimationL sound;
 
   void Start()
   {
@@ -126,19 +127,28 @@ public class QuestionAnimation : MonoBehaviour
     StartCoroutine(ActiveWinAnimation());
     controle.AtualizaQuestaoAtiva(levelIndex + 1);
     controle.setConcluidas(1, levelIndex);
+    StartCoroutine(Wait());
 
-    if(levelIndex <= 3)
+        if (levelIndex <= 3)
       levelIndex++;
     
     tele.setAtingido(true);
   }
 
-  void WrongAnswer()
+      IEnumerator Wait()
+      {                     
+         yield return new WaitForSeconds(2.5f);
+        sound.PlayPortal();
+         
+     }
+
+    void WrongAnswer()
   {
     lancamentoAnimation.ActiveEnemy();
     StartCoroutine(ScenaAnimation.ShowReactionOfRobot(false));
     robotDialog.SetSadBubble();
     ReduceAttemptsNumber();
+        sound.PlayEnemy();
   }
 
   void ReduceAttemptsNumber()

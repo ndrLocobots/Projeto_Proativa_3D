@@ -19,7 +19,8 @@ public class robotAnimation : MonoBehaviour
   float time = 0, changeSenseBreach = 1, breach;
   const int waitTime = 5;
 
-  void Start()
+  
+    void Start()
   {
     robotAnimator = GetComponent<Animator>();
     robotAnimator.SetBool("isStop", true);
@@ -69,15 +70,18 @@ public class robotAnimation : MonoBehaviour
   public void RobotSad()
   {
     robotAnimator.SetTrigger(sadHash);
-  }
+
+    }
 
   public void RobotHappy()
   {
     robotAnimator.SetTrigger(happyHash);
-        GetComponent<AudioSource>().Play();
-    }
+              
+  }
+  
 
-  public void RobotTalk(bool isTalk)
+
+    public void RobotTalk(bool isTalk)
   {
     robotAnimator.SetBool("isTalk", isTalk);
   }

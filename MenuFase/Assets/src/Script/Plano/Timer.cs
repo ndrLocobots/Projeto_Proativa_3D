@@ -9,6 +9,7 @@ public class Timer : MonoBehaviour
     public Text a;
     public Text v;
     public Text t;
+    public SoundsAnimationP sound;
 
     public ChangeStuff cs;
 
@@ -28,6 +29,8 @@ public class Timer : MonoBehaviour
 
             start = Time.time;
             results.SetActive(false);
+            sound.PlayCubo();
+            
         }
             
         if (other.CompareTag("End"))

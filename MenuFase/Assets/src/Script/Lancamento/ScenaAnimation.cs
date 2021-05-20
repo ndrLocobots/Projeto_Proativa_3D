@@ -7,7 +7,6 @@ using UnityEngine.UI;
 public class ScenaAnimation : MonoBehaviour
 {
   public PlayableDirector cameraAnimation;
-  
   public GameObject inimigo;
 
   private Tutorial tutorial;
@@ -64,8 +63,8 @@ public class ScenaAnimation : MonoBehaviour
     foreach (enemy inimigo in inimigos)
     {
       inimigo.activeEnemy();
-            GetComponent<AudioSource>().Play();
-        }
+            
+    }
   }
 
   public void HideEnemy()

@@ -8,6 +8,8 @@ public class ControleAnimacoes : MonoBehaviour
     public GameObject cuboParaAnimacao;
     public Animator portal;
 
+    public SoundsAnimationP sound;
+
     private robotAnimation animRobo;
     private AnimInimigo animInimigo;
     private heart coracoes;
@@ -108,6 +110,7 @@ public class ControleAnimacoes : MonoBehaviour
 
     public void AnimAcerto(int i)
     {
+        
         acertouQuestao = true;
         animRobo.RobotHappy();
         robotDialogue.SetHappyBubble();
@@ -116,12 +119,14 @@ public class ControleAnimacoes : MonoBehaviour
         portal.SetTrigger("Sucesso"); 
         controleQuestoes.AtualizaQuestaoAtiva(i);
         controleQuestoes.setConcluidas(1, i - 1);
+        sound.PlayPortal();
     }
 
     public void AnimErro(int tentativa)
     {
         robotDialogue.SetSadBubble();
         robotDialogue.TalkWithBubble();
+        sound.PlayEnemy();
 
         if(tentativa == 1)
         {

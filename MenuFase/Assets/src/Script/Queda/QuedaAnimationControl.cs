@@ -36,10 +36,9 @@ public class QuedaAnimationControl : MonoBehaviour
 
   public GameObject secondCamera;
   public GameObject cube;
-  public AudioClip win;
-  public AudioClip lose;
-  public AudioSource audioSource;
   public float volume = 0.5f;
+
+    public SoundsAnimationQ sound;
 
     void Start()
   {
@@ -117,6 +116,7 @@ public class QuedaAnimationControl : MonoBehaviour
     StartCoroutine(ActiveWinAnimation());
     controleQuestoes.AtualizaQuestaoAtiva(i);
     controleQuestoes.setConcluidas(1, i - 1);
+        sound.Play_rightAnswer();
 
     if(i <= 3)
       i++;
@@ -133,11 +133,13 @@ public class QuedaAnimationControl : MonoBehaviour
   {
     attemptsNum--;
     hearts.loseHeart();
+        sound.Play_wrongAnswer();
     
 
         if (attemptsNum == 0)
     {
             Debug.Log("Antes do predio cair");
+            sound.Play_fallingBuilding();
       StartCoroutine(ActiveLoseAnimation());
             Debug.Log("Depois do predio cair");
         }
@@ -147,8 +149,6 @@ public class QuedaAnimationControl : MonoBehaviour
       robotDialog.SetSadBubble();
       StartCoroutine(ActiveWrongAnimation(time));
     }
-        //GetComponent<AudioSource>().Play();
-        audioSource.PlayOneShot(lose, volume);
     }
 
   IEnumerator ActiveLoseAnimation()

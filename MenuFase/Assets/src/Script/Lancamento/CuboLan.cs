@@ -7,6 +7,8 @@ public class CuboLan : MonoBehaviour
 {
   public GameObject painelResultados, menu;
 
+  public SoundsAnimationL sound;
+
   private Rigidbody bodyCubo;
   private ScreenResults calculaResultados;
   private Vector3 startingPosition;
@@ -52,15 +54,15 @@ public class CuboLan : MonoBehaviour
         }
         else
         {
-          GetComponent<AudioSource>().Play();
+          sound.PlayCubo();                    
           bodyCubo.velocity = calculaResultados.SetUserVelocity();
           isJumper = isEnemy = true;
         }
       }
       else
       {
-        GetComponent<AudioSource>().Play();
-        bodyCubo.velocity = calculaResultados.SetUserVelocity();
+                sound.PlayCubo();
+                bodyCubo.velocity = calculaResultados.SetUserVelocity();
         isJumper = isEnemy = true;
       }
     }
