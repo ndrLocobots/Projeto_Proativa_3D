@@ -6,78 +6,78 @@ using UnityEngine.UI;
 
 public class ScenaAnimation : MonoBehaviour
 {
-  public PlayableDirector cameraAnimation;
-  public GameObject inimigo;
+    public PlayableDirector cameraAnimation;
+    public GameObject inimigo;
 
-  private Tutorial tutorial;
-  private Question question;
-  private robotAnimation robot;
-  private Teleporter teleporter;
+    private Tutorial tutorial;
+    private Question question;
+    private robotAnimation robot;
+    private Teleporter teleporter;
 
-  public GameObject respostas;
+    public GameObject respostas;
 
-  void Start()
-  {
-    question = FindObjectOfType<Question>();
-    tutorial = FindObjectOfType<Tutorial>();
-    teleporter = FindObjectOfType<Teleporter>();
-    robot = FindObjectOfType<robotAnimation>();
-  }
-
-  void FixedUpdate()
-  {
-    if (Input.GetKeyDown(KeyCode.H))
+    void Start()
     {
-      respostas.GetComponent<Text>().text = question.ReturnAnswer();
-      respostas.SetActive(!respostas.activeSelf);
+        question = FindObjectOfType<Question>();
+        tutorial = FindObjectOfType<Tutorial>();
+        teleporter = FindObjectOfType<Teleporter>();
+        robot = FindObjectOfType<robotAnimation>();
     }
-  }
 
-  public float AnimatorCamera()
-  {
-    cameraAnimation.Play();
-
-    return (float)cameraAnimation.duration;
-  }
-
-  public void ChangeQuestion()
-  {
-    question.SetRobotDialog();
-    ChangeTeleporterPosition();
-  }
-
-  public void ChangeTeleporterPosition()
-  {
-    teleporter.ChangeTeleporterPosition(question.distaceDelta);
-    teleporter.ativaIdle();
-  }
-
-  public void StartTutorial()
-  {
-    tutorial.StartTutorial();
-  }
-
-  public void ActiveEnemy()
-  {
-    enemy[] inimigos = inimigo.GetComponentsInChildren<enemy>();
-    foreach (enemy inimigo in inimigos)
+    void FixedUpdate()
     {
-      inimigo.activeEnemy();
-            
+        if (Input.GetKeyDown(KeyCode.H))
+        {
+            respostas.GetComponent<Text>().text = question.ReturnAnswer();
+            respostas.SetActive(!respostas.activeSelf);
+        }
     }
-  }
 
-  public void HideEnemy()
-  {
-    enemy[] inimigos = inimigo.GetComponentsInChildren<enemy>();
-    foreach (enemy inimigo in inimigos)
+    public float AnimatorCamera()
     {
-      inimigo.HideEnemy();
-    }
-  }
+        cameraAnimation.Play();
 
-  public Question getQuestion()
-  {
-    return this.question;
-  }
+        return (float)cameraAnimation.duration;
+    }
+
+    public void ChangeQuestion()
+    {
+        question.SetRobotDialog();
+        ChangeTeleporterPosition();
+    }
+
+    public void ChangeTeleporterPosition()
+    {
+        teleporter.ChangeTeleporterPosition(question.distaceDelta);
+        teleporter.ativaIdle();
+    }
+
+    public void StartTutorial()
+    {
+        tutorial.StartTutorial();
+    }
+
+    public void ActiveEnemy()
+    {
+        enemy[] inimigos = inimigo.GetComponentsInChildren<enemy>();
+        foreach (enemy inimigo in inimigos)
+        {
+            inimigo.activeEnemy();
+
+        }
+    }
+
+    public void HideEnemy()
+    {
+        enemy[] inimigos = inimigo.GetComponentsInChildren<enemy>();
+        foreach (enemy inimigo in inimigos)
+        {
+            inimigo.HideEnemy();
+        }
+    }
+
+    public Question getQuestion()
+    {
+        return this.question;
+    }
 }

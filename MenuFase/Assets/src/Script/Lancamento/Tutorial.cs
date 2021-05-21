@@ -45,10 +45,12 @@ public class Tutorial : MonoBehaviour
         Button button1 = menuButton.GetComponent<Button>();
         Button button2 = startButton.GetComponent<Button>();
         Button button3 = restoreButton.GetComponent<Button>();
+        Button button4 = okButton.GetComponent<Button>();
 
         button1.interactable = false;
         button2.interactable = false;
         button3.interactable = false;
+        button4.interactable = false;
 
         SliderCameraAvaliable();
       }
@@ -144,6 +146,7 @@ public class Tutorial : MonoBehaviour
       button1.onClick.AddListener(delegate { this.PressButtonOk(); });
 
       UpdateArrowPosition(okButton, 0.76f);
+      button1.interactable = true;
       button2.interactable = true;
       button3.interactable = true;
       button4.interactable = true;

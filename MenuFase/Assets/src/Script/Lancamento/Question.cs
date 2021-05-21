@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 using System.Linq;
 public class Question : MonoBehaviour
@@ -11,8 +12,12 @@ public class Question : MonoBehaviour
   private float time, maxHeight, angle;
 
   public int level;
+  public Text respostas;
 
   private CSVfile csvfile;
+
+  [SerializeField]
+  private ScreenResults screenResults;
 
   void Awake()
   {
@@ -54,6 +59,9 @@ public class Question : MonoBehaviour
       distaceDelta = velocityX * time;
     }
     Debug.Log("Angulo: " + angle + " Velocidade: " + velocity);
+    respostas.text = "Angulo: " + angle + " Velocidade: " + velocity;
+    screenResults.velocidadeC = velocity;
+    screenResults.anguloC = angle;
   }
 
   string[] GetDialog()

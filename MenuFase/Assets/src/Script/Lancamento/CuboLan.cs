@@ -5,100 +5,92 @@ using UnityEngine.UI;
 
 public class CuboLan : MonoBehaviour
 {
-  public GameObject painelResultados, menu;
+    public GameObject painelResultados, menu;
 
-  public SoundsAnimationL sound;
+    public SoundsAnimationL sound;
 
-  private Rigidbody bodyCubo;
-  private ScreenResults calculaResultados;
-  private Vector3 startingPosition;
+    private Rigidbody bodyCubo;
+    private ScreenResults calculaResultados;
+    private Vector3 startingPosition;
 
-  private bool isJumper, isEnemy;
-  private Teleporter altar;
-  private Tutorial tutorial;
-  private StartEMenu startEMenu;
+    private bool isJumper, isEnemy;
+    private Teleporter altar;
+    private Tutorial tutorial;
+    private StartEMenu startEMenu;
 
-  void Start()
-  {
-    calculaResultados = GetComponent<ScreenResults>();
-    bodyCubo = GetComponent<Rigidbody>();
-
-    tutorial = FindObjectOfType<Tutorial>();
-    altar = FindObjectOfType<Teleporter>();
-    startEMenu = FindObjectOfType<StartEMenu>();
-
-    bodyCubo.freezeRotation = true;
-    isJumper = isEnemy = false;
-
-    startingPosition = bodyCubo.position;
-    painelResultados.SetActive(false);
-  }
-
-  public void ClickOk()
-  {
-    if(!tutorial.isTutorial)
+    void Start()
     {
-      
-    }
-  }
+        calculaResultados = GetComponent<ScreenResults>();
+        bodyCubo = GetComponent<Rigidbody>();
 
-  public void ClickStart(bool b)
-  {
-    if (bodyCubo.velocity.magnitude == 0 && !isJumper)
-    {
-      if(!tutorial.isTutorial)
-      {
-        if(startEMenu.getPrimeiroExercicio())
-        {
-          startEMenu.ExibeConfirmacao();
-        }
-        else
-        {
-          sound.PlayCubo();                    
-          bodyCubo.velocity = calculaResultados.SetUserVelocity();
-          isJumper = isEnemy = true;
-        }
-      }
-      else
-      {
-                sound.PlayCubo();
-                bodyCubo.velocity = calculaResultados.SetUserVelocity();
-        isJumper = isEnemy = true;
-      }
-    }
-  }
+        tutorial = FindObjectOfType<Tutorial>();
+        altar = FindObjectOfType<Teleporter>();
+        startEMenu = FindObjectOfType<StartEMenu>();
 
-  public void ClickRestore(bool b)
-  {
-    this.gameObject.SetActive(true);
+        bodyCubo.freezeRotation = true;
+        isJumper = isEnemy = false;
 
-    bodyCubo.velocity = new Vector3(0, 0, 0);
-    bodyCubo.position = startingPosition;
-
-    isJumper = isEnemy = false;
-    painelResultados.SetActive(false);
-  }
-
-  public void AnimationConfig()
-  {
-    painelResultados.SetActive(false);
-    isJumper = isEnemy = false;
-  }
-  
-  private void OnCollisionEnter(Collision collision)
-  {
-    if (isJumper)
-    {
-      bodyCubo.velocity = new Vector3(0, 0, 0);
-
-      calculaResultados.SetOutputParam();
-      painelResultados.SetActive(true);
+        startingPosition = bodyCubo.position;
+        painelResultados.SetActive(false);
     }
     
-    if (isEnemy)
+    public void ClickStart(bool b)
     {
-      isEnemy = false; 
-      GetComponent<QuestionAnimation>().isQuestionRight();
+        if (bodyCubo.velocity.magnitude == 0 && !isJumper)
+        {
+            if (!tutorial.isTutorial)
+            {
+                if (startEMenu.getPrimeiroExercicio())
+                {
+                    startEMenu.ExibeConfirmacao();
+                }
+                else
+                {
+                    sound.PlayCubo();
+                    bodyCubo.velocity = calculaResultados.SetUserVelocity();
+                    isJumper = isEnemy = true;
+                }
+            }
+            else
+            {
+                sound.PlayCubo();
+                bodyCubo.velocity = calculaResultados.SetUserVelocity();
+                isJumper = isEnemy = true;
+            }
+        }
     }
-  }
+
+    public void ClickRestore(bool b)
+    {
+        this.gameObject.SetActive(true);
+
+        bodyCubo.velocity = new Vector3(0, 0, 0);
+        bodyCubo.position = startingPosition;
+
+        isJumper = isEnemy = false;
+        painelResultados.SetActive(false);
+    }
+
+    public void AnimationConfig()
+    {
+        painelResultados.SetActive(false);
+        isJumper = isEnemy = false;
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (isJumper)
+        {
+            bodyCubo.velocity = new Vector3(0, 0, 0);
+
+            calculaResultados.SetOutputParam();
+            painelResultados.SetActive(true);
+        }
+
+        if (isEnemy)
+        {
+            isEnemy = false;
+            GetComponent<QuestionAnimation>().isQuestionRight();
+        }
+    }
 }

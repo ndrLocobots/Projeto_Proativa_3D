@@ -5,12 +5,18 @@ using UnityEngine.UI;
 
 public class ScreenResults : MonoBehaviour
 {
-  public Text Ttime, TmaxHigh, TdeltaX;
-  public Text Tangle, Tvelocity;
+  public Text Ttime, TmaxHigh, TdeltaX, Tpontuacao;
+  public Text Tangle, Tvelocity, TVCorreta, TACorreto, TVUsu, TAUsu;
 
   private Vector3 userVelocity;
   private float totalTimer, maxHeight, DeltaX;
-  private float velocity, angle;
+  private float velocity, angle, auxVel, auxAng;
+
+  [SerializeField]
+  private Tutorial tutorial;
+  
+  public float pontTotal;
+  public float anguloC, velocidadeC;
 
   public void SetVelocity(float velocity){
     this.velocity = velocity;
@@ -34,6 +40,9 @@ public class ScreenResults : MonoBehaviour
     SetTotalTime();
     SetDeltaX();
     SetMaxHigh();
+
+    if(!tutorial.isTutorial)
+      SetPontuacao();
   }
 
   void SetTotalTime()
@@ -60,13 +69,78 @@ public class ScreenResults : MonoBehaviour
     maxHeight = (userVelocity.y * time) - (5 * time * time);
   }
 
+  void SetPontuacao()
+  {
+    auxVel = velocity;
+    auxAng = angle;
+
+    float pontAng;
+    float pontVel;
+    float maior, menor;
+
+    if(auxVel > velocidadeC)
+    {
+      maior = auxVel;
+      menor = velocidadeC;
+    }
+    else
+    {
+      maior = velocidadeC;
+      menor = auxVel;
+    }
+
+    float erro = maior - menor;
+    float x = (10 * erro) / velocidadeC;
+    pontVel = 10 - x;
+
+    if(auxAng > anguloC)
+    {
+      maior = auxAng;
+      menor = anguloC;
+    }
+    else
+    {
+      maior = anguloC;
+      menor = auxAng;
+    }
+
+    erro = maior - menor;
+    x = (10 * erro) / anguloC;
+    pontAng = 10 - x;
+
+    pontTotal = (pontAng + pontVel) / 2;
+    
+    if(pontTotal < 0)
+      pontTotal = 0;
+  }
+
   private void OnGUI()
   {
     Tangle.text = angle.ToString("0");
     Tvelocity.text = velocity.ToString("0");
+  }
 
+  public void UpdateResultsText(bool acerto)
+  {
     Ttime.text = "Tempo: " + totalTimer.ToString("0.00");
     TmaxHigh.text = "Altura máxima: " + maxHeight.ToString("0.00");
     TdeltaX.text = "Distância horizontal: " + DeltaX.ToString("0.00");
+
+    if(!tutorial.isTutorial)
+    {
+      if(acerto)
+      {
+        TVCorreta.text = "Resposta Correta: Velocidade -  " + velocidadeC.ToString("0.00");
+        TACorreto.text = "                                   Ângulo -  " + anguloC.ToString("0");
+      }
+      else
+      {
+        TVCorreta.text = "Resposta Correta: Velocidade -  ";
+        TACorreto.text = "                                   Ângulo -  ";
+      }
+      Tpontuacao.text = "Sua pontuação: " + pontTotal.ToString("0.0");
+      TVUsu.text = "Sua resposta:         Velocidade -  " + auxVel.ToString("0.00");
+      TAUsu.text = "                                   Ângulo -  " + auxAng.ToString("0");
+    }
   }
 }
