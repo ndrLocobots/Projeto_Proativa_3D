@@ -5,6 +5,8 @@ using UnityEngine.SceneManagement;
 
 public class ControleBotoesMenu : MonoBehaviour
 {
+    public GameObject help;
+
     public void CarregaLancamento()
     {
         SceneManager.LoadSceneAsync(1);
@@ -23,5 +25,18 @@ public class ControleBotoesMenu : MonoBehaviour
     public void SaiDoJogo()
     {
         Application.Quit();
+    }
+
+    public void MostraHelp()
+    {
+        if(!help.activeSelf)
+            help.SetActive(true);
+        else
+            EscondeHelp();
+    }
+
+    public void EscondeHelp()
+    {
+        help.SetActive(false);
     }
 }
