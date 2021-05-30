@@ -77,8 +77,8 @@ public class QuestionQueda : MonoBehaviour
     string question = allquestion[level];
 
     return question.Replace("{t}", time.ToString("0.00"))
-    //.Replace("{dx}", distaceDelta.ToString("0.00"))
-    //.Replace("{vx}", velocityX.ToString("0.00"))
+    .Replace("{dy}", height.ToString("0.00"))
+    .Replace("{g}", gravity.ToString("0.00"))
     //.Replace("{vy}", velocityY.ToString("0.00"))
     //.Replace("{mh}", maxHeight.ToString("0.00"))
     .Replace("{th}", (time / 2).ToString("0.00"))
