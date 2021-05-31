@@ -7,14 +7,14 @@ public class TransitaMenu : MonoBehaviour
 {
     public void Carrega02()
     {
-        
+
         string sceneName = "Menu02";
         UnloadAllScenesExcept(sceneName);
     }
 
     public void Carrega01()
     {
-        
+
         string sceneName = "Menu01";
         UnloadAllScenesExcept(sceneName);
     }
@@ -62,9 +62,10 @@ public class TransitaMenu : MonoBehaviour
             Scene scene = SceneManager.GetSceneAt(i);
             print(scene.name);
             SceneManager.UnloadSceneAsync(scene);
-            
+
         }
         SceneManager.LoadSceneAsync(sceneName);
         Time.timeScale = 1;
     }
+
 }
