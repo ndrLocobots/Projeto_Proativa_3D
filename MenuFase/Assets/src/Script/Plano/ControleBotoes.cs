@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class ControleBotoes : MonoBehaviour
 {
@@ -35,5 +36,10 @@ public class ControleBotoes : MonoBehaviour
     public void FechaMenu()
     {
         menu.SetActive(false);
+    }
+
+    public void RetornaAoMenuInicial()
+    {
+        SceneManager.LoadSceneAsync(0);
     }
 }

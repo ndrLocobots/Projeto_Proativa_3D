@@ -7,6 +7,7 @@ public class StartSimulation : MonoBehaviour
 {
     public Rigidbody cubo;
     public GameObject portal;
+    public GameObject menu;
 
     public Slider angulo;
     public Slider massa;
@@ -36,6 +37,12 @@ public class StartSimulation : MonoBehaviour
         timer.SetBotaoApertado(true);
         controleAnim.VerificaQuestao(massa.value, atrito.value, angulo.value, forca.value, anguloCorreto, atritoCorreto, massaCorreta, forcaCorreta);
         StartCoroutine(tempoAbrirPortal());
+    }
+
+    public void ApertouOK()
+    {
+        if(menu.activeSelf)
+            menu.SetActive(false);
     }
 
     public void setRespostasCorretas(int anguloCorreto, int atritoCorreto, int massaCorreta, float forcaCorreta)

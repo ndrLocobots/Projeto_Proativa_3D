@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class ControleAnimacoes : MonoBehaviour
 {
@@ -8,7 +9,14 @@ public class ControleAnimacoes : MonoBehaviour
     public GameObject cuboParaAnimacao;
     public Animator portal;
 
+    public Button botaoStart;
+    public Button botaoRestore;
+    public Button botaoMenu;
+
     public SoundsAnimationP sound;
+
+    [SerializeField]
+    private Restart restart;
 
     private robotAnimation animRobo;
     private AnimInimigo animInimigo;
@@ -110,7 +118,6 @@ public class ControleAnimacoes : MonoBehaviour
 
     public void AnimAcerto(int i)
     {
-        
         acertouQuestao = true;
         animRobo.RobotHappy();
         robotDialogue.SetHappyBubble();
@@ -120,6 +127,23 @@ public class ControleAnimacoes : MonoBehaviour
         controleQuestoes.AtualizaQuestaoAtiva(i);
         controleQuestoes.setConcluidas(1, i - 1);
         sound.PlayPortal();
+
+        StartCoroutine(RestauraCenaPosAcerto());
+    }
+
+    IEnumerator RestauraCenaPosAcerto()
+    {
+        botaoMenu.interactable = false;
+        botaoRestore.interactable = false;
+        botaoStart.interactable = false;
+
+        yield return new WaitForSeconds(10);
+
+        botaoMenu.interactable = true;
+        botaoRestore.interactable = true;
+        botaoStart.interactable = true;
+
+        restart.RestartScene();
     }
 
     public void AnimErro(int tentativa)

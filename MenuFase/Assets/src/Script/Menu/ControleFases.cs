@@ -1,36 +1,38 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class ControleFases : MonoBehaviour
 {
-    public bool fezTutorial, jaSetou;
+    public bool fezTutorial;
 
     public Button botaoPlano, botaoQueda;
 
-    void Start()
+    void Awake()
     {
-        fezTutorial = false;
-        jaSetou = false;
+        fezTutorial = FindObjectOfType<ControleTutorial>().fezTutorial;
+        AtualizaBotoesDasFases();
     }
 
-    void Update()
+    public void AtualizaBotoesDasFases()
     {
-        if(fezTutorial && !jaSetou)
+        if(SceneManager.GetActiveScene().buildIndex == 0)
         {
-            jaSetou = true;
-            if(!botaoPlano.IsInteractable() && !botaoQueda.IsInteractable())
+            if(fezTutorial)
             {
-                botaoPlano.interactable = true;
-                botaoQueda.interactable = true;
+                if(!botaoPlano.IsInteractable() && !botaoQueda.IsInteractable())
+                {
+                    botaoPlano.interactable = true;
+                    botaoQueda.interactable = true;
+                }
             }
-        }
-        else if(!fezTutorial)
-        {
-            jaSetou = false;
-            botaoPlano.interactable = false;
-            botaoQueda.interactable = false;   
+            else if(!fezTutorial)
+            {
+                botaoPlano.interactable = false;
+                botaoQueda.interactable = false;
+            }
         }
     }
 }

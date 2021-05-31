@@ -13,10 +13,13 @@ public class Tutorial : MonoBehaviour
   public bool isTutorial = false;
 
   private dialog robotDialog;
+  private ControleTutorial controleTutorial;
 
   void Start()
   {
     robotDialog = FindObjectOfType<dialog>();
+    controleTutorial = FindObjectOfType<ControleTutorial>();
+
     arrow.SetActive(false);
   }
 
@@ -214,5 +217,6 @@ public class Tutorial : MonoBehaviour
     
     arrow.SetActive(false);
     isTutorial = false;
+    controleTutorial.fezTutorial = true;
   }
 }

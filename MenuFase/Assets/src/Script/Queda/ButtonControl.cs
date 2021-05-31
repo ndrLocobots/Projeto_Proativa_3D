@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class ButtonControl : MonoBehaviour
 {
+    public GameObject menu;
     public Button botaoStart, botaoMenu, botaoRestore;
 
     void Start()
@@ -24,5 +25,11 @@ public class ButtonControl : MonoBehaviour
 
         if(!botaoRestore.interactable)
             botaoRestore.interactable = true;
+    }
+
+    public void ApertouOK()
+    {
+        if(menu.activeSelf)
+            menu.SetActive(false);
     }
 }

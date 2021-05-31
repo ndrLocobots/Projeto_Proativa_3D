@@ -112,7 +112,7 @@ public class dialog : MonoBehaviour
   {
     speechBubble.SetActive(true);
 
-    yield return new WaitForSeconds(10);
+    yield return new WaitForSeconds(12);
     speechBubble.SetActive(false);
   }
 

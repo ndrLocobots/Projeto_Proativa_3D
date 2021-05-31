@@ -57,7 +57,6 @@ public class QuestionQueda : MonoBehaviour
     setencas = csvfile.ReadCSVFile("queda_dialog");
 
     string answer = GetExample();
-    answer = answer + "\nResposta: Altura: " + height + " Gravidade: " + gravity;
 
     setencas.Add(answer);
 
