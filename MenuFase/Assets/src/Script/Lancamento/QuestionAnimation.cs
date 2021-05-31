@@ -8,7 +8,7 @@ public class QuestionAnimation : MonoBehaviour
 {
     private Transform altar;
     private bool isQuestion;
-
+    public Animator panel_victory, panel_lose;
     private Tutorial tutorial;
     private ScenaAnimation lancamentoAnimation;
 
@@ -54,6 +54,8 @@ public class QuestionAnimation : MonoBehaviour
 
         isQuestion = false;
         acerto = false;
+        panel_victory.SetBool("action", false);
+        panel_lose.SetBool("action", false);
     }
 
     public void BackSentence()
@@ -139,6 +141,9 @@ public class QuestionAnimation : MonoBehaviour
         if (levelIndex <= 3)
             levelIndex++;
 
+        if (levelIndex == 3)
+            panel_victory.SetBool("action", true);
+
         tele.setAtingido(true);
     }
 
@@ -168,6 +173,8 @@ public class QuestionAnimation : MonoBehaviour
         if (attemptsNum == 0)
         {
             StartCoroutine(ActiveLoseAnimation());
+            panel_lose.SetBool("action", true);
+
         }
     }
 

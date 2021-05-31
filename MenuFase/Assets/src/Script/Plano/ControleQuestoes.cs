@@ -14,6 +14,7 @@ public class ControleQuestoes : MonoBehaviour
     private ScenaAnimation scenaAnimation;
     private Question questionLancamento;
 
+
     private int[] concluidas;
 
     void Start()
@@ -35,6 +36,7 @@ public class ControleQuestoes : MonoBehaviour
         concluidas[0] = 0;
         concluidas[1] = 0;
         concluidas[2] = 0;
+        
     }
 
     public void AtualizaQuestaoAtiva(int indice)
