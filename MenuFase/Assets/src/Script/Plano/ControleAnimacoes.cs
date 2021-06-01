@@ -8,7 +8,7 @@ public class ControleAnimacoes : MonoBehaviour
     public GameObject cubo;
     public GameObject cuboParaAnimacao;
     public Animator portal;
-
+    public Animator panel_victory, panel_lose;
     public Button botaoStart;
     public Button botaoRestore;
     public Button botaoMenu;
@@ -63,6 +63,8 @@ public class ControleAnimacoes : MonoBehaviour
         acertouQuestao = false;
         podeRodarAnimFinal = false;
         estaResolvendo = false;
+        panel_victory.SetBool("action", false);
+        panel_lose.SetBool("action", false);
     }
 
     void Update()
@@ -114,6 +116,9 @@ public class ControleAnimacoes : MonoBehaviour
                 contadorErros++;
             }
         }
+
+
+        
     }
 
     public void AnimAcerto(int i)
@@ -127,6 +132,9 @@ public class ControleAnimacoes : MonoBehaviour
         controleQuestoes.AtualizaQuestaoAtiva(i);
         controleQuestoes.setConcluidas(1, i - 1);
         sound.PlayPortal();
+
+        if (i == 3)
+            panel_victory.SetBool("action", true);
 
         StartCoroutine(RestauraCenaPosAcerto());
     }
@@ -170,12 +178,14 @@ public class ControleAnimacoes : MonoBehaviour
             animRobo.RobotSad();
             animInimigo.AnimaInimigo(3);
             podeRodarAnimFinal = false;
+            
         }
     }
 
     public void AtivaRobosCarregandoCubo()
     {
-        animInimigo.AnimaInimigo(4);   
+        animInimigo.AnimaInimigo(4);
+        panel_lose.SetBool("action", true);
     }
 
     public void AtivaCuboSendoCarregado()

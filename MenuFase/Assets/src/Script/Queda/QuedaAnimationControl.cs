@@ -14,6 +14,8 @@ public class QuedaAnimationControl : MonoBehaviour
   [SerializeField]
   private heart hearts;
 
+  public Animator panel_victory, panel_lose;
+
   [SerializeField]
   private dialog robotDialog;
 
@@ -51,7 +53,12 @@ public class QuedaAnimationControl : MonoBehaviour
 
     isQuestion = false;
     estaResolvendo = false;
-  }
+
+
+    panel_victory.SetBool("action", false);
+    panel_lose.SetBool("action", false);
+
+    }
 
   void Update()
   {
@@ -120,7 +127,10 @@ public class QuedaAnimationControl : MonoBehaviour
 
     if(i <= 3)
       i++;
-  }
+
+    if (i == 4)
+      panel_victory.SetBool("action", true);
+    }
 
   IEnumerator ActiveWinAnimation()
   {
@@ -138,10 +148,10 @@ public class QuedaAnimationControl : MonoBehaviour
 
         if (attemptsNum == 0)
     {
-            Debug.Log("Antes do predio cair");
+            
             sound.Play_fallingBuilding();
       StartCoroutine(ActiveLoseAnimation());
-            Debug.Log("Depois do predio cair");
+            panel_lose.SetBool("action", true);
         }
     else
     {
