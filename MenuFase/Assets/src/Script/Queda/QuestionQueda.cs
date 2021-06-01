@@ -19,7 +19,7 @@ public class QuestionQueda : MonoBehaviour
   {
     csvfile = gameObject.AddComponent<CSVfile>();
     cubo = FindObjectOfType<CuboQue>();
-    
+
     level = 0;
     SetRobotDialog();
   }
@@ -46,7 +46,7 @@ public class QuestionQueda : MonoBehaviour
     index = Random.Range(0, gravities.Length);
     gravity = gravities[index];
 
-    time = Mathf.Sqrt(height / gravity);
+    time = Mathf.Sqrt(2 * height / gravity);
 
     Debug.Log("Altura: " + height + "Gravidade:" + gravity);
   }
