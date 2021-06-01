@@ -54,6 +54,11 @@ public class TransitaMenu : MonoBehaviour
         Application.Quit();
     }
 
+    public void CarregaMenuInicial()
+    {
+        SceneManager.LoadSceneAsync(0);
+    }
+
     void UnloadAllScenesExcept(string sceneName)
     {
         int c = SceneManager.sceneCount;
