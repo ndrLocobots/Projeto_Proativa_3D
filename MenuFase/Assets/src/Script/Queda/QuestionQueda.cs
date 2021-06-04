@@ -5,10 +5,11 @@ using UnityEngine;
 using System.Linq;
 public class QuestionQueda : MonoBehaviour
 {
-  private float gravity, height;
+  private float gravity, height, velocity;
   private float time;
 
   public int level;
+  public GameObject sliderVelocidade;
 
   private CSVfile csvfile;
 
@@ -18,7 +19,7 @@ public class QuestionQueda : MonoBehaviour
   void Awake()
   {
     csvfile = gameObject.AddComponent<CSVfile>();
-    cubo = FindObjectOfType<CuboQue>();
+    velocity = 0;
 
     level = 0;
     SetRobotDialog();
@@ -26,7 +27,7 @@ public class QuestionQueda : MonoBehaviour
 
   public void SetRobotDialog()
   {
-    MakeDataQuestion();
+    NewMakeDataQuestion();
 
     dialog robotDialog = FindObjectOfType<dialog>();
 
@@ -37,18 +38,82 @@ public class QuestionQueda : MonoBehaviour
     }
   }
 
-  void MakeDataQuestion()
+  // void MakeDataQuestion()
+  // {
+  //   float[] gravities = cubo.gravities;
+  //   int index;
+
+  //   height = (int)Random.Range(10, 50f);
+  //   index = Random.Range(0, gravities.Length);
+  //   gravity = gravities[index];
+
+  //   time = Mathf.Sqrt(2 * height / gravity);
+  //   velocity = Mathf.Sqrt(2 * gravity * height);
+
+  //   if(level < 2)
+  //   {
+  //     sliderVelocidade.SetActive(false);
+  //     Debug.Log("Altura: " + height + " Gravidade: " + gravity);
+  //   }
+  //   else
+  //   {
+  //     sliderVelocidade.SetActive(true);
+  //     Debug.Log("Altura: " + height + " Gravidade: " + gravity + " Vloecidade: " + velocity);
+  //   }
+  // }
+
+  void NewMakeDataQuestion()
   {
     float[] gravities = cubo.gravities;
     int index;
 
-    height = (int)Random.Range(10, 50f);
-    index = Random.Range(0, gravities.Length);
-    gravity = gravities[index];
+    if(level == 0)
+    {
+      index = Random.Range(0, gravities.Length);
+      gravity = gravities[index];
 
-    time = Mathf.Sqrt(2 * height / gravity);
+      if (gravity == 3f)
+        time = Random.Range(2.60f, 5.75f);
+      else if (gravity == 10f)
+        time = Random.Range(1.41f, 3.16f);
+      else if (gravity == 20f)
+        time = Random.Range(1f, 2.24f);
 
-    Debug.Log("Altura: " + height + "Gravidade:" + gravity);
+      height = (gravity * Mathf.Pow(time, 2)) / 2;
+      height = Mathf.Round(height);
+
+      Debug.Log("Altura: " + height + " Gravidade: " + gravity);
+    }
+    else if(level == 1)
+    {
+      index = Random.Range(0, gravities.Length);
+      gravity = gravities[index];
+      height = Random.Range(10f, 50f);
+      height = Mathf.Round(height);
+      time = Mathf.Sqrt((2 * height) / gravity);
+
+      Debug.Log("Altura: " + height + " Gravidade: " + gravity);
+    }
+    else if(level == 2)
+    {
+      sliderVelocidade.SetActive(true);
+      index = Random.Range(0, gravities.Length);
+      gravity = gravities[index];
+
+      if(gravity == 3f)
+        velocity = Random.Range(7.8f, 17.2f);
+      else if(gravity == 10f)
+        velocity = Random.Range(14.1f, 31.6f);
+      else if(gravity == 20f)
+        velocity = Random.Range(20f, 44.7f);
+
+      velocity = Mathf.Round(velocity);
+
+      height = (Mathf.Pow(velocity, 2)) / (2 * gravity);
+      height = Mathf.Round(height);
+
+      Debug.Log("Altura: " + height + " Gravidade: " + gravity + " Vloecidad: " + velocity.ToString("0.00"));
+    }
   }
 
   string[] GetDialog()
@@ -80,7 +145,8 @@ public class QuestionQueda : MonoBehaviour
     .Replace("{g}", gravity.ToString("0.00"))
     //.Replace("{vy}", velocityY.ToString("0.00"))
     //.Replace("{mh}", maxHeight.ToString("0.00"))
-    .Replace("{th}", (time / 2).ToString("0.00"))
+    .Replace("{v}", velocity.ToString("0.00"))
+    .Replace("{th}", time.ToString("0.00"))
     //.Replace("{a}", (angle).ToString("0.00"))
     ;
   }
@@ -91,8 +157,28 @@ public class QuestionQueda : MonoBehaviour
     return allquestion[index];
   }
 
-  public float ReturnAnswer()
+  public float[] ReturnAnswer()
   {
-    return time;
+    float[] resposta;
+    float respostaDaGravidade;
+
+    if(gravity == 20f)
+      respostaDaGravidade = 0;
+    else if(gravity == 10f)
+      respostaDaGravidade = 1;
+    else
+      respostaDaGravidade = 2;
+
+    if(velocity == 0)
+    {
+      resposta = new float[2] {height, respostaDaGravidade};
+      return resposta;
+    }
+    else
+    {
+      resposta = new float[3] {height, respostaDaGravidade, velocity};
+      velocity = 0;
+      return resposta;
+    }
   }
 }

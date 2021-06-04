@@ -6,65 +6,65 @@ using UnityEngine.UI;
 
 public class QuedaAnimationControl : MonoBehaviour
 {
-  private bool isQuestion;
+    private bool isQuestion;
 
-  [SerializeField]
-  private GenericAnimations cenaAnimation;
+    [SerializeField]
+    private GenericAnimations cenaAnimation;
 
-  [SerializeField]
-  private heart hearts;
+    [SerializeField]
+    private heart hearts;
 
-  public Animator panel_victory, panel_lose;
+    public Animator panel_victory, panel_lose;
 
-  [SerializeField]
-  private dialog robotDialog;
+    [SerializeField]
+    private dialog robotDialog;
 
-  [SerializeField]
-  private QuestionQueda question;
+    [SerializeField]
+    private QuestionQueda question;
 
-  [SerializeField]
+    [SerializeField]
 
-  private int attemptsNum = 3;
+    private int attemptsNum = 3;
 
-  private int index;
-  private int showInimigo = 2;
-  private bool estaResolvendo;
-  private float tempoInicio;
+    private int index;
+    private int showInimigo = 2;
+    private bool estaResolvendo;
+    private float tempoInicio;
 
-  private ControleQuestoes controleQuestoes;
+    private ControleQuestoes controleQuestoes;
 
-  private int questionIndex = 3;
-  private int i = 1;
+    private int questionIndex = 3;
+    private int i = 1;
 
-  public GameObject secondCamera;
-  public GameObject cube;
-  public float volume = 0.5f;
+    public GameObject secondCamera;
+    public GameObject cube;
+    public float volume = 0.5f;
 
     public SoundsAnimationQ sound;
 
     void Start()
-  {
-    cenaAnimation = FindObjectOfType<GenericAnimations>();
-    robotDialog = FindObjectOfType<dialog>();
-    hearts = FindObjectOfType<heart>();
-    question = FindObjectOfType<QuestionQueda>();
-    controleQuestoes = FindObjectOfType<ControleQuestoes>();
-    controleQuestoes.AtualizaQuestaoAtiva(0);
+    {
+        cenaAnimation = FindObjectOfType<GenericAnimations>();
+        robotDialog = FindObjectOfType<dialog>();
+        hearts = FindObjectOfType<heart>();
+        question = FindObjectOfType<QuestionQueda>();
+        controleQuestoes = FindObjectOfType<ControleQuestoes>();
+        controleQuestoes.AtualizaQuestaoAtiva(0);
 
-    isQuestion = false;
-    estaResolvendo = false;
+        isQuestion = false;
+        estaResolvendo = false;
 
 
-    panel_victory.SetBool("action", false);
-    panel_lose.SetBool("action", false);
+        panel_victory.SetBool("action", false);
+        panel_lose.SetBool("action", false);
 
     }
 
-  void Update()
-  {
-        if(estaResolvendo && !robotDialog.isTalk)
+    void Update()
+    {
+        if (estaResolvendo && !robotDialog.isTalk)
         {
-            if(Time.time - tempoInicio >= 25)
+            if (Time.time - tempoInicio >= 25)
             {
                 robotDialog.ActivateBubbleReminder();
                 robotDialog.TalkWithBubble();
@@ -72,120 +72,136 @@ public class QuedaAnimationControl : MonoBehaviour
                 estaResolvendo = false;
             }
         }
-  }
-
-  public void BackSentence()
-  {
-    robotDialog.BackSentence();
-  }
-
-  public void NextSentence()
-  {
-    index = robotDialog.NextSentence();
-    SetAnimation(index);
-
-  }
-
-  public void SetAnimation(int index)
-  {
-    if (index == showInimigo)
-    {
-      //cenaAnimation.AnimatorCamera();
     }
-    else if (index >= questionIndex && !isQuestion)
+
+    public void BackSentence()
     {
-      hearts.updateOpacityHearts(1);
-      isQuestion = true;
+        robotDialog.BackSentence();
     }
-  }
 
-  public void isQuestionRight(float userAnswer)
-  {
-    if (isQuestion)
+    public void NextSentence()
     {
-      float answer = question.ReturnAnswer();
+        index = robotDialog.NextSentence();
+        SetAnimation(index);
 
-      if (userAnswer == answer)
-      {
-        CorrectAnswer();
-        question.SetRobotDialog();
-      }
-      else
-      {
-        WrongAnswer(userAnswer);
-      }
     }
-  }
 
-  void CorrectAnswer()
-  {
-    StartCoroutine(cenaAnimation.ShowReactionOfRobot(true));
-    StartCoroutine(ActiveWinAnimation());
-    controleQuestoes.AtualizaQuestaoAtiva(i);
-    controleQuestoes.setConcluidas(1, i - 1);
+    public void SetAnimation(int index)
+    {
+        if (index == showInimigo)
+        {
+            //cenaAnimation.AnimatorCamera();
+        }
+        else if (index >= questionIndex && !isQuestion)
+        {
+            hearts.updateOpacityHearts(1);
+            isQuestion = true;
+        }
+    }
+
+    public void isQuestionRight(float[] userAnswers)
+    {
+        if (isQuestion)
+        {
+            float[] answers = question.ReturnAnswer();
+            Debug.Log("Tamanho das respostas corretas: " + answers.Length);
+            Debug.Log("Tamanho das respostas do usuario: " + userAnswers.Length);
+
+            if(answers.Length == 2)
+            {
+              if(userAnswers[0] == answers[0] && userAnswers[1] == answers[1])
+              {
+                CorrectAnswer();
+                question.SetRobotDialog();
+              }
+              else
+                WrongAnswer(userAnswers);
+            }
+            else
+            {
+              if(userAnswers[0] == answers[0] && userAnswers[1] == answers[1] && userAnswers[2] == answers[2])
+              {
+                CorrectAnswer();
+                question.SetRobotDialog();
+              }
+              else
+                WrongAnswer(userAnswers);
+            }
+        }
+    }
+
+    void CorrectAnswer()
+    {
+        StartCoroutine(cenaAnimation.ShowReactionOfRobot(true));
+        StartCoroutine(ActiveWinAnimation());
+        controleQuestoes.AtualizaQuestaoAtiva(i);
+        controleQuestoes.setConcluidas(1, i - 1);
         sound.Play_rightAnswer();
 
-    if(i <= 3)
-      i++;
+        if (i <= 3)
+            i++;
 
-    if (i == 4)
-      panel_victory.SetBool("action", true);
+        if (i == 4)
+            panel_victory.SetBool("action", true);
     }
 
-  IEnumerator ActiveWinAnimation()
-  {
-    yield return new WaitForSeconds(cenaAnimation.AnimationToWin());
-    RestoreCena();
-    robotDialog.ActivateBubbleOtherQuestion();
-  }
+    IEnumerator ActiveWinAnimation()
+    {
+        yield return new WaitForSeconds(cenaAnimation.AnimationToWin());
+        RestoreCena();
+        robotDialog.ActivateBubbleOtherQuestion();
+    }
 
-  void WrongAnswer(float time)
-  {
-    attemptsNum--;
-    hearts.loseHeart();
+    void WrongAnswer(float[] wrongAnswers)
+    {
+        attemptsNum--;
+        hearts.loseHeart();
         sound.Play_wrongAnswer();
-    
+
 
         if (attemptsNum == 0)
-    {
-            
+        {
+
             sound.Play_fallingBuilding();
-      StartCoroutine(ActiveLoseAnimation());
+            StartCoroutine(ActiveLoseAnimation());
             panel_lose.SetBool("action", true);
         }
-    else
+        else
+        {
+            StartCoroutine(cenaAnimation.ShowReactionOfRobot(false));
+            robotDialog.SetSadBubble();
+
+            float time = Mathf.Sqrt((2 * wrongAnswers[0]) / wrongAnswers[1]);
+
+            StartCoroutine(ActiveWrongAnimation(time));
+        }
+    }
+
+    IEnumerator ActiveLoseAnimation()
     {
-      StartCoroutine(cenaAnimation.ShowReactionOfRobot(false));
-      robotDialog.SetSadBubble();
-      StartCoroutine(ActiveWrongAnimation(time));
-    }
-    }
+        RestoreCena();
+        yield return new WaitForSeconds(cenaAnimation.AnimationToLose());
+        RestoreCena();
+        robotDialog.ActivateBubbleSignal();
 
-  IEnumerator ActiveLoseAnimation()
-  {
-    RestoreCena();
-    yield return new WaitForSeconds(cenaAnimation.AnimationToLose());
-    RestoreCena();
-    robotDialog.ActivateBubbleSignal();
-    
     }
 
-  IEnumerator ActiveWrongAnimation(float time)
-  {
-    secondCamera.SetActive(true);
-    yield return new WaitForSeconds(cenaAnimation.AnimationToWrongAnswer());
-    secondCamera.SetActive(false);
-  }
+    IEnumerator ActiveWrongAnimation(float time)
+    {
+        secondCamera.SetActive(true);
+        yield return new WaitForSeconds(cenaAnimation.AnimationToWrongAnswer());
+        secondCamera.SetActive(false);
+    }
 
-  void RestoreCena()
-  {
-    attemptsNum = 3;
-    isQuestion = false;
-    secondCamera.SetActive(false);
+    void RestoreCena()
+    {
+        attemptsNum = 3;
+        isQuestion = false;
+        secondCamera.SetActive(false);
 
-    cube.GetComponent<Control>().RestartButton();
-    hearts.updateOpacityHearts(0);
-  }
+        cube.GetComponent<Control>().RestartButton();
+        hearts.updateOpacityHearts(0);
+    }
 
     public void setEstResolvendo(bool valor)
     {

@@ -3,12 +3,15 @@ using UnityEngine.UI;
 
 public class Control : MonoBehaviour
 {
-  public Slider height, env;
-  public Text Theight, Tenv;
+  public Slider height, env, velocity;
+  public Text Theight, Tenv, Tvelocity;
   public GameObject menu;
 
   QuedaAnimationControl animationControl;
   CuboQue cuboQue;
+
+  [SerializeField]
+  private QuestionQueda question;
 
   void Start()
   {
@@ -19,13 +22,14 @@ public class Control : MonoBehaviour
   public void StartButton()
   {
     cuboQue.isJump = true;
+    float[] userAnswers;
 
-    float time = cuboQue.CalculateValue(
-      height.value,
-      (int)env.value
-    );
-
-    animationControl.isQuestionRight(time);
+    if(velocity.gameObject.activeSelf)
+      userAnswers = new float[3] {(float)height.value, (float)env.value, (float)velocity.value};
+    else
+      userAnswers = new float[2] {(float)height.value, (float)env.value};
+    
+    animationControl.isQuestionRight(userAnswers);
   }
 
   public void RestartButton()
@@ -71,5 +75,11 @@ public class Control : MonoBehaviour
         Tenv.text = "Gravidade: " + 3 + " m/s²";
         break;
     }
+  }
+
+  public void SetVelocity(float v)
+  {
+    velocity.value = v;
+    Tvelocity.text = "Velocidade: " + v + " m/s";
   }
 }
