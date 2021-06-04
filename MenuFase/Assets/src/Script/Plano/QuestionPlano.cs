@@ -57,7 +57,7 @@ public class QuestionPlano : MonoBehaviour
     {
         if(indice == 0)
         {  
-            int angIndex = (int)Random.Range(0, 3f);
+            int angIndex = (int)Random.Range(0, 4);
 
             float[] angulos = new float[4] {20f, 30f, 45f, 60f};
             float[] aceleracoes = new float[4] {1.70f, 2.50f, 4.85f, 5.25f};

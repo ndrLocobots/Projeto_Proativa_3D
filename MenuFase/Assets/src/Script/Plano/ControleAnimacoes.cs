@@ -9,6 +9,7 @@ public class ControleAnimacoes : MonoBehaviour
     public GameObject cuboParaAnimacao;
     public Animator portal;
     public Animator panel_victory, panel_lose;
+    public Animator guindaste;
     public Button botaoStart;
     public Button botaoRestore;
     public Button botaoMenu;
@@ -17,6 +18,9 @@ public class ControleAnimacoes : MonoBehaviour
 
     [SerializeField]
     private Restart restart;
+
+    [SerializeField]
+    private Slider angulo;
 
     private robotAnimation animRobo;
     private AnimInimigo animInimigo;
@@ -65,6 +69,7 @@ public class ControleAnimacoes : MonoBehaviour
         estaResolvendo = false;
         panel_victory.SetBool("action", false);
         panel_lose.SetBool("action", false);
+        guindaste.SetBool("Idle", true);
     }
 
     void Update()
@@ -128,13 +133,30 @@ public class ControleAnimacoes : MonoBehaviour
         robotDialogue.SetHappyBubble();
         robotDialogue.TalkWithBubble();
         animInimigo.AnimaInimigo(0);
-        portal.SetTrigger("Sucesso"); 
+
+        if(i < 3)
+            portal.SetTrigger("Sucesso");
+
         controleQuestoes.AtualizaQuestaoAtiva(i);
         controleQuestoes.setConcluidas(1, i - 1);
         sound.PlayPortal();
 
         if (i == 3)
+        {
             panel_victory.SetBool("action", true);
+            guindaste.SetBool("Idle", false);
+
+            cubo.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezePosition;
+
+            if(angulo.value == 0f)
+                guindaste.SetBool("Puxa20", true);
+            else if(angulo.value == 1f)
+                guindaste.SetBool("Puxa30", true);
+            else if(angulo.value == 2f)
+                guindaste.SetBool("Puxa45", true);
+            else if(angulo.value == 3f)
+                guindaste.SetBool("Puxa60", true);
+        }
 
         StartCoroutine(RestauraCenaPosAcerto());
     }
@@ -194,7 +216,6 @@ public class ControleAnimacoes : MonoBehaviour
         cuboParaAnimacao.SetActive(true);
         cuboParaAnimacao.GetComponent<Animator>().SetTrigger("Perdemo");
     }
-
 
     public int getContadorErros()
     {
