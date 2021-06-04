@@ -104,8 +104,6 @@ public class QuedaAnimationControl : MonoBehaviour
         if (isQuestion)
         {
             float[] answers = question.ReturnAnswer();
-            Debug.Log("Tamanho das respostas corretas: " + answers.Length);
-            Debug.Log("Tamanho das respostas do usuario: " + userAnswers.Length);
 
             if(answers.Length == 2)
             {

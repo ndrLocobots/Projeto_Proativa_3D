@@ -15,9 +15,10 @@ public class CuboQue : MonoBehaviour
     public GameObject result;
 
     public GameObject city;
-    public Text t;
+    public Text time;
 
     public bool isJump;
+    public Button botaoStart, botaoRestore, botaoMenu;
 
     public float[] gravities = new float[] { 20, 10, 3 };
 
@@ -74,7 +75,6 @@ public class CuboQue : MonoBehaviour
         Jump();
         isJump = false;
 
-        result.SetActive(false);
         quedaAnimationControl.setEstResolvendo(false);
     }
 
@@ -158,14 +158,27 @@ public class CuboQue : MonoBehaviour
     {
         if (timer != 0)
         {
-            result.SetActive(true);
+            time.text = "Tempo: " + timer.ToString("0.00");
+            StartCoroutine(ShowResults());
+
             isJump = false;
         }
     }
 
-    private void OnGUI()
+    IEnumerator ShowResults()
     {
-        GUI.contentColor = Color.white;
-        t.text = "Tempo: " + timer.ToString("0.00");
+        result.SetActive(true);
+
+        botaoStart.interactable = false;
+        botaoRestore.interactable = false;
+        botaoMenu.interactable = false;
+
+        yield return new WaitForSeconds(5f);
+
+        botaoStart.interactable = true;
+        botaoRestore.interactable = true;
+        botaoMenu.interactable = true;
+
+        result.SetActive(false);
     }
 }

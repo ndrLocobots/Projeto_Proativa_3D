@@ -77,10 +77,11 @@ public class QuestionPlano : MonoBehaviour
 
             float[] angulos = new float[4] {20f, 30f, 45f, 60f};
             float forca = (float)(9.8 * massIndex * Mathf.Sin((angulos[angIndex] * Mathf.PI) / 180));
+            forca = Mathf.Round(forca);
 
             question = question.Replace("{ag}", angulos[angIndex].ToString()).Replace(
                                         "{ms}", massIndex.ToString());
-            Debug.Log("Massa: " + massIndex + " Angulo: " + angulos[angIndex] + "Forca: ~" + forca);
+            Debug.Log("Massa: " + massIndex + " Angulo: " + angulos[angIndex] + " Forca: " + forca);
             start.setRespostasCorretas(angIndex, 0, massIndex, forca);
             
         }

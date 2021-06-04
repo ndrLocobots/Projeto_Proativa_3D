@@ -2935,7 +2935,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 8c73dd1b833a42e49b1e441e0d01931b, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0.5
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -7513,7 +7513,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: de474b6c2d154ad4aafda3739ad0bce8, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 0.15
+  m_Volume: 0.2
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -8308,7 +8308,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 231bcdbab63c8524ba24ed9ae16f70a4, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0.4
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -8624,7 +8624,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: fbbeb81da135800458b7c14b6cca30de, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0.5
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -8957,6 +8957,21 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2196088833645944512, guid: fa996412e1931244ebeabb018a33f674,
         type: 3}
+      propertyPath: m_Colors.m_HighlightedColor.b
+      value: 0.49411765
+      objectReference: {fileID: 0}
+    - target: {fileID: 2196088833645944512, guid: fa996412e1931244ebeabb018a33f674,
+        type: 3}
+      propertyPath: m_Colors.m_HighlightedColor.g
+      value: 0.49411765
+      objectReference: {fileID: 0}
+    - target: {fileID: 2196088833645944512, guid: fa996412e1931244ebeabb018a33f674,
+        type: 3}
+      propertyPath: m_Colors.m_HighlightedColor.r
+      value: 0.49411765
+      objectReference: {fileID: 0}
+    - target: {fileID: 2196088833645944512, guid: fa996412e1931244ebeabb018a33f674,
+        type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 518754161}
@@ -8967,6 +8982,21 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2196088833791532865, guid: fa996412e1931244ebeabb018a33f674,
         type: 3}
+      propertyPath: m_Colors.m_HighlightedColor.b
+      value: 0.49411765
+      objectReference: {fileID: 0}
+    - target: {fileID: 2196088833791532865, guid: fa996412e1931244ebeabb018a33f674,
+        type: 3}
+      propertyPath: m_Colors.m_HighlightedColor.g
+      value: 0.49411765
+      objectReference: {fileID: 0}
+    - target: {fileID: 2196088833791532865, guid: fa996412e1931244ebeabb018a33f674,
+        type: 3}
+      propertyPath: m_Colors.m_HighlightedColor.r
+      value: 0.49411765
+      objectReference: {fileID: 0}
+    - target: {fileID: 2196088833791532865, guid: fa996412e1931244ebeabb018a33f674,
+        type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 518754161}
@@ -8974,6 +9004,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: MostraDadosQ2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2196088834995039433, guid: fa996412e1931244ebeabb018a33f674,
+        type: 3}
+      propertyPath: m_Colors.m_HighlightedColor.b
+      value: 0.49411765
+      objectReference: {fileID: 0}
+    - target: {fileID: 2196088834995039433, guid: fa996412e1931244ebeabb018a33f674,
+        type: 3}
+      propertyPath: m_Colors.m_HighlightedColor.g
+      value: 0.49411765
+      objectReference: {fileID: 0}
+    - target: {fileID: 2196088834995039433, guid: fa996412e1931244ebeabb018a33f674,
+        type: 3}
+      propertyPath: m_Colors.m_HighlightedColor.r
+      value: 0.49411765
       objectReference: {fileID: 0}
     - target: {fileID: 2196088834995039433, guid: fa996412e1931244ebeabb018a33f674,
         type: 3}

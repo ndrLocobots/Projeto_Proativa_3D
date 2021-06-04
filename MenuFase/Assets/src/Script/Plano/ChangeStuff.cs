@@ -658,7 +658,7 @@ public class ChangeStuff : MonoBehaviour
 
     public void ChangeForceText(float v)
     {
-        textoForca.text = "Forca: " + v.ToString("F2");
+        textoForca.text = "Forca: " + v.ToString("F2") + " N";
     }
 
     public void ChangeFrictionText(float v)
