@@ -54,7 +54,8 @@ public class Question : MonoBehaviour
 
       time = velocityY / 5;
 
-      maxHeight = Mathf.Pow(velocityY,2)/20.0f;
+      //maxHeight = Mathf.Pow(velocityY,2)/20.0f;
+      maxHeight = (10.0f * Mathf.Pow(time / 2, 2)) / 2;
 
       distaceDelta = velocityX * time;
     }
