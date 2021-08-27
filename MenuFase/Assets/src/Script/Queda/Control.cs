@@ -55,7 +55,7 @@ public class Control : MonoBehaviour
   {
     cuboQue.SetHeight(h);
     height.value = h;
-    Theight.text = "Altura: " + h;
+    Theight.text = "Altura: " + h + " m";
   }
 
   public void SetEnvironment(float a)

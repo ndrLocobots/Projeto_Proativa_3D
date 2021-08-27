@@ -6,7 +6,6 @@ public class GenericAnimations : MonoBehaviour
 {
   public PlayableDirector winAnimation, loseAnimation, wrongAnimation;
   public GameObject robotSelfCam, buttons;
-
   private robotAnimation robot;
 
   void Start()

@@ -16,6 +16,7 @@ public class robotClick : MonoBehaviour
   public GameObject timer;
   public Button botaoStart;
   public Button botaoMenu;
+  public Button botaoRestore;
 
   void Awake()
   {
@@ -37,6 +38,7 @@ public class robotClick : MonoBehaviour
         GetComponent<dialog>().Talk();
         botaoStart.interactable = true;
         botaoMenu.interactable = true;
+        botaoRestore.interactable = true;
 
         if(SceneManager.GetActiveScene().name == "Plano")
         {

@@ -119,22 +119,22 @@ public class ScreenResults : MonoBehaviour
 
     private void OnGUI()
     {
-        Tangle.text = angle.ToString("0");
-        Tvelocity.text = velocity.ToString("0");
+        Tangle.text = angle.ToString("0") + "º";
+        Tvelocity.text = velocity.ToString("0") + " m/s";
     }
 
     public void UpdateResultsText(bool acerto)
     {
-        Ttime.text = "Tempo: " + totalTimer.ToString("0.00");
-        TmaxHigh.text = "Altura máxima: " + maxHeight.ToString("0.00");
-        TdeltaX.text = "Distância horizontal: " + DeltaX.ToString("0.00");
+        Ttime.text = "Tempo: " + totalTimer.ToString("0.00") + " s";
+        TmaxHigh.text = "Altura máxima: " + maxHeight.ToString("0.00") + " m";
+        TdeltaX.text = "Distância horizontal: " + DeltaX.ToString("0.00") + " m";
 
         if (!tutorial.isTutorial)
         {
             if (acerto)
             {
-                TVCorreta.text = "Resposta Correta: Velocidade -  " + velocidadeC.ToString("0.00");
-                TACorreto.text = "                                   Ângulo -  " + anguloC.ToString("0");
+                TVCorreta.text = "Resposta Correta: Velocidade -  " + velocidadeC.ToString("0.00") + " m/s";
+                TACorreto.text = "                                   Ângulo -  " + anguloC.ToString("0") + "º";
             }
             else
             {
@@ -143,8 +143,8 @@ public class ScreenResults : MonoBehaviour
                 TACorreto.text = "                                   Ângulo -  ";
             }
             Tpontuacao.text = "Sua pontuação: " + pontTotal.ToString("0.0");
-            TVUsu.text = "Sua resposta:         Velocidade -  " + auxVel.ToString("0.00");
-            TAUsu.text = "                                   Ângulo -  " + auxAng.ToString("0");
+            TVUsu.text = "Sua resposta:         Velocidade -  " + auxVel.ToString("0.00") + " m/s";
+            TAUsu.text = "                                   Ângulo -  " + auxAng.ToString("0") + "º";
         }
     }
 }

@@ -3420,7 +3420,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &737930199
 RectTransform:
   m_ObjectHideFlags: 0
@@ -4431,6 +4431,11 @@ PrefabInstance:
       propertyPath: botaoStart
       value: 
       objectReference: {fileID: 1502399547}
+    - target: {fileID: 871145556457081870, guid: 750af05357c2aeae2acfdc969880b2c5,
+        type: 3}
+      propertyPath: botaoRestore
+      value: 
+      objectReference: {fileID: 929242909}
     - target: {fileID: 993702717009239810, guid: 750af05357c2aeae2acfdc969880b2c5,
         type: 3}
       propertyPath: m_Layer
@@ -4468,9 +4473,24 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1692401362648659239, guid: 750af05357c2aeae2acfdc969880b2c5,
         type: 3}
+      propertyPath: menu
+      value: 
+      objectReference: {fileID: 745881331}
+    - target: {fileID: 1692401362648659239, guid: 750af05357c2aeae2acfdc969880b2c5,
+        type: 3}
       propertyPath: panel
       value: 
       objectReference: {fileID: 1821031595}
+    - target: {fileID: 1692401362648659239, guid: 750af05357c2aeae2acfdc969880b2c5,
+        type: 3}
+      propertyPath: start
+      value: 
+      objectReference: {fileID: 1502399547}
+    - target: {fileID: 1692401362648659239, guid: 750af05357c2aeae2acfdc969880b2c5,
+        type: 3}
+      propertyPath: restore
+      value: 
+      objectReference: {fileID: 929242909}
     - target: {fileID: 1692401362648659239, guid: 750af05357c2aeae2acfdc969880b2c5,
         type: 3}
       propertyPath: bubbleText
@@ -8930,7 +8950,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1845773986
 RectTransform:
   m_ObjectHideFlags: 0

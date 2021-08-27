@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.UI;
+
 public class dialog : MonoBehaviour
 {
   public TextMeshProUGUI textDisplay;
@@ -14,6 +16,8 @@ public class dialog : MonoBehaviour
   private int index = 0;
   private float typingSpeed = 0.02f;
   public bool isTalk = false;
+
+  public Button start, restore, menu;
 
   void Start()
   {
@@ -124,6 +128,10 @@ public class dialog : MonoBehaviour
   }
 
   public void ActivateBubbleOtherQuestion(){
+    start.interactable = false;
+    restore.interactable = false;
+    menu.interactable = false;
+
     bubbleText.fontSize = 4;
     bubbleText.text = "Parabéns! Clique em mim para outra questão.";
     this.TalkWithBubble();

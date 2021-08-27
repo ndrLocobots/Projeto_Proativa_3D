@@ -113,7 +113,6 @@ public class QuestionAnimation : MonoBehaviour
     {
         if (isQuestion && !tutorial.isTutorial)
         {
-
             Vector3 distaceDelta = altar.position - transform.position;
 
             if (distaceDelta.magnitude < 5)
@@ -181,6 +180,7 @@ public class QuestionAnimation : MonoBehaviour
     IEnumerator ActiveLoseAnimation()
     {
         cube.GetComponent<CuboLan>().AnimationConfig();
+
         yield return new WaitForSeconds(ScenaAnimation.AnimationToLose());
         lancamentoAnimation.HideEnemy();
 
@@ -224,9 +224,5 @@ public class QuestionAnimation : MonoBehaviour
         yield return new WaitForSeconds(5);
 
         screen.SetActive(false);
-
-        menu.interactable = true;
-        start.interactable = true;
-        restore.interactable = true;
     }
 }
