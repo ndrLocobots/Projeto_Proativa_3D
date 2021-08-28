@@ -175,10 +175,6 @@ public class CuboQue : MonoBehaviour
 
         yield return new WaitForSeconds(5f);
 
-        botaoStart.interactable = true;
-        botaoRestore.interactable = true;
-        botaoMenu.interactable = true;
-
         result.SetActive(false);
     }
 }

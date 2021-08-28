@@ -169,10 +169,6 @@ public class ControleAnimacoes : MonoBehaviour
 
         yield return new WaitForSeconds(10);
 
-        botaoMenu.interactable = true;
-        botaoRestore.interactable = true;
-        botaoStart.interactable = true;
-
         restart.RestartScene();
     }
 
