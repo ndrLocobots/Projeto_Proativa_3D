@@ -47,6 +47,10 @@ public class ControleBotoesMenu : MonoBehaviour
     {
         SceneManager.LoadSceneAsync(3);
     }
+    public void CarregaMenu()
+    {
+        SceneManager.LoadSceneAsync(0);
+    }
 
     public void SaiDoJogo()
     {

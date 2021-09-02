@@ -41,6 +41,8 @@ public class QuedaAnimationControl : MonoBehaviour
     public float volume = 0.5f;
 
     public SoundsAnimationQ sound;
+    public GameObject p_vic, p_los;
+    public float tempo;
 
     void Start()
     {
@@ -54,7 +56,8 @@ public class QuedaAnimationControl : MonoBehaviour
         isQuestion = false;
         estaResolvendo = false;
 
-
+        p_vic.SetActive(true);
+        p_los.SetActive(true);
         panel_victory.SetBool("action", false);
         panel_lose.SetBool("action", false);
 
@@ -140,7 +143,7 @@ public class QuedaAnimationControl : MonoBehaviour
             i++;
 
         if (i == 4)
-            panel_victory.SetBool("action", true);
+            StartCoroutine(WaitV());
     }
 
     IEnumerator ActiveWinAnimation()
@@ -162,7 +165,7 @@ public class QuedaAnimationControl : MonoBehaviour
 
             sound.Play_fallingBuilding();
             StartCoroutine(ActiveLoseAnimation());
-            panel_lose.SetBool("action", true);
+            StartCoroutine(WaitL());
         }
         else
         {
@@ -190,7 +193,18 @@ public class QuedaAnimationControl : MonoBehaviour
         yield return new WaitForSeconds(cenaAnimation.AnimationToWrongAnswer());
         secondCamera.SetActive(false);
     }
+    IEnumerator WaitL()
+    {
+        yield return new WaitForSeconds(tempo);
+        panel_lose.SetBool("action", true);
 
+    }
+
+    IEnumerator WaitV()
+    {
+        yield return new WaitForSeconds(tempo);
+        panel_victory.SetBool("action", true);
+    }
     void RestoreCena()
     {
         attemptsNum = 3;

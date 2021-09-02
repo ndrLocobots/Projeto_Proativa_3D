@@ -9,10 +9,13 @@ public class ControleAnimacoes : MonoBehaviour
     public GameObject cuboParaAnimacao;
     public Animator portal;
     public Animator panel_victory, panel_lose;
+    public GameObject p_vic, p_los;
+    public float tempo;
     public Animator guindaste;
     public Button botaoStart;
     public Button botaoRestore;
     public Button botaoMenu;
+    
 
     public SoundsAnimationP sound;
 
@@ -62,6 +65,9 @@ public class ControleAnimacoes : MonoBehaviour
         robotDialogue = FindObjectOfType<dialog>();
         controleQuestoes = FindObjectOfType<ControleQuestoes>();
         controleQuestoes.AtualizaQuestaoAtiva(0);
+
+        p_vic.SetActive(true);
+        p_los.SetActive(true);
 
         contadorErros = 0;
         acertouQuestao = false;
@@ -143,7 +149,7 @@ public class ControleAnimacoes : MonoBehaviour
 
         if (i == 3)
         {
-            panel_victory.SetBool("action", true);
+            StartCoroutine(WaitV());
             guindaste.SetBool("Idle", false);
 
             cubo.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezePosition;
@@ -203,7 +209,20 @@ public class ControleAnimacoes : MonoBehaviour
     public void AtivaRobosCarregandoCubo()
     {
         animInimigo.AnimaInimigo(4);
+        StartCoroutine(WaitL());
+    }
+
+    IEnumerator WaitL()
+    {
+        yield return new WaitForSeconds(tempo);
         panel_lose.SetBool("action", true);
+
+    }
+
+    IEnumerator WaitV()
+    {
+        yield return new WaitForSeconds(tempo);
+        panel_victory.SetBool("action", true);
     }
 
     public void AtivaCuboSendoCarregado()

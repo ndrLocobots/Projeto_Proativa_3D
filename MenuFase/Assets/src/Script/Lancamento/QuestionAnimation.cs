@@ -33,6 +33,7 @@ public class QuestionAnimation : MonoBehaviour
 
     public GameObject cam;
     public GameObject cube;
+    public GameObject p_vic, p_los;
     public ScreenResults screenResults;
     public GameObject screen;
     public SoundsAnimationL sound;
@@ -51,7 +52,8 @@ public class QuestionAnimation : MonoBehaviour
         controle.AtualizaQuestaoAtiva(levelIndex);
 
         altar = tele.gameObject.transform;
-
+        p_vic.SetActive(true);
+        p_los.SetActive(true);
         isQuestion = false;
         acerto = false;
         panel_victory.SetBool("action", false);
@@ -141,7 +143,8 @@ public class QuestionAnimation : MonoBehaviour
             levelIndex++;
 
         if (levelIndex == 3)
-            panel_victory.SetBool("action", true);
+            StartCoroutine(WaitV());
+        
 
         tele.setAtingido(true);
     }
@@ -172,9 +175,23 @@ public class QuestionAnimation : MonoBehaviour
         if (attemptsNum == 0)
         {
             StartCoroutine(ActiveLoseAnimation());
-            panel_lose.SetBool("action", true);
+            StartCoroutine(WaitL());
+            
 
         }
+    }
+
+    IEnumerator WaitL()
+    {
+        yield return new WaitForSeconds(10.5f);
+        panel_lose.SetBool("action", true);
+
+    }
+
+    IEnumerator WaitV()
+    {
+        yield return new WaitForSeconds(10.5f);
+        panel_victory.SetBool("action", true);
     }
 
     IEnumerator ActiveLoseAnimation()
