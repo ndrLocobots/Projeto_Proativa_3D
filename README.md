@@ -1,37 +1,63 @@
 ﻿# Projeto Proativa 3D - <font color = 'red'>Loco</font>Bits
 
 <p align = "justify">
-Este projeto visa continuar o desenvolvimento de um simulador com o uso do Kinect para melhor compreensão dos assuntos abordados na disciplina de Física I nas universidades. Tendo em vista que essa é uma disciplina com altos índices de evasão e reprovação, as simulações funcionarão como material complementar aos discentes.  
+Este projeto visa a elaboração de um simulador para aprimorar a compreensão dos assuntos abordados nas aulas de Física I em universidades. Na perspectiva de que esta é uma disciplina com altos índices de evasão e reprovação, os cenários simulados neste software funcionarão como um material complementar aos discentes.
 
-O simulador irá estabelecer objetivos através de um robô interativo e de uma interface bem similar às interfaces de jogos eletrônicos, o que irá trazer o aprendizado de novos conteúdos previstos na formação dos alunos de forma didática e participativa.  Além disso, o uso de ferramentas tecnológicas em sala de aula pode representar um avanço significativo na interação de ensino e tecnologia.
+O simulador utiliza de um robô interativo e de uma interface similar às interfaces presentes em jogos eletrônicos, para que objetivos e conceitos sejam estabelecidos ao usuário. A partir dessa implementação, se espera proporcionar um aprendizado dos conteúdos previstos na formação dos alunos de forma didática e participativa, pois as simulações implementadas funcionam como um ambiente de experimentação virtual. Ademais, o uso de ferramentas tecnológicas em sala de aula pode representar um avanço significativo na interação de ensino e tecnologia.
 
-Atualmente, o projeto conta com três simulações bem similares ao que se espera de uma versão final, e outras duas simulações ainda a serem aprimoradas. As simulações que já possuem um aspecto de jogo eletrônico são: Lançamento Oblíquo, Plano Inclinado e Queda Livre. As simulações que ainda precisam ser atualizadas são: Força e Massa-mola. A integração do projeto com o Kinect ainda não foi realizada.
+Atualmente, o projeto possui três simulações totalmente funcionais, e dois outros cenários com conceitos definidos, mas ainda em uma versão rudimentar. As simulações que já possuem um aspecto bem definido são: Lançamento Oblíquo, Plano Inclinado e Queda Livre. As simulações ainda pouco exploradas são: Força e Massa-mola.
+
+A partir deste repositório, apresentaremos alguns passos que podem ser seguidos tanto para realizar a aplicação deste projeto em um contexto estudantil, quanto para implementar aprimoramentos e modificações.
 
 </p>
 
-## Simulações Encaminhadas
+## Screenshots do Software (v1.7)
+### Menu Inicial
 <div style = "display : flex">
-    <img style = "width: 33%" src = "./imagens/lancamentoVertical.png">
-    <img style = "width: 33%" src = "./imagens/planoInclinado.png">
-    <img style = "width: 34%" src = "./imagens/quedaLivre.png">
+    <img style = "width: 35%" src = "./Imagens/menuIni_01.png">
+    <img style = "width: 35%" src = "./Imagens/menuIni_02.png">
 </div>
 <br>
 
-## Simulações Pendentes
+### Lançamento Vertical
 <div style = "display : flex">
-    <img style = "width: 50%" src = "./imagens/forca01.png">
-    <img style = "width: 50%" src = "./imagens/massa01.png">
+    <img style = "width: 35%" src = "./imagens/lancamento_01.png">
+    <img style = "width: 35%" src = "./imagens/lancamento_02.png">
 </div>
 <br>
 <hr>
 
-## Instalar
+### Plano Inclinado
+<div style = "display : flex">
+    <img style = "width: 35%" src = "./imagens/plano_01.png">
+    <img style = "width: 35%" src = "./imagens/plano_02.png">
+</div>
+<br>
+<hr>
 
-Para modificar o projeto utilize o Unity 3D versão  2020.3.1f1, que pode ser encontrado no [Unity hub](https://store.unity.com/pt/download)
+### Queda Livre
+<div style = "display : flex">
+    <img style = "width: 35%" src = "./imagens/queda_01.png">
+    <img style = "width: 35%" src = "./imagens/queda_02.png">
+</div>
+<br>
+<hr>
 
-## Configurando o ambiente
+## Como utilizar as simulações
 
-Clone o repositório e execute os comandos
+1. Você pode baixar os executáveis para Windows e Linux da versão 1.7 do nosso projeto diretamente através do link: [Simulações 3D](https://drive.google.com/file/d/1K-B67e_5jWEXsmNisoR6YqHdY7jxYBCa/view?usp=sharing).
+
+2. Após efetuado o download, extraia os arquivos em qualquer lugar do seu computador.
+
+3. Após extraidos, abra a pasta com os arquivos e entre na correspondente ao seu sistema operacional (Atualmente, suportamos Windows x86_64 e distribuições Linux Debian x86_64).
+
+4. Para executar as simulações, abra o arquivo `Simulações 3D.exe` (Windows), ou `Linux_v1.7.x86_64` (Linux).
+
+## Como realizar modificações
+
+Para modificar o projeto utilize o Unity 3D versão 2020.3.1f1, que pode ser encontrado no [Unity hub](https://store.unity.com/pt/download)
+
+1. Clone o repositório e execute os comandos
 
 ```bash
 git fetch origin develop:develop 
@@ -40,24 +66,22 @@ git fetch origin develop:develop
 ```bash
 git checkout develop
 ```
-<hr>
 
+2. Ao adicionar novas cenas, scripts e objetos nas nossas simulações, pull requests serão bem vindos! 
 
-## Modificando o projeto
-
-<h4>Criando conteúdo</h4>
-
-😍 Adicione novas cenas, scripts e objetos nas nossas simulações. Depois compartilhe o que você fez !
-
-```bash
-git push origin develop
-``` 
+3. Em caso de dúvidas, basta seguir a [Documentação do GitHub](https://docs.github.com/pt/github/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/creating-a-pull-request) para criar uma pull request e contribuir com o nosso projeto.
 
 ## Contribuições
-Pull requests são bem vindos. Por favor, tenha certeza que o update esteja apropriados
- 
+
+ - [LocoBots] (https://www.instagram.com/locobots.ufop/)
  - [Jamisson Jader](https://www.instagram.com/jjader03/)
  - [Lucas Novais](https://www.instagram.com/l.novais_s/)
+ - [Sávio Lacerda](https://www.instagram.com/savioslacerda/)
+
+## Citações
+
+Serão colocadas no topo desse README após a conclusão do artigo.
 
 ## Referências legais
 
+Serão colocadas nesta seção após a conclusão do artigo.
