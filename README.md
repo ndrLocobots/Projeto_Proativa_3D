@@ -14,38 +14,38 @@ A partir deste repositório, apresentaremos alguns passos que podem ser seguidos
 ## Screenshots do Software (v1.7)
 ### Menu Inicial
 <div style = "display : flex">
-    <img style = "width: 35%" src = "./Imagens/menuIni_01.png">
-    <img style = "width: 35%" src = "./Imagens/menuIni_02.png">
+    <img style = "width: 40%" src = "./Imagens/menuIni_01.png">
+    <img style = "width: 40%" src = "./Imagens/menuIni_02.png">
 </div>
 <br>
 
 ### Lançamento Vertical
 <div style = "display : flex">
-    <img style = "width: 35%" src = "./imagens/lancamento_01.png">
-    <img style = "width: 35%" src = "./imagens/lancamento_02.png">
+    <img style = "width: 40%" src = "./Imagens/lancamento_01.png">
+    <img style = "width: 40%" src = "./Imagens/lancamento_02.png">
 </div>
 <br>
 <hr>
 
 ### Plano Inclinado
 <div style = "display : flex">
-    <img style = "width: 35%" src = "./imagens/plano_01.png">
-    <img style = "width: 35%" src = "./imagens/plano_02.png">
+    <img style = "width: 40%" src = "./Imagens/plano_01.png">
+    <img style = "width: 40%" src = "./Imagens/plano_02.png">
 </div>
 <br>
 <hr>
 
 ### Queda Livre
 <div style = "display : flex">
-    <img style = "width: 35%" src = "./imagens/queda_01.png">
-    <img style = "width: 35%" src = "./imagens/queda_02.png">
+    <img style = "width: 40%" src = "./Imagens/queda_01.png">
+    <img style = "width: 40%" src = "./Imagens/queda_02.png">
 </div>
 <br>
 <hr>
 
 ## Como utilizar as simulações
 
-1. Você pode baixar os executáveis para Windows e Linux da versão 1.7 do nosso projeto diretamente através do link: [Simulações 3D](https://drive.google.com/file/d/1K-B67e_5jWEXsmNisoR6YqHdY7jxYBCa/view?usp=sharing).
+1. Você pode baixar os executáveis para Windows e Linux da versão 1.7 do nosso projeto diretamente através do link: [Simulações 3D](https://drive.google.com/file/d/1JiflgDJl4TAVmc7Qy9IEyXw3b1apnbBJ/view?usp=sharing).
 
 2. Após efetuado o download, extraia os arquivos em qualquer lugar do seu computador.
 
