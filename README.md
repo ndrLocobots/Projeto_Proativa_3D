@@ -57,9 +57,9 @@ A partir deste repositório, apresentaremos alguns passos que podem ser seguidos
 
 ## Como realizar modificações
 
-Para modificar o projeto utilize o Unity 3D versão 2020.3.1f1, que pode ser encontrado no [Unity hub](https://store.unity.com/pt/download)
+Para modificar o projeto utilize o Unity 3D versão 2020.3.1f1, que pode ser encontrado no [Unity Hub](https://store.unity.com/pt/download).
 
-1. Clone o repositório e execute os comandos
+1. Clone o repositório e execute os comandos.
 
 ```bash
 git fetch origin develop:develop 
@@ -75,7 +75,7 @@ git checkout develop
 
 ## Contribuições
 
- - [LocoBots] (https://www.instagram.com/locobots.ufop/)
+ - [LocoBots](https://www.instagram.com/locobots.ufop/)
  - [Jamisson Jader](https://www.instagram.com/jjader03/)
  - [Lucas Novais](https://www.instagram.com/l.novais_s/)
  - [Sávio Lacerda](https://www.instagram.com/savioslacerda/)
