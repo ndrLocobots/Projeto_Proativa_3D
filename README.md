@@ -6,7 +6,9 @@ Este projeto visa a elaboração de um simulador para aprimorar a compreensão d
 <p align = "justify">
 O simulador utiliza de um robô interativo e de uma interface similar às interfaces presentes em jogos eletrônicos, para que objetivos e conceitos sejam estabelecidos ao usuário. A partir dessa implementação, se espera proporcionar um aprendizado dos conteúdos previstos na formação dos alunos de forma didática e participativa, pois as simulações implementadas funcionam como um ambiente de experimentação virtual. Ademais, o uso de ferramentas tecnológicas em sala de aula pode representar um avanço significativo na interação de ensino e tecnologia.
 </p>
+<p align = "justify">
 Atualmente, o projeto possui três simulações totalmente funcionais, e dois outros cenários com conceitos definidos, mas ainda em uma versão rudimentar. As simulações que já possuem um aspecto bem definido são: Lançamento Oblíquo, Plano Inclinado e Queda Livre. As simulações ainda pouco exploradas são: Força e Massa-mola.
+</p>
 <p align = "justify">
 A partir deste repositório, apresentaremos alguns passos que podem ser seguidos tanto para realizar a aplicação deste projeto em um contexto estudantil, quanto para implementar aprimoramentos e modificações.
 </p>
