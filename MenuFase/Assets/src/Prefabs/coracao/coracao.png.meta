@@ -35,6 +35,8 @@ TextureImporter:
   isReadable: 0
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMasterTextureLimit: 0
   grayScaleToAlpha: 0
   generateCubemap: 6
   cubemapConvolution: 0
@@ -43,12 +45,12 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: -1
-    aniso: -1
-    mipBias: -100
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
     wrapU: 1
     wrapV: 1
-    wrapW: -1
+    wrapW: 0
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
@@ -66,9 +68,12 @@ TextureImporter:
   textureType: 8
   textureShape: 1
   singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
   maxTextureSizeSet: 0
   compressionQualitySet: 0
   textureFormatSet: 0
+  ignorePngGamma: 0
   applyGammaDecoding: 0
   platformSettings:
   - serializedVersion: 3
@@ -114,7 +119,7 @@ TextureImporter:
       tessellationDetail: 0
       bones: []
       spriteID: 6625550c40ed2d970800000000000000
-      internalID: 8778322735686570598
+      internalID: -9136181877773985153
       vertices: []
       indices: 
       edges: []
@@ -135,7 +140,7 @@ TextureImporter:
       tessellationDetail: 0
       bones: []
       spriteID: 192a5c8baf9eaff40800000000000000
-      internalID: 5763175936225026705
+      internalID: 1508692715733472504
       vertices: []
       indices: 
       edges: []
@@ -150,6 +155,9 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
+    nameFileIdTable:
+      coracao_1: 1508692715733472504
+      coracao_0: -9136181877773985153
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0
